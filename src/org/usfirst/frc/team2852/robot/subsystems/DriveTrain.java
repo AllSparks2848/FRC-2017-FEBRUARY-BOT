@@ -70,20 +70,24 @@ public class DriveTrain extends PIDSubsystem {
     	drive2.setLeftRightMotorOutputs(0, 0);
     }
     
-    public void frontOmnisDown() {
+    public void frontOmnis() {
     	frontButterfly.set(DoubleSolenoid.Value.kForward);
+    	backButterfly.set(DoubleSolenoid.Value.kReverse);
     }
     
-    public void backOmnisDown() {
+    public void backOmnis() {
     	backButterfly.set(DoubleSolenoid.Value.kForward);
-    }
-    
-    public void frontAllDown() {
     	frontButterfly.set(DoubleSolenoid.Value.kReverse);
     }
     
-    public void backAllDown() {
+    public void noOmnis() {
+    	frontButterfly.set(DoubleSolenoid.Value.kReverse);
     	backButterfly.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public void AllOmnis() {
+    	backButterfly.set(DoubleSolenoid.Value.kForward);
+    	frontButterfly.set(DoubleSolenoid.Value.kForward);
     }
     
     public void shiftHigh() {

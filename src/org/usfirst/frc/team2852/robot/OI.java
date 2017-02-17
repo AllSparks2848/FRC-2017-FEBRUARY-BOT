@@ -6,14 +6,13 @@ import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
 import org.usfirst.frc.team2852.intakeCommands.IntakeToPosition;
 import org.usfirst.frc.team2852.intakeCommands.IntakeUp;
-import org.usfirst.frc.team2852.intakeCommands.Nudge;
 import org.usfirst.frc.team2852.intakeCommands.PrintEnc;
 import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
-import org.usfirst.frc.team2852.robot.driveCommands.AllDown;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.BackAllDown;
-import org.usfirst.frc.team2852.robot.driveCommands.BackOmnisDown;
+import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.FrontOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
@@ -73,10 +72,14 @@ public class OI {
 	Button bb9 = new JoystickButton(buttonBox, 8);
 	
 	public OI() {	
+		
+	a1.whenPressed(new NoOmnis());
+	b1.whenPressed(new FrontOmnis());
+	x1.whenPressed(new BackOmnis());
+	y1.whenPressed(new AllOmnis());
+		
 	lBump1.whenPressed(new ShiftHigh());
 	lTrig1.whenPressed(new ShiftLow());
-	rBump1.whenPressed(new AllDown());
-	rTrig1.whenPressed(new AllOmnis());
 	
 //	lTrig2.whenPressed(new IntakeUp());
 //	lBump2.whenPressed(new IntakeDown());
@@ -86,23 +89,17 @@ public class OI {
 	bb3.whileHeld(new IntakeUp());
 	bb8.whenPressed(new IntakeGear());
 	
-	bb1.whenPressed(new IntakePID(0)); 
-	bb2.whenPressed(new IntakePID(74));
-	bb4.whenPressed(new IntakePID(1));
-	bb5.whenPressed(new IntakePID(100));
+	bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
+	bb2.whenPressed(new IntakePID(Robot.intake.spitPos));
+	bb4.whenPressed(new IntakePID(Robot.intake.intakePos));
+	bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
 	
 	
 //	bb1.whenPressed(new Convey());
 //	bb2.whenPressed(new ManualShoot(-.5,.5, 3));
 	bb7.whenPressed(new ElevateAndShoot());
 	
-	//start.whenPressed(new SetBottomPos());
-	
-	//a2.whenPressed(new SetBottomPos());
-	b2.whenPressed(new SetBottomPos());
-	x2.whileHeld(new Convey());
-	y2.whenPressed(new ManualShoot(-.5,.5, 3)); // power, power,  time
-	a2.whileHeld(new PrintEnc());
+	a2.whenPressed(new SetBottomPos());
 	}
 	
 	public double getLeftJoystick() {

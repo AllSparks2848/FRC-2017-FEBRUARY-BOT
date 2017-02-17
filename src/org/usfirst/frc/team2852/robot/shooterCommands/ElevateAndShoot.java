@@ -25,7 +25,8 @@ public class ElevateAndShoot extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     	addSequential(new ManualShoot(-.625, .625, 1));
-    	addParallel(new Convey());
+    	addParallel(new Convey(.6));
     	addParallel(new ManualShoot(-.625, .625, 5)); //power, power, time
+    	addParallel(new Convey(0));
     }
 }

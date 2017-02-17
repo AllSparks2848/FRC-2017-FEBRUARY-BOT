@@ -16,9 +16,9 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
  *
  */
 public class Intake extends PIDSubsystem {
-	public static double p = .03;
-	public static double i = 0.01;
-	public static double d = 0;
+	public static double p = .025;
+	public static double i = 0.002;
+	public static double d = 0.0025;
 	public int bottomPos = 0;
 	public int intakePos = 1;
 	public int spitPos = 74;
@@ -29,10 +29,6 @@ public class Intake extends PIDSubsystem {
 	DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
 	public static Encoder intakeEnc = new Encoder(RobotMap.p_intakeEncA, RobotMap.p_intakeEncB, false,
 			EncodingType.k4X);
-
-	public final int INTAKE_OFFSET = 1;
-	public final int SPIT_OFFSET = 74;
-	public final int TUCK_OFFSET = 102;
 
 	public Timer timer = new Timer();
 
@@ -85,10 +81,7 @@ public class Intake extends PIDSubsystem {
 	}
 
 	public void setBottomPos() {
-		bottomPos = intakeEnc.get();
-		intakePos = bottomPos + INTAKE_OFFSET;
-		spitPos = bottomPos + SPIT_OFFSET;
-		tuckPos = bottomPos + TUCK_OFFSET;
+		Intake.intakeEnc.reset();
 	}
 
 	public double getIntakePos() {

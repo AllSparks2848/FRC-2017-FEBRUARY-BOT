@@ -19,10 +19,10 @@ public class Conveyor extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void elevator(){
-    	shooterElevator.set(.6);
+    public void elevator(double power){
+    	shooterElevator.set(power);
     }
-    public void elevatorStop(){
+    public void stopElevator() {
     	shooterElevator.set(0);
     }
 }

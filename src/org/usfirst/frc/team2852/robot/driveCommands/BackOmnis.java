@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
+package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
@@ -7,20 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Nudge extends Command {
+public class BackOmnis extends Command {
 
-	private int direction = 1;
-    public Nudge(int direction) {
+    public BackOmnis() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.intake);
-    	this.direction = direction;
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.timer.start();
-    	Robot.intake.intakePivot.set(direction);
+    	Robot.drivetrain.backOmnis();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,19 +26,15 @@ public class Nudge extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.intake.timer.get() > .05;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stopActuate();
-    	Robot.intake.timer.stop();
-    	Robot.intake.timer.reset();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
