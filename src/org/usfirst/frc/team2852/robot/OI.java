@@ -30,6 +30,7 @@ public class OI {
 	Joystick xbox1 = new Joystick(RobotMap.p_xbox1);
 	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
 	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
+	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
 	
 //	Controller 1
 	Button a1 = new JoystickButton(xbox1, 1);
@@ -71,38 +72,64 @@ public class OI {
 	Button bb8 = new JoystickButton(buttonBox, 9);
 	Button bb9 = new JoystickButton(buttonBox, 8);
 	
-	public OI() {	
+//	button Box 2
+	Button bb21 = new JoystickButton(buttonBox2, 3);
+	Button bb22 = new JoystickButton(buttonBox2, 12);
+	Button bb23 = new JoystickButton(buttonBox2, 15);
+	Button bb24 = new JoystickButton(buttonBox2, 6);
+	Button bb25 = new JoystickButton(buttonBox2, 9);
+	Button bb26 = new JoystickButton(buttonBox2, 2);
+	Button bb27 = new JoystickButton(buttonBox2, 13);
+	Button bb28 = new JoystickButton(buttonBox2, 16);
+	Button bb29 = new JoystickButton(buttonBox2, 5);
+	Button bb210 = new JoystickButton(buttonBox2, 10);
+	Button bb211 = new JoystickButton(buttonBox2, 4); 
+	Button bb212 = new JoystickButton(buttonBox2, 11);
+	Button bb213 = new JoystickButton(buttonBox2, 14);
+	Button bb214 = new JoystickButton(buttonBox2, 7);
+	Button bb215 = new JoystickButton(buttonBox2, 8);
+	
+	public OI() {
+		bb21.whileHeld(new IntakeGear());
+		bb22.whileHeld(new SpitGear());
 		
-	a1.whenPressed(new NoOmnis());
-	b1.whenPressed(new BackOmnis());
-	x1.whenPressed(new FrontOmnis());
-	y1.whenPressed(new AllOmnis());
-	rTrig1.whileHeld(new Climb());
+		bb24.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
+		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
+		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
+		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		
-	lBump1.whenPressed(new ShiftHigh());
-	lTrig1.whenPressed(new ShiftLow());
-	
-//	lTrig2.whenPressed(new IntakeUp());
-//	lBump2.whenPressed(new IntakeDown());
-	
-	bb9.whileHeld(new SpitGear());
-	bb6.whileHeld(new IntakeDown());
-	bb3.whileHeld(new IntakeUp());
-	bb8.whenPressed(new IntakeGear());
-	
-	bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
-	bb2.whenPressed(new IntakePID(Robot.intake.spitPos));
-	bb4.whenPressed(new IntakePID(Robot.intake.intakePos));
-	bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
-	
-	
-//	bb1.whenPressed(new Convey());
-//	bb2.whenPressed(new ManualShoot(-.5,.5, 3));
-	bb7.whenPressed(new ElevateAndShoot());
-	
-	a2.whenPressed(new SetBottomPos());
-	b2.whileHeld(new ManualShoot(-.75, .75));
-	x2.whileHeld(new Convey(.6));
+//		bb23 - Shoot?
+		
+		a1.whenPressed(new NoOmnis());
+		b1.whenPressed(new BackOmnis());
+		x1.whenPressed(new FrontOmnis());
+		y1.whenPressed(new AllOmnis());
+		rTrig1.whileHeld(new Climb());
+			
+		lBump1.whenPressed(new ShiftHigh());
+		lTrig1.whenPressed(new ShiftLow());
+		
+	//	lTrig2.whenPressed(new IntakeUp());
+	//	lBump2.whenPressed(new IntakeDown());
+		
+		bb9.whileHeld(new SpitGear());
+		bb6.whileHeld(new IntakeDown());
+		bb3.whileHeld(new IntakeUp());
+		bb8.whenPressed(new IntakeGear());
+		
+		bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
+		bb2.whenPressed(new IntakePID(Robot.intake.spitPos));
+		bb4.whenPressed(new IntakePID(Robot.intake.intakePos));
+		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
+		
+		
+	//	bb1.whenPressed(new Convey());
+	//	bb2.whenPressed(new ManualShoot(-.5,.5, 3));
+		bb7.whenPressed(new ElevateAndShoot());
+		
+		a2.whenPressed(new SetBottomPos());
+		b2.whileHeld(new ManualShoot(-.75, .75));
+		x2.whileHeld(new Convey(.6));
 	}
 	
 	public double getLeftJoystick() {
