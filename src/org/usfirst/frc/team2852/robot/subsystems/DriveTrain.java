@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.robot.subsystems;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -24,6 +25,9 @@ public class DriveTrain extends PIDSubsystem {
 	DoubleSolenoid backButterfly = new DoubleSolenoid(RobotMap.p_backButterfly1, RobotMap.p_backButterfly2);
 	DoubleSolenoid driveShifter = new DoubleSolenoid(RobotMap.p_driveshifter1, RobotMap.p_driveshifter2);
 	
+	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, true, EncodingType.k4X);
+	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, EncodingType.k4X);
+	
 	private static double pDrive = .07;
 	private static double iDrive = 0;
 	private static double dDrive = .007;
@@ -34,8 +38,8 @@ public class DriveTrain extends PIDSubsystem {
     // Initialize your subsystem here
     public DriveTrain() {
     	super("DriveTrain", pDrive, iDrive, dDrive);
-//    	leftEncoder.setDistancePerPulse(-0.01057);
-//    	rightEncoder.setDistancePerPulse(.01125);
+    	leftEncoder.setDistancePerPulse(-0.1);
+    	rightEncoder.setDistancePerPulse(0.1);
     }
 
     public void initDefaultCommand() {

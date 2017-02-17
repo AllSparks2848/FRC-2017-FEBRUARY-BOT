@@ -13,13 +13,13 @@ public class ManualShoot extends Command {
 	private double powerFront = 0;
 	private double powerBack = 0;
 	private double time = 0;
-    public ManualShoot(double powerInner, double powerOuter, double time) {
+    public ManualShoot(double powerInner, double powerOuter) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooter);
     	this.powerFront = powerInner;
     	this.powerBack = powerOuter;
-    	this.time = time;
+    	//this.time = time;
     }
 
     // Called just before this Command runs the first time
@@ -37,7 +37,8 @@ public class ManualShoot extends Command {
     	System.out.println("Front Motor Speed: " + Shooter.shooterFrontEnc.getRate());
     	System.out.println("Back Motor Speed: " + Shooter.shooterBackEnc.getRate());
     	System.out.println("\n");
-        return Robot.shooter.shootTime.get() > time;
+//        return Robot.shooter.shootTime.get() > time;
+    	return false;
     }
 
     // Called once after isFinished returns true

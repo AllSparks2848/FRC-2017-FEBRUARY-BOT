@@ -74,9 +74,10 @@ public class OI {
 	public OI() {	
 		
 	a1.whenPressed(new NoOmnis());
-	b1.whenPressed(new FrontOmnis());
-	x1.whenPressed(new BackOmnis());
+	b1.whenPressed(new BackOmnis());
+	x1.whenPressed(new FrontOmnis());
 	y1.whenPressed(new AllOmnis());
+	rTrig1.whileHeld(new Climb());
 		
 	lBump1.whenPressed(new ShiftHigh());
 	lTrig1.whenPressed(new ShiftLow());
@@ -100,6 +101,8 @@ public class OI {
 	bb7.whenPressed(new ElevateAndShoot());
 	
 	a2.whenPressed(new SetBottomPos());
+	b2.whileHeld(new ManualShoot(-.75, .75));
+	x2.whileHeld(new Convey(.6));
 	}
 	
 	public double getLeftJoystick() {

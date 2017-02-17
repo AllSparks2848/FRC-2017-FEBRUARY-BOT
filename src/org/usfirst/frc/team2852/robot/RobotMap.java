@@ -43,6 +43,7 @@ public class RobotMap {
 	public static int p_leftEncoderB = 1;
 	public static int p_rightEncoderA = 3;
 	public static int p_rightEncoderB = 2;
+	public static int p_breakbeam = 4;
 	public static int p_shooterFrontEncA = 5;
 	public static int p_shooterFrontEncB = 6;
 	public static int p_shooterBackEncA = 7;
@@ -50,6 +51,5 @@ public class RobotMap {
 	public static int p_intakeEncA = 18;
 	public static int p_intakeEncB = 19;
 	//Analog ports
-	public static int p_breakbeam = 4;
 	public static int p_absPosEncoder = 1;
 }
