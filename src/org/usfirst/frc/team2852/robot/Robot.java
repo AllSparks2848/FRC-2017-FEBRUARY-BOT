@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2852.robot;
 
 import org.usfirst.frc.team2852.intakecommands.SetBottomPos;
+import org.usfirst.frc.team2852.intakecommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
@@ -44,7 +45,6 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = new AutonGearLeft();
 		//prefs = Preferences.getInstance();
 		oi = new OI();
-		Intake.intakeEnc.reset();
 		LiveWindow.addActuator("Shooter", "shooterBackEnc", Robot.shooter.getPIDController());
 		SmartDashboard.putData(Scheduler.getInstance());
 		SmartDashboard.putData("Reset Intake", new SetBottomPos());
@@ -80,7 +80,7 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		Intake.intakeEnc.reset();
+		Scheduler.getInstance().add(new ZeroIntake());
 	}
 
 	@Override

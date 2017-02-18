@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2852.intakecommands;
 
+import org.usfirst.frc.team2852.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,14 +9,26 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ZeroIntake extends Command {
 
+	boolean startedTooFarUp = false;
     public ZeroIntake() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	if(Robot.intake.isPhotoGateBroken()){
+    		Robot.intake.actuate(-.2);
+    		startedTooFarUp = false;
+    	}
+    	else{
+    		Robot.intake.actuate(.2);
+    		startedTooFarUp = true;
+    	}
+    	
     }
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
@@ -22,6 +36,16 @@ public class ZeroIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	if(!startedTooFarUp && !Robot.intake.isPhotoGateBroken()){
+    		Robot.intake.stopActuate();
+    		Robot.intake.setBottomPos();
+    		return true;
+    	}
+    	if(startedTooFarUp && Robot.intake.isPhotoGateBroken()) {
+    		Robot.intake.stopActuate();
+    		Robot.intake.setBottomPos();
+    		return true;
+    	}
         return false;
     }
 
