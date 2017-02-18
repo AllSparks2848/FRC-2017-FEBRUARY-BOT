@@ -93,13 +93,13 @@ public class OI {
 		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
 		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
-		bb28.whileHeld(new Convey(.4));
+		bb28.whileHeld(new Convey(.6));
 		bb211.whileHeld(new Climb());
 		bb214.whileHeld(new IntakeUp());
 		bb215.whileHeld(new IntakeDown());
 		
 		a1.whileHeld(new Climb());
-		x1.whileHeld(new Convey(.4));
+		x1.whileHeld(new Convey(.6));
 		y1.whileHeld(new ManualShoot(-.675, .7));
 		
 		rTrig1.whenPressed(new NoOmnis());

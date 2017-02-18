@@ -29,6 +29,7 @@ public class Intake extends PIDSubsystem {
 	DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
 	public static Encoder intakeEnc = new Encoder(RobotMap.p_intakeEncA, RobotMap.p_intakeEncB, false,
 			EncodingType.k4X);
+	DigitalInput photogate = new DigitalInput(RobotMap.p_photogate);
 
 	public Timer timer = new Timer();
 
