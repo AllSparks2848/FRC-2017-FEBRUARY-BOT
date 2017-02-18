@@ -1,13 +1,13 @@
-package org.usfirst.frc.team2852.robot.shooterCommands;
+package org.usfirst.frc.team2852.robot.shootercommands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class ElevateAndShoot extends CommandGroup {
+public class ShootAndConvey extends CommandGroup {
 
-    public ElevateAndShoot() {
+    public ShootAndConvey() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,10 +24,7 @@ public class ElevateAndShoot extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	//addSequential(new ManualShoot(-.75, .75, 1));
-    	addSequential(new Convey(.6));
-    	//addParallel(new ManualShoot(-.75, .75, 5)); //power, power, time
-    	addSequential(new Convey(0));
+    	addParallel(new Convey(.4));
+    	addSequential(new ManualShoot(-.675, .7));
     }
 }

@@ -1,24 +1,23 @@
 package org.usfirst.frc.team2852.robot;
 
-import org.usfirst.frc.team2852.climberCommands.Climb;
-import org.usfirst.frc.team2852.intakeCommands.IntakeDown;
-import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
-import org.usfirst.frc.team2852.intakeCommands.IntakePID;
-import org.usfirst.frc.team2852.intakeCommands.IntakeToPosition;
-import org.usfirst.frc.team2852.intakeCommands.IntakeUp;
-import org.usfirst.frc.team2852.intakeCommands.PrintEnc;
-import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
-import org.usfirst.frc.team2852.intakeCommands.SpitGear;
-import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.FrontOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
-import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
-import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
-import org.usfirst.frc.team2852.robot.shooterCommands.ElevateAndShoot;
-import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
-import org.usfirst.frc.team2852.robot.shooterCommands.PIDShoot;
+import org.usfirst.frc.team2852.climbercommands.Climb;
+import org.usfirst.frc.team2852.intakecommands.IntakeDown;
+import org.usfirst.frc.team2852.intakecommands.IntakeGear;
+import org.usfirst.frc.team2852.intakecommands.IntakePID;
+import org.usfirst.frc.team2852.intakecommands.IntakeToPosition;
+import org.usfirst.frc.team2852.intakecommands.IntakeUp;
+import org.usfirst.frc.team2852.intakecommands.SetBottomPos;
+import org.usfirst.frc.team2852.intakecommands.SpitGear;
+import org.usfirst.frc.team2852.robot.drivecommands.AllOmnis;
+import org.usfirst.frc.team2852.robot.drivecommands.BackOmnis;
+import org.usfirst.frc.team2852.robot.drivecommands.FrontOmnis;
+import org.usfirst.frc.team2852.robot.drivecommands.NoOmnis;
+import org.usfirst.frc.team2852.robot.drivecommands.ShiftHigh;
+import org.usfirst.frc.team2852.robot.drivecommands.ShiftLow;
+import org.usfirst.frc.team2852.robot.shootercommands.Convey;
+import org.usfirst.frc.team2852.robot.shootercommands.ManualShoot;
+import org.usfirst.frc.team2852.robot.shootercommands.PIDShoot;
+import org.usfirst.frc.team2852.robot.shootercommands.ShootAndConvey;
 import org.usfirst.frc.team2852.robot.util.XboxTrigger;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -42,9 +41,6 @@ public class OI {
 	XboxTrigger rTrig1 = new XboxTrigger(xbox1, 3);
 	Button lBump1 = new JoystickButton(xbox1, 5);
 	Button rBump1 = new JoystickButton(xbox1, 6);
-	
-//	Button clickLeft = new JoystickButton(xbox1, 9);
-//	Button clickRight = new JoystickButton(xbox1, 10);
 	
 //	Controller 2
 	Button a2 = new JoystickButton(xbox2, 1);
@@ -90,46 +86,37 @@ public class OI {
 	Button bb215 = new JoystickButton(buttonBox2, 8);
 	
 	public OI() {
-		bb21.whileHeld(new IntakeGear());
+		bb21.whenPressed(new IntakeGear());
 		bb22.whileHeld(new SpitGear());
 		
 		bb24.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
 		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
 		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
+		bb28.whileHeld(new Convey(.4));
+		bb211.whileHeld(new Climb());
+		bb214.whileHeld(new IntakeUp());
+		bb215.whileHeld(new IntakeDown());
 		
-//		bb23 - Shoot?
+		b1.whileHeld(new Climb());
+		x1.whileHeld(new Convey(.4));
+		y1.whileHeld(new ManualShoot(-.675, .7));
 		
-		a1.whenPressed(new NoOmnis());
-		b1.whenPressed(new BackOmnis());
-		x1.whenPressed(new FrontOmnis());
-		y1.whenPressed(new AllOmnis());
-		rTrig1.whileHeld(new Climb());
-			
+		rTrig1.whenPressed(new NoOmnis());
+		rBump1.whenPressed(new AllOmnis());
 		lBump1.whenPressed(new ShiftHigh());
 		lTrig1.whenPressed(new ShiftLow());
 		
-	//	lTrig2.whenPressed(new IntakeUp());
-	//	lBump2.whenPressed(new IntakeDown());
-		
-		bb9.whileHeld(new SpitGear());
+		bb8.whileHeld(new SpitGear());
 		bb6.whileHeld(new IntakeDown());
 		bb3.whileHeld(new IntakeUp());
-		bb8.whenPressed(new IntakeGear());
-		
+		bb9.whenPressed(new IntakeGear());
 		bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
-		bb2.whenPressed(new IntakePID(Robot.intake.spitPos));
-		bb4.whenPressed(new IntakePID(Robot.intake.intakePos));
+		bb2.whenPressed(new IntakePID(Robot.intake.intakePos));
+		bb4.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
+		bb7.whileHeld(new ShootAndConvey()); //may be problematic
 		
-		
-	//	bb1.whenPressed(new Convey());
-	//	bb2.whenPressed(new ManualShoot(-.5,.5, 3));
-		bb7.whenPressed(new ElevateAndShoot());
-		
-		a2.whenPressed(new SetBottomPos());
-		b2.whileHeld(new ManualShoot(-.75, .75));
-		x2.whileHeld(new Convey(.6));
 	}
 	
 	public double getLeftJoystick() {

@@ -7,6 +7,7 @@ import org.usfirst.frc.team2852.robot.subsystems.Intake;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,7 +32,8 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-
+	
+	//public static Preferences prefs;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -39,7 +41,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		//autonomousCommand = new AutonGearLeft();
+		//prefs = Preferences.getInstance();
 		oi = new OI();
+		Intake.intakeEnc.reset();
+		LiveWindow.addActuator("Shooter", "shooterBackEnc", Robot.shooter.getPIDController());
 		SmartDashboard.putData(Scheduler.getInstance());
 	}
 
@@ -73,15 +78,14 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-			
+		Intake.intakeEnc.reset();
 	}
 
 	@Override
 	public void teleopPeriodic() {
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
-		SmartDashboard.putNumber("Intake Motor Power", Robot.intake.getPivot());
-		SmartDashboard.putNumber("Left Enc", Robot.drivetrain.leftEncoder.getDistance());
-		SmartDashboard.putNumber("Right Enc", Robot.drivetrain.rightEncoder.getDistance());
+		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
+		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
