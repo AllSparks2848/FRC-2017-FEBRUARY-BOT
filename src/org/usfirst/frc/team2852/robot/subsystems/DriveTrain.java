@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.robot.subsystems;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import org.usfirst.frc.team2852.robot.drivecommands.ArcadeDrive;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -29,8 +30,8 @@ public class DriveTrain extends PIDSubsystem {
 	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, true, EncodingType.k4X);
 	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, EncodingType.k4X);
 	
-	public AnalogOutput lowPressureSensor = new AnalogOutput(RobotMap.p_lowPressureSensor);
-	public AnalogOutput highPressureSensor = new AnalogOutput(RobotMap.p_highPressureSensor);
+	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
+	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
 	
 	private static double pDrive = .07;
 	private static double iDrive = 0;

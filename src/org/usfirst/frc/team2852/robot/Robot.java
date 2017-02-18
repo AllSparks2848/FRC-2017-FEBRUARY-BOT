@@ -88,6 +88,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
+		System.out.println("High Pressure voltage: " + drivetrain.highPressureSensor.getVoltage());
+		System.out.println("Low Pressure voltage: " + drivetrain.lowPressureSensor.getVoltage());
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
