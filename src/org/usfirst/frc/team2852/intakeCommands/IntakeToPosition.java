@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
+package org.usfirst.frc.team2852.intakecommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 

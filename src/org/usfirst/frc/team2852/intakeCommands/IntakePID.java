@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
+package org.usfirst.frc.team2852.intakecommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
@@ -30,7 +30,7 @@ public class IntakePID extends Command {
     protected boolean isFinished() {
     	System.out.println("Encoder Reading: " + Intake.intakeEnc.get());
     	System.out.println("Motor Power: " + Robot.intake.getPivot());
-    	if(Intake.intakeEnc.get()<-5 || Intake.intakeEnc.get() > 120)
+    	if(Intake.intakeEnc.get() > 15 || Intake.intakeEnc.get() < -110)
     		return true;
         return (Math.abs((setpoint - Intake.intakeEnc.get())) <= 1);
     }

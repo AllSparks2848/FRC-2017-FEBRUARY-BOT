@@ -1,6 +1,7 @@
-package org.usfirst.frc.team2852.robot.shooterCommands;
+package org.usfirst.frc.team2852.robot.shootercommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
+import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,21 +10,40 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Convey extends Command {
 
-	private double direction;
-    public Convey(double direction) {
+	private double power;
+//	private double totalTime;
+    public Convey(double power) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.conveyor);
-    	this.direction = direction;
+    	this.power = power;
     }
-
+//    public Convey(double power, double totalTime) {
+//        // Use requires() here to declare subsystem dependencies
+//        // eg. requires(chassis);
+//    	requires(Robot.conveyor);
+//    	this.power = power;
+//    	this.totalTime = totalTime;
+//    }
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.conveyor.elevator(direction);
+    	Robot.conveyor.elevator(power);
+//    	Conveyor.conveyTimer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
+//    	if (Conveyor.conveyRuntime > Conveyor.conveyTimer.get()) {
+//    		Conveyor.shooterElevator.stopMotor();
+//    		Conveyor.conveyTimer.reset();
+//    		Conveyor.conveyTimer.start();
+//    		if (Conveyor.conveyWait > Conveyor.conveyTimer.get()) {
+//        		Conveyor.shooterElevator.set(power);
+//        		Conveyor.conveyTimer.reset();
+//        		Conveyor.conveyTimer.start();
+//        	}
+//    	}     	
     }
 
     // Make this return true when this Command no longer needs to run execute()

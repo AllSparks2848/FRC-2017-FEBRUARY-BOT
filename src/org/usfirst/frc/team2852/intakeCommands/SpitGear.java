@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
+package org.usfirst.frc.team2852.intakecommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
@@ -15,7 +15,7 @@ public class SpitGear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.intake(.75);
+    	Robot.intake.intake(.6);
     }
 
     // Called repeatedly when this Command is scheduled to run

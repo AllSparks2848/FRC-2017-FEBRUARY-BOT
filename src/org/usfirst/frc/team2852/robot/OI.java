@@ -98,7 +98,7 @@ public class OI {
 		bb214.whileHeld(new IntakeUp());
 		bb215.whileHeld(new IntakeDown());
 		
-		b1.whileHeld(new Climb());
+		a1.whileHeld(new Climb());
 		x1.whileHeld(new Convey(.4));
 		y1.whileHeld(new ManualShoot(-.675, .7));
 		

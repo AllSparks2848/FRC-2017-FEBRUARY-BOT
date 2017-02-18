@@ -24,7 +24,7 @@ public class ShootAndConvey extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	addParallel(new Convey(.4));
-    	addSequential(new ManualShoot(-.675, .7));
+    	addParallel(new ManualShoot(-.675, .7));
+    	addSequential(new Convey(.4));
     }
 }
