@@ -8,6 +8,7 @@ import org.usfirst.frc.team2852.intakecommands.IntakeToPosition;
 import org.usfirst.frc.team2852.intakecommands.IntakeUp;
 import org.usfirst.frc.team2852.intakecommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakecommands.SpitGear;
+import org.usfirst.frc.team2852.intakecommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.drivecommands.AllOmnis;
 import org.usfirst.frc.team2852.robot.drivecommands.BackOmnis;
 import org.usfirst.frc.team2852.robot.drivecommands.FrontOmnis;
@@ -101,6 +102,7 @@ public class OI {
 		a1.whileHeld(new Climb());
 		x1.whileHeld(new Convey(.6));
 		y1.whileHeld(new ManualShoot(-.675, .7));
+		b1.whenPressed(new ZeroIntake());
 		
 		rTrig1.whenPressed(new NoOmnis());
 		rBump1.whenPressed(new AllOmnis());

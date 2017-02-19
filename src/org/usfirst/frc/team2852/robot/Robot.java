@@ -80,12 +80,17 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		Scheduler.getInstance().add(new ZeroIntake());
+		//Scheduler.getInstance().add(new ZeroIntake());
 	}
 
 	@Override
 	public void teleopPeriodic() {
+		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
+		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
+		System.out.println("Left Enc: " + drivetrain.leftEncoder.getDistance());
+		System.out.println("Right Enc: " + drivetrain.rightEncoder.getDistance());
+		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		System.out.println("High Pressure voltage: " + drivetrain.highPressureSensor.getVoltage());

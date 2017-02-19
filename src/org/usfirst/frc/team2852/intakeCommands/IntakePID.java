@@ -14,7 +14,7 @@ public class IntakePID extends Command {
     public IntakePID(double setpoint) {
     	this.setpoint = setpoint;
         requires(Robot.intake);
-        Robot.intake.setOutputRange(-1, 1);
+        Robot.intake.setOutputRange(-.4, .4);
     }
 
     protected void initialize() {
@@ -30,9 +30,32 @@ public class IntakePID extends Command {
     protected boolean isFinished() {
     	System.out.println("Encoder Reading: " + Intake.intakeEnc.get());
     	System.out.println("Motor Power: " + Robot.intake.getPivot());
-    	if(Intake.intakeEnc.get() > 15 || Intake.intakeEnc.get() < -110)
-    		return true;
-        return (Math.abs((setpoint - Intake.intakeEnc.get())) <= 1);
+    	
+        if(Math.abs((setpoint - Intake.intakeEnc.get())) <= 1) {
+        	return true;
+        }
+        
+        
+        if(!Robot.intake.isPhotoGateBroken()) {
+        	if(Intake.intakeEnc.get()>-10) {
+        		Robot.intake.disable();
+        		Robot.intake.intakePivot.set(.2);
+        		if(Robot.intake.isPhotoGateBroken())
+        		{
+        			return true;
+        		}
+        	}
+        		else if(Intake.intakeEnc.get()<-90) {
+            		Robot.intake.disable();
+            		Robot.intake.intakePivot.set(-.2);
+            		if(Robot.intake.isPhotoGateBroken())
+            		{
+            			return true;
+            		}
+        		}
+        	}
+        
+        return false;
     }
 
     // Called once after isFinished returns true

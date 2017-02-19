@@ -99,6 +99,6 @@ public class Intake extends PIDSubsystem {
 		return tuckPos;
 	}
 	public boolean isPhotoGateBroken(){
-		return(photogate.get());
+		return(!photogate.get());
 	}
 }

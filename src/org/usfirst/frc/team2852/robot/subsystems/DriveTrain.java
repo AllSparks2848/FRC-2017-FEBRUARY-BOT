@@ -43,8 +43,6 @@ public class DriveTrain extends PIDSubsystem {
     // Initialize your subsystem here
     public DriveTrain() {
     	super("DriveTrain", pDrive, iDrive, dDrive);
-    	leftEncoder.setDistancePerPulse(-0.1);
-    	rightEncoder.setDistancePerPulse(0.1);
     }
 
     public void initDefaultCommand() {
