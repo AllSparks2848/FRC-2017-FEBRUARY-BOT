@@ -3,12 +3,15 @@ package org.usfirst.frc.team2852.robot.subsystems;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import org.usfirst.frc.team2852.robot.drivecommands.ArcadeDrive;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
@@ -32,6 +35,8 @@ public class DriveTrain extends PIDSubsystem {
 	
 	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
 	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
+	
+	public AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
 	private static double pDrive = .07;
 	private static double iDrive = 0;
