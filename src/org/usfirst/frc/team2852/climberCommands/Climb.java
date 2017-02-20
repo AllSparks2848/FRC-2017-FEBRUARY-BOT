@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.climbercommands;
+package org.usfirst.frc.team2852.climberCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 

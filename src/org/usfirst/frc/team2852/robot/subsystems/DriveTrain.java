@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
 import org.usfirst.frc.team2852.robot.RobotMap;
-import org.usfirst.frc.team2852.robot.drivecommands.ArcadeDrive;
+import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 
 import com.kauailabs.navx.frc.AHRS;
 

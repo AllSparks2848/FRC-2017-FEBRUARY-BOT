@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2852.robot;
 
-import org.usfirst.frc.team2852.intakecommands.SetBottomPos;
-import org.usfirst.frc.team2852.intakecommands.ZeroIntake;
+import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
+import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.robot.drivecommands;
+package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
