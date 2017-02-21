@@ -88,6 +88,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
+		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());

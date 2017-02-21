@@ -19,9 +19,9 @@ public class Intake extends PIDSubsystem {
 	public static double p = .025;
 	public static double i = 0.002;
 	public static double d = 0.0025;
-	public int bottomPos = -102;
-	public int intakePos = -101;
-	public int spitPos = -28; //-28 on practice. subject to change on comp
+	public int bottomPos = -96;
+	public int intakePos = -95;
+	public int spitPos = -22; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public Spark intakeRoller = new Spark(RobotMap.p_intakeRoller);
@@ -72,7 +72,7 @@ public class Intake extends PIDSubsystem {
 	}
 
 	public boolean isBeamBroken() {
-		return breakbeam.get();
+		return !breakbeam.get();
 	}
 
 	public double getPivot() {

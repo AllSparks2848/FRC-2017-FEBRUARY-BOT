@@ -26,7 +26,7 @@ public class IntakeGear extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	System.out.println("Intake Current: " + Robot.intake.pdp.getCurrent(14));
-    	if (!Robot.intake.isBeamBroken()) {
+    	if (Robot.intake.isBeamBroken()) {
     		System.out.println("Beam Broken");
     		return true;
     	}
@@ -38,7 +38,7 @@ public class IntakeGear extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stopIntake();
+    	Robot.intake.intakeRoller.set(0);
     }
 
     // Called when another command which requires one or more of the same

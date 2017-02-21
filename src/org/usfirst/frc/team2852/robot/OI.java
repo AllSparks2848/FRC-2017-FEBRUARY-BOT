@@ -26,6 +26,7 @@ import org.usfirst.frc.team2852.robot.util.XboxTrigger;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
@@ -89,6 +90,8 @@ public class OI {
 	Button bb215 = new JoystickButton(buttonBox2, 8);
 	
 	public OI() {
+		LiveWindow.addActuator("drivetrain", "Drivetrain", Robot.drivetrain.getPIDController());
+		
 		bb21.whenPressed(new IntakeGear());
 		bb22.whileHeld(new SpitGear());
 		
@@ -96,13 +99,13 @@ public class OI {
 		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
 		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
-		bb28.whileHeld(new Convey(.6));
+		bb28.whileHeld(new Convey(.9));
 		bb211.whileHeld(new Climb());
 		bb214.whileHeld(new IntakeUp());
 		bb215.whileHeld(new IntakeDown());
 		
 		a1.whileHeld(new Climb());
-		x1.whileHeld(new Convey(.6));
+		x1.whileHeld(new Convey(.9));
 		y1.whileHeld(new ManualShoot(-.675, .7));
 		b1.whenPressed(new ZeroIntake());
 		
