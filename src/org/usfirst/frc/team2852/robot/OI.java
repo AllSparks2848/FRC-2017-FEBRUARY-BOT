@@ -11,7 +11,9 @@ import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.FrontOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
@@ -118,6 +120,9 @@ public class OI {
 		bb4.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bb7.whileHeld(new ShootAndConvey()); //may be problematic
+		
+		a2.whenPressed(new DriveToDistance(36));
+		b2.whenPressed(new GyroTurn(45));
 		
 	}
 	

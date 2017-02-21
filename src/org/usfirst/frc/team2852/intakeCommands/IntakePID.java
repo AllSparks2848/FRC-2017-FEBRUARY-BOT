@@ -14,10 +14,27 @@ public class IntakePID extends Command {
     public IntakePID(double setpoint) {
     	this.setpoint = setpoint;
         requires(Robot.intake);
-        Robot.intake.setOutputRange(-.4, .4);
+        Robot.intake.setOutputRange(-.6, .6);
     }
 
     protected void initialize() {
+//    	if(!Robot.intake.isPhotoGateBroken()) {
+//        	if(Intake.intakeEnc.get()>-25) {
+//        		Robot.intake.intakePivot.set(.2);
+//        		if(Robot.intake.isPhotoGateBroken())
+//        		{
+//        			Robot.intake.intakePivot.stopMotor();
+//        		}
+//        	}
+//        		if(Intake.intakeEnc.get()<-50) {
+//            		Robot.intake.disable();
+//            		Robot.intake.intakePivot.set(-.2);
+//            		if(Robot.intake.isPhotoGateBroken())
+//            		{
+//            			Robot.intake.intakePivot.stopMotor();
+//            		}
+//        		}
+//        	}
     	Robot.intake.setSetpoint(setpoint);
     	Robot.intake.enable();
     }
@@ -35,9 +52,8 @@ public class IntakePID extends Command {
         	return true;
         }
         
-        
         if(!Robot.intake.isPhotoGateBroken()) {
-        	if(Intake.intakeEnc.get()>-10) {
+        	if(Intake.intakeEnc.get()>-25) {
         		Robot.intake.disable();
         		Robot.intake.intakePivot.set(.2);
         		if(Robot.intake.isPhotoGateBroken())
@@ -45,7 +61,7 @@ public class IntakePID extends Command {
         			return true;
         		}
         	}
-        		else if(Intake.intakeEnc.get()<-90) {
+        		if(Intake.intakeEnc.get()<-50) {
             		Robot.intake.disable();
             		Robot.intake.intakePivot.set(-.2);
             		if(Robot.intake.isPhotoGateBroken())

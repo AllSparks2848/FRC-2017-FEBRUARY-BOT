@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
+import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 
@@ -10,6 +11,7 @@ import edu.wpi.first.wpilibj.AnalogOutput;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.Spark;
@@ -23,15 +25,15 @@ public class DriveTrain extends PIDSubsystem {
 	public Spark rightDrive2 = new Spark(RobotMap.p_rightDrive2);
 	public Spark rightDrive3 = new Spark(RobotMap.p_rightDrive3);
 	
-	RobotDrive drive1 = new RobotDrive(leftDrive1, leftDrive2, rightDrive1, rightDrive2);
-	RobotDrive drive2 = new RobotDrive(leftDrive3, rightDrive3);
+	public RobotDrive drive1 = new RobotDrive(leftDrive1, leftDrive2, rightDrive1, rightDrive2);
+	public RobotDrive drive2 = new RobotDrive(leftDrive3, rightDrive3);
 	
 	DoubleSolenoid frontButterfly = new DoubleSolenoid(RobotMap.p_frontButterfly1, RobotMap.p_frontButterfly2);
 	DoubleSolenoid backButterfly = new DoubleSolenoid(RobotMap.p_backButterfly1, RobotMap.p_backButterfly2);
 	DoubleSolenoid driveShifter = new DoubleSolenoid(RobotMap.p_driveshifter1, RobotMap.p_driveshifter2);
 	
 	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, true, EncodingType.k4X);
-	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, EncodingType.k4X);
+	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, true, EncodingType.k4X);
 	
 	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
 	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
@@ -40,10 +42,13 @@ public class DriveTrain extends PIDSubsystem {
 	
 	private static double pDrive = .07;
 	private static double iDrive = 0;
-	private static double dDrive = .007;
+	private static double dDrive = 0.007;
 	
-//	public static Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, Encoder.EncodingType.k4X);
-//	public static Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, false, Encoder.EncodingType.k4X);
+	private static double pGyro = .05;
+	private static double iGyro = 0;
+	private static double dGyro = 0;
+	
+	public PIDController gyroController = new PIDController(pGyro, iGyro, dGyro, gyro, leftDrive1);
 	
     // Initialize your subsystem here
     public DriveTrain() {
@@ -58,13 +63,11 @@ public class DriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-//        return (leftEncoder.getDistance()+rightEncoder.getDistance())/2;
-    	return 0;
+        return (Math.abs(leftEncoder.getDistance()+rightEncoder.getDistance())/2);
     }
 
     protected void usePIDOutput(double output) {
-    	drive1.tankDrive(output, output);
-    	drive2.tankDrive(output, output);
+    	Robot.drivetrain.tankDrive(output, output);
     }
     
     public void tankDrive(double left, double right){

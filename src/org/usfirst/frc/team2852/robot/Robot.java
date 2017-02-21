@@ -45,9 +45,9 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = new AutonGearLeft();
 		//prefs = Preferences.getInstance();
 		oi = new OI();
-		LiveWindow.addActuator("Shooter", "shooterBackEnc", Robot.shooter.getPIDController());
 		SmartDashboard.putData(Scheduler.getInstance());
-		SmartDashboard.putData("Reset Intake", new SetBottomPos());
+		Robot.drivetrain.leftEncoder.setDistancePerPulse(.203);
+    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.205);
 	}
 
 	/**
@@ -81,6 +81,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		//Scheduler.getInstance().add(new ZeroIntake());
+		Robot.drivetrain.leftEncoder.setDistancePerPulse(.203); //
+    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.205);
 	}
 
 	@Override
@@ -94,6 +96,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		System.out.println("High Pressure voltage: " + drivetrain.highPressureSensor.getVoltage());
 		System.out.println("Low Pressure voltage: " + drivetrain.lowPressureSensor.getVoltage());
+		System.out.println("Odith.java");
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
