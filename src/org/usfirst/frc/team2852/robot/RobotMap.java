@@ -40,20 +40,24 @@ public class RobotMap {
 	public static int p_driveshifter1 = 4;
 	public static int p_driveshifter2 = 5;
 	
-	//Sensor ports
+	//Sensor ports - Drivetrain
 	public static int p_leftEncoderA = 0;
 	public static int p_leftEncoderB = 1;
 	public static int p_rightEncoderA = 3;
 	public static int p_rightEncoderB = 2;
+	
+	//Sensor ports - Gear Intake
 	public static int p_breakbeam = 4;
+	public static int p_photogate = 9;
+	public static int p_intakeEncA = 18;
+	public static int p_intakeEncB = 19;
+	
+	//Sensor ports - Shooter
 	public static int p_shooterFrontEncA = 5;
 	public static int p_shooterFrontEncB = 6;
 	public static int p_shooterBackEncA = 7;
 	public static int p_shooterBackEncB = 8;
-	public static int p_photogate = 9;
-
-	public static int p_intakeEncA = 18;
-	public static int p_intakeEncB = 19;
+	
 	//Analog ports
 	public static int p_lowPressureSensor = 0;
 	public static int p_highPressureSensor = 1;

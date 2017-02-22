@@ -8,6 +8,7 @@ import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
@@ -46,8 +47,12 @@ public class Robot extends IterativeRobot {
 		//prefs = Preferences.getInstance();
 		oi = new OI();
 		SmartDashboard.putData(Scheduler.getInstance());
-		Robot.drivetrain.leftEncoder.setDistancePerPulse(.203);
-    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.205);
+		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
+    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
+    	//camera code added 2/21 7pm
+    	
+    	CameraServer server = CameraServer.getInstance();
+    	server.startAutomaticCapture();
 	}
 
 	/**
@@ -81,8 +86,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		//Scheduler.getInstance().add(new ZeroIntake());
-		Robot.drivetrain.leftEncoder.setDistancePerPulse(.203); //
-    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.205);
+		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493); 
+    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
+    	Robot.drivetrain.leftEncoder.reset();; 
+    	Robot.drivetrain.rightEncoder.reset();
 	}
 
 	@Override
@@ -96,9 +103,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", drivetrain.gyro.getAngle());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
-		System.out.println("High Pressure voltage: " + drivetrain.highPressureSensor.getVoltage());
-		System.out.println("Low Pressure voltage: " + drivetrain.lowPressureSensor.getVoltage());
-		System.out.println("Odith.java");
+		System.out.println("Odithstein.java");
+		System.out.println("Motor power: " + oi.getLeftJoystick());
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());

@@ -29,12 +29,10 @@ public class DriveToDistance extends Command {
     }
 
     protected boolean isFinished() {
-    	System.out.println("Left Dist: " + Robot.drivetrain.leftEncoder.getDistance());
-    	System.out.println("Right Dist: " + Robot.drivetrain.rightEncoder.getDistance());
     	System.out.println("Position: " + Robot.drivetrain.getPosition());
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
-        return Math.abs(Robot.drivetrain.getPosition() - setpoint) < 2;
+        return Math.abs(Robot.drivetrain.getPosition() - setpoint) < .75;
     }
 
     protected void end() {

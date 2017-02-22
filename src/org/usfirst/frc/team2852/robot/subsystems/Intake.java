@@ -21,7 +21,7 @@ public class Intake extends PIDSubsystem {
 	public static double d = 0.0025;
 	public int bottomPos = -96;
 	public int intakePos = -95;
-	public int spitPos = -22; //-28 on practice. subject to change on comp
+	public int spitPos = -18; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public Spark intakeRoller = new Spark(RobotMap.p_intakeRoller);

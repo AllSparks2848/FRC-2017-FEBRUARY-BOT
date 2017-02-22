@@ -124,7 +124,7 @@ public class OI {
 		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bb7.whileHeld(new ShootAndConvey()); //may be problematic
 		
-		a2.whenPressed(new DriveToDistance(36));
+		a2.whenPressed(new DriveToDistance(72));
 		b2.whenPressed(new GyroTurn(45));
 		
 	}

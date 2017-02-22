@@ -32,17 +32,17 @@ public class DriveTrain extends PIDSubsystem {
 	DoubleSolenoid backButterfly = new DoubleSolenoid(RobotMap.p_backButterfly1, RobotMap.p_backButterfly2);
 	DoubleSolenoid driveShifter = new DoubleSolenoid(RobotMap.p_driveshifter1, RobotMap.p_driveshifter2);
 	
-	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, true, EncodingType.k4X);
-	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, true, EncodingType.k4X);
+	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, false, EncodingType.k4X); //COMP=true
+	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, EncodingType.k4X); //COMP=true
 	
 	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
 	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
 	
 	public AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
-	private static double pDrive = .07;
+	private static double pDrive = .01;
 	private static double iDrive = 0;
-	private static double dDrive = 0.007;
+	private static double dDrive = 0.0;
 	
 	private static double pGyro = .05;
 	private static double iGyro = 0;
@@ -63,7 +63,7 @@ public class DriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return (Math.abs(leftEncoder.getDistance()+rightEncoder.getDistance())/2);
+        return (leftEncoder.getDistance());
     }
 
     protected void usePIDOutput(double output) {
