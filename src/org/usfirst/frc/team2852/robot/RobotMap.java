@@ -13,6 +13,7 @@ public class RobotMap {
 	public static int p_xbox2 = 1;
 	public static int p_buttonBox = 2;
 	public static int p_buttonBox2 = 3;
+	public static int p_buttonBoxL = 4;
 	
 	//Actuator ports
 	public static int p_rightDrive1 = 0;

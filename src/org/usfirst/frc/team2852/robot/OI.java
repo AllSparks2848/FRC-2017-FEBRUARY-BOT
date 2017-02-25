@@ -23,6 +23,8 @@ import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.PIDShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.ShootAndConvey;
+import org.usfirst.frc.team2852.robot.subsystems.Intake;
+import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 import org.usfirst.frc.team2852.robot.util.XboxTrigger;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -37,6 +39,7 @@ public class OI {
 	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
 	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
 	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
+	Joystick buttonBoxL = new Joystick(RobotMap.p_buttonBoxL);
 	
 //	Controller 1
 	Button a1 = new JoystickButton(xbox1, 1);
@@ -92,6 +95,22 @@ public class OI {
 	Button bb214 = new JoystickButton(buttonBox2, 7);
 	Button bb215 = new JoystickButton(buttonBox2, 8);
 	
+	
+	//button box L
+	Button bbL1 = new JoystickButton(buttonBoxL, 16);
+	Button bbL2 = new JoystickButton(buttonBoxL, 10);
+	Button bbL3 = new JoystickButton(buttonBoxL, 15);
+	Button bbL4 = new JoystickButton(buttonBoxL, 13);
+	Button bbL5 = new JoystickButton(buttonBoxL, 14);
+	Button bbL6 = new JoystickButton(buttonBoxL, 5);
+	Button bbL7 = new JoystickButton(buttonBoxL, 11);
+	Button bbL8 = new JoystickButton(buttonBoxL, 12);
+	Button bbL9 = new JoystickButton(buttonBoxL, 3);
+	Button bbL10 = new JoystickButton(buttonBoxL, 4);
+	Button bbL11 = new JoystickButton(buttonBoxL, 8);
+	Button bbL12 = new JoystickButton(buttonBoxL, 7);
+	Button bbL13 = new JoystickButton(buttonBoxL, 9);
+	
 	public OI() {
 		LiveWindow.addActuator("drivetrain", "Drivetrain", Robot.drivetrain.getPIDController());
 		
@@ -126,6 +145,23 @@ public class OI {
 		bb4.whenPressed(new IntakePID(Robot.intake.spitPos));
 		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bb7.whileHeld(new ShootAndConvey()); 
+		
+		
+		bbL1.whenPressed(new IntakePID(Robot.intake.intakePos));
+		bbL2.whenPressed(new IntakePID(Robot.intake.spitPos));
+		bbL3.whenPressed(new IntakePID(Robot.intake.tuckPos));
+		bbL4.whileHeld(new Climb());
+		bbL5.whileHeld(new IntakeUp());
+		bbL6.whileHeld(new IntakeDown());
+		bbL7.whenPressed(new ZeroIntake());
+		
+		bbL9.whileHeld(new ManualShoot(-1, 1));
+		bbL10.whileHeld(new Convey(.6));
+		bbL11.whileHeld(new ShootAndConvey());
+		bbL12.whenPressed(new IntakeGear());
+		bbL13.whileHeld(new SpitGear());
+		
+		
 		
 		a2.whenPressed(new DriveToDistance(69.47));
 		b2.whenPressed(new GyroTurn(60));
