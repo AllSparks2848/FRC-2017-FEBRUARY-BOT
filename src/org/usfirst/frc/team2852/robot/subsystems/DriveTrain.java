@@ -40,9 +40,9 @@ public class DriveTrain extends PIDSubsystem {
 	
 	public AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
-	private static double pDrive = .1;
+	private static double pDrive = .11;
 	private static double iDrive = 0.0;
-	private static double dDrive = 0.0;
+	private static double dDrive = 0.45;
 	
 	private static double pGyro = .01;
 	private static double iGyro = 0;
@@ -63,7 +63,7 @@ public class DriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return (rightEncoder.getDistance());
+        return ((rightEncoder.getDistance()+leftEncoder.getDistance())/2);
     }
 
     protected void usePIDOutput(double output) {

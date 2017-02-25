@@ -36,7 +36,7 @@ public class DriveToDistance extends Command {
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
     	
-        return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .75);
+        return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .5);
     }
 
     protected void end() {
