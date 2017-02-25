@@ -10,6 +10,7 @@ import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveNoPID;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
@@ -27,6 +28,7 @@ import org.usfirst.frc.team2852.robot.util.XboxTrigger;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -125,7 +127,7 @@ public class OI {
 		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bb7.whileHeld(new ShootAndConvey()); 
 		
-		a2.whenPressed(new DriveNoPID(36));
+		a2.whenPressed(new DriveToDistance(36));
 		b2.whenPressed(new GyroTurn(45));
 		
 	}

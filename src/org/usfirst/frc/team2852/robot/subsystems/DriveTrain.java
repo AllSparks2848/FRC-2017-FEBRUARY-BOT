@@ -57,7 +57,6 @@ public class DriveTrain extends PIDSubsystem {
     }
 
     public void initDefaultCommand() {
-         setDefaultCommand(new ArcadeDrive());
     }
 
     protected double returnPIDInput() {

@@ -2,6 +2,7 @@ package org.usfirst.frc.team2852.robot;
 
 import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
+import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
@@ -95,6 +96,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
+		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
+			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
+		
 		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
