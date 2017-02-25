@@ -40,15 +40,16 @@ public class DriveTrain extends PIDSubsystem {
 	
 	public AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
-	private static double pDrive = .01;
-	private static double iDrive = 0;
+	private static double pDrive = .1;
+	private static double iDrive = 0.0;
 	private static double dDrive = 0.0;
 	
-	private static double pGyro = .05;
+	private static double pGyro = .01;
 	private static double iGyro = 0;
 	private static double dGyro = 0;
 	
 	public PIDController gyroController = new PIDController(pGyro, iGyro, dGyro, gyro, leftDrive1);
+	double gyroError;
 	
     // Initialize your subsystem here
     public DriveTrain() {
@@ -63,11 +64,19 @@ public class DriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return (leftEncoder.getDistance());
+        return (rightEncoder.getDistance());
     }
 
     protected void usePIDOutput(double output) {
-    	Robot.drivetrain.tankDrive(output, output);
+    	Robot.drivetrain.leftDrive1.pidWrite(output);
+    	Robot.drivetrain.leftDrive2.pidWrite(output);
+    	Robot.drivetrain.leftDrive3.pidWrite(output);
+    	
+    	Robot.drivetrain.rightDrive1.pidWrite(-output);
+    	Robot.drivetrain.rightDrive2.pidWrite(-output);
+    	Robot.drivetrain.rightDrive3.pidWrite(-output);
+    	//gyroError = -Math.IEEEremainder(gyro.getAngle(), 180); //zero minus gyro reading
+    	//Robot.drivetrain.arcadeDrive(gyroError*pGyro, output);
     }
     
     public void tankDrive(double left, double right){
@@ -81,7 +90,7 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void setPowerZero(){
-    	drive1.setLeftRightMotorOutputs(0, 0);;
+    	drive1.setLeftRightMotorOutputs(0, 0);
     	drive2.setLeftRightMotorOutputs(0, 0);
     }
     

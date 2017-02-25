@@ -88,8 +88,9 @@ public class Robot extends IterativeRobot {
 		//Scheduler.getInstance().add(new ZeroIntake());
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493); 
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
-    	Robot.drivetrain.leftEncoder.reset();; 
+    	Robot.drivetrain.leftEncoder.reset(); 
     	Robot.drivetrain.rightEncoder.reset();
+    	Robot.drivetrain.gyro.reset();
 	}
 
 	@Override
@@ -104,7 +105,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		System.out.println("Odithstein.java");
-		System.out.println("Motor power: " + oi.getLeftJoystick());
+		System.out.println("Left Enc: " + drivetrain.leftEncoder.getDistance());
+		System.out.println("Right Enc: " + drivetrain.rightEncoder.getDistance());
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());

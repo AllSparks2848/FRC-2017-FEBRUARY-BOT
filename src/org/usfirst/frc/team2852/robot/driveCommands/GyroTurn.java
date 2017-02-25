@@ -26,13 +26,12 @@ public class GyroTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.drive1.arcadeDrive(0, -Robot.drivetrain.gyroController.get());
-    	Robot.drivetrain.drive2.arcadeDrive(0, -Robot.drivetrain.gyroController.get());
+    	Robot.drivetrain.arcadeDrive(0, Robot.drivetrain.gyroController.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(setpoint-Robot.drivetrain.gyro.getAngle()) < 2;
+        return Math.abs(setpoint-Robot.drivetrain.gyro.getAngle()) < 5;
     }
 
     // Called once after isFinished returns true
