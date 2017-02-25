@@ -54,6 +54,7 @@ public class Robot extends IterativeRobot {
     	
     	CameraServer server = CameraServer.getInstance();
     	server.startAutomaticCapture();
+    	Robot.drivetrain.gyro.zeroYaw();
 	}
 
 	/**
@@ -91,7 +92,7 @@ public class Robot extends IterativeRobot {
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	Robot.drivetrain.leftEncoder.reset(); 
     	Robot.drivetrain.rightEncoder.reset();
-    	Robot.drivetrain.gyro.reset();
+    	Robot.drivetrain.gyro.zeroYaw();
 	}
 
 	@Override
@@ -105,7 +106,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
+		
+		SmartDashboard.putNumber("Gyro Yaw", drivetrain.gyro.getYaw());
 		SmartDashboard.putNumber("Gyro Angle", drivetrain.gyro.getAngle());
+		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
+		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
+		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		System.out.println("Odithstein.java");

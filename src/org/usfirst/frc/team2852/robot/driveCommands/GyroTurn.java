@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.robot.driveCommands;
 import org.usfirst.frc.team2852.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -10,6 +11,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GyroTurn extends Command {
 
 	private double setpoint;
+	double initialYaw;
+	double newSetpoint;
     public GyroTurn(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -19,19 +22,22 @@ public class GyroTurn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.gyro.reset(); 
-    	Robot.drivetrain.gyroController.setSetpoint(setpoint);
+    	Robot.drivetrain.gyroController.setInputRange(-180, 180);
+    	initialYaw = Robot.drivetrain.gyro.getYaw();
+    	newSetpoint = initialYaw - setpoint;
+    	Robot.drivetrain.gyroController.setSetpoint(newSetpoint);
     	Robot.drivetrain.gyroController.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drivetrain.arcadeDrive(0, Robot.drivetrain.gyroController.get());
+    	Robot.drivetrain.arcadeDrive(0, -Robot.drivetrain.gyroController.get());
+		SmartDashboard.putNumber("Initial Yaw", initialYaw);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(setpoint-Robot.drivetrain.gyro.getAngle()) < 2;
+        return Math.abs(newSetpoint-Robot.drivetrain.gyro.getYaw()) < 2;
     }
 
     // Called once after isFinished returns true
