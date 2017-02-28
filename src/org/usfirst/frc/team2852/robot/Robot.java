@@ -112,10 +112,10 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
 		
-		SmartDashboard.putNumber("Gyro Yaw", drivetrain.gyro.getYaw());
-		SmartDashboard.putNumber("Gyro Angle", drivetrain.gyro.getAngle());
-		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
-		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
+		SmartDashboard.putNumber("Gyro Angle", DriveTrain.gyro.getAngle());
+		
+//		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
+//		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
 		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
+import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -17,6 +18,7 @@ public class GyroPikatroller extends Command {
 	
 	double initialAngle;
 	double newSetpoint;
+	double currentAngle;
 	
     public GyroPikatroller(double setpoint) {
         // Use requires() here to declare subsystem dependencies
@@ -27,21 +29,31 @@ public class GyroPikatroller extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	initialAngle = Robot.drivetrain.gyro.getAngle();
+    	currentAngle = DriveTrain.gyro.getAngle();
+    	initialAngle = currentAngle;
     	newSetpoint = initialAngle - setpoint;
+    	
+    	Robot.drivetrain.leftDrive1.set(-.6); 
+    	Robot.drivetrain.leftDrive2.set(-.6);
+    	Robot.drivetrain.leftDrive3.set(-.6);
+    	
+    	Robot.drivetrain.rightDrive1.set(-.6);
+    	Robot.drivetrain.rightDrive2.set(-.6);
+    	Robot.drivetrain.rightDrive3.set(-.6);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	error = newSetpoint - Robot.drivetrain.gyro.getAngle();
-    	output = error*pGyro;
-    	Robot.drivetrain.leftDrive1.pidWrite(-output); 
-    	Robot.drivetrain.leftDrive2.pidWrite(-output);
-    	Robot.drivetrain.leftDrive3.pidWrite(-output);
-    	
-    	Robot.drivetrain.rightDrive1.pidWrite(-output);
-    	Robot.drivetrain.rightDrive2.pidWrite(-output);
-    	Robot.drivetrain.rightDrive3.pidWrite(-output);
+    	currentAngle = DriveTrain.gyro.getAngle();
+    	error = newSetpoint - currentAngle;
+//    	output = error*pGyro;
+//    	Robot.drivetrain.leftDrive1.pidWrite(-output); 
+//    	Robot.drivetrain.leftDrive2.pidWrite(-output);
+//    	Robot.drivetrain.leftDrive3.pidWrite(-output);
+//    	
+//    	Robot.drivetrain.rightDrive1.pidWrite(-output);
+//    	Robot.drivetrain.rightDrive2.pidWrite(-output);
+//    	Robot.drivetrain.rightDrive3.pidWrite(-output);
     }
 
     // Make this return true when this Command no longer needs to run execute()

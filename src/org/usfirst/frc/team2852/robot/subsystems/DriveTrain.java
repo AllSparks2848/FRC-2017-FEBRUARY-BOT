@@ -38,7 +38,7 @@ public class DriveTrain extends PIDSubsystem {
 	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
 	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
 	
-	public AHRS gyro = new AHRS(SPI.Port.kMXP);
+	public static AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
 	private static double pDrive = .15;
 	private static double iDrive = 0.0;

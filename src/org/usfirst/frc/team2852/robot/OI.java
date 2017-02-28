@@ -16,6 +16,7 @@ import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveNoPID;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.FrontOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroPikatroller;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
@@ -158,7 +159,7 @@ public class OI {
 		bbL6.whileHeld(new IntakeDown());
 		bbL7.whenPressed(new ZeroIntake());
 		
-		bbL9.whileHeld(new ManualShoot(-1, 1));
+		bbL9.whileHeld(new BangBangShoot());
 		bbL10.whileHeld(new Convey(.6));
 		bbL11.whileHeld(new ShootAndConvey());
 		bbL12.whenPressed(new IntakeGear());
@@ -167,7 +168,7 @@ public class OI {
 		
 		
 		a2.whenPressed(new DriveToDistance(70.33));
-		b2.whenPressed(new GyroTurn(60));
+		b2.whenPressed(new GyroPikatroller(60));
 		y2.whenPressed(new DriveToDistance(63)); //bumper to edge of peg = 66.95
 		
 		x2.whenPressed(new RedPosition1());
