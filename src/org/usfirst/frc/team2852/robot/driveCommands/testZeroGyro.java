@@ -1,41 +1,37 @@
-package org.usfirst.frc.team2852.robot.shooterCommands;
+package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
-import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class PIDShoot extends Command {
-    public PIDShoot() {
-    	requires(Robot.shooter);
-    	Robot.shooter.setOutputRange(0.0, .9);
+public class testZeroGyro extends Command {
+
+    public testZeroGyro() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shooter.setSetpoint(Shooter.targetRPM);
-    	Robot.shooter.enable();
+    	Robot.drivetrain.gyro.reset();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
-    	SmartDashboard.putNumber("Shoot Power", Shooter.shooterBack.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.disable();
-    	Robot.shooter.stopShoot();
     }
 
     // Called when another command which requires one or more of the same

@@ -9,33 +9,45 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class PIDShoot extends Command {
-    public PIDShoot() {
+public class BangBangShoot extends Command {
+
+    public BangBangShoot() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.shooter);
-    	Robot.shooter.setOutputRange(0.0, .9);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.shooter.setSetpoint(Shooter.targetRPM);
-    	Robot.shooter.enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
-    	SmartDashboard.putNumber("Shoot Power", Shooter.shooterBack.get());
+    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM) {
+    		Shooter.shooterBack.set(.8);
+    	}
+    	else {
+    		Shooter.shooterBack.set(0);
+    	}
+    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM*1.1) {
+    		Shooter.shooterFront.set(-.8);
+    	}
+    	else {
+    		Shooter.shooterFront.set(0);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
+    	SmartDashboard.putNumber("Shoot Power", Shooter.shooterBack.get());
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.shooter.disable();
-    	Robot.shooter.stopShoot();
+    	Shooter.shooterBack.set(0);
+    	Shooter.shooterFront.set(0);
     }
 
     // Called when another command which requires one or more of the same

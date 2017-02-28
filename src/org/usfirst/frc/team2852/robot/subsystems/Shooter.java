@@ -14,8 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Shooter extends PIDSubsystem {
 	public static double p = 0.035; //Robot.prefs.getDouble("kPShoot", .025);
-	public static double i = 0.01; //Robot.prefs.getDouble("kIShoot", 0.0);
-	public static double d = 0.01; //Robot.prefs.getDouble("kDShoot", 0.0);
+	public static double i = 0.0; //Robot.prefs.getDouble("kIShoot", 0.0);
+	public static double d = 0.0; //Robot.prefs.getDouble("kDShoot", 0.0);
 	
 	public static double targetRPM = 500; //Robot.prefs.getDouble("targetRPM", 500);
 	
@@ -25,7 +25,7 @@ public class Shooter extends PIDSubsystem {
     public static Encoder shooterFrontEnc = new Encoder(RobotMap.p_shooterFrontEncA, RobotMap.p_shooterFrontEncB);
     public static Encoder shooterBackEnc = new Encoder(RobotMap.p_shooterBackEncA, RobotMap.p_shooterBackEncB);
     
-    private double gain = 1.1;
+    public double gain = 1.1;
     
     public Timer shootTime = new Timer();
     

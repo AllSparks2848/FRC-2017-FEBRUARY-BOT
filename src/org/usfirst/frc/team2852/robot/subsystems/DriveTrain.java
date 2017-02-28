@@ -40,16 +40,15 @@ public class DriveTrain extends PIDSubsystem {
 	
 	public AHRS gyro = new AHRS(SPI.Port.kMXP);
 	
-	private static double pDrive = .11;
+	private static double pDrive = .15;
 	private static double iDrive = 0.0;
-	private static double dDrive = 0.45;
+	private static double dDrive = 0.4;
 	
-	private static double pGyro = .01;
+	private static double pGyro = .08;  //cbc changed back to .01
 	private static double iGyro = 0;
 	private static double dGyro = 0;
 	
-	public PIDController gyroController = new PIDController(pGyro, iGyro, dGyro, gyro, leftDrive1);
-	double gyroError;
+	public PIDController gyroController = new PIDController(pGyro, iGyro, dGyro, gyro, rightDrive1);
 	
     // Initialize your subsystem here
     public DriveTrain() {

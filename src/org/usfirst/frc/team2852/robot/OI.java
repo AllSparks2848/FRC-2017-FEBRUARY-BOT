@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2852.robot;
 
+import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.climberCommands.Climb;
 import org.usfirst.frc.team2852.intakeCommands.IntakeDown;
 import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
@@ -19,6 +20,8 @@ import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
+import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
+import org.usfirst.frc.team2852.robot.shooterCommands.BangBangShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.PIDShoot;
@@ -163,8 +166,11 @@ public class OI {
 		
 		
 		
-		a2.whenPressed(new DriveToDistance(69.47));
+		a2.whenPressed(new DriveToDistance(70.33));
 		b2.whenPressed(new GyroTurn(60));
+		y2.whenPressed(new DriveToDistance(63)); //bumper to edge of peg = 66.95
+		
+		x2.whenPressed(new RedPosition1());
 		
 	}
 	

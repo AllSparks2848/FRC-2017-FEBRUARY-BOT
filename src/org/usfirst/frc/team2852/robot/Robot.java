@@ -52,8 +52,9 @@ public class Robot extends IterativeRobot {
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	//camera code added 2/21 7pm
     	
-    	CameraServer server = CameraServer.getInstance();
-    	server.startAutomaticCapture();
+    	//CameraServer server = CameraServer.getInstance();  //cbc
+    	//server.startAutomaticCapture();
+    	
     	Robot.drivetrain.gyro.zeroYaw();
 	}
 
@@ -87,6 +88,8 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		
+		drivetrain.gyroController.disable();
 		//Scheduler.getInstance().add(new ZeroIntake());
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493); 
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
@@ -101,6 +104,8 @@ public class Robot extends IterativeRobot {
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
 		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
+		SmartDashboard.putData("Gyro PID Controller", drivetrain.gyroController);
+		SmartDashboard.putData("Shooter PID Controller", shooter.getPIDController());
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
@@ -114,9 +119,6 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
-		System.out.println("Odithstein.java");
-		System.out.println("Left Enc: " + drivetrain.leftEncoder.getDistance());
-		System.out.println("Right Enc: " + drivetrain.rightEncoder.getDistance());
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
