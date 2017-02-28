@@ -29,7 +29,7 @@ public class BangBangShoot extends Command {
     	else {
     		Shooter.shooterBack.set(0);
     	}
-    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM*1.1) {
+    	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM*1.2) {
     		Shooter.shooterFront.set(-.8);
     	}
     	else {
@@ -39,8 +39,7 @@ public class BangBangShoot extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
-    	SmartDashboard.putNumber("Shoot Power", Shooter.shooterBack.get());
+    	
         return false;
     }
 

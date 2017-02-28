@@ -95,7 +95,7 @@ public class Robot extends IterativeRobot {
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	Robot.drivetrain.leftEncoder.reset(); 
     	Robot.drivetrain.rightEncoder.reset();
-    	Robot.drivetrain.gyro.zeroYaw();
+    	DriveTrain.gyro.zeroYaw();
 	}
 
 	@Override
@@ -105,13 +105,13 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
 		SmartDashboard.putData("Gyro PID Controller", drivetrain.gyroController);
-		SmartDashboard.putData("Shooter PID Controller", shooter.getPIDController());
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
-		
+		SmartDashboard.putNumber("Back Shooter RPM", Shooter.shooterBackEnc.getRate());
+		SmartDashboard.putNumber("Front Shooter RPM", Shooter.shooterFrontEnc.getRate());
 		SmartDashboard.putNumber("Gyro Angle", DriveTrain.gyro.getAngle());
 		
 //		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
