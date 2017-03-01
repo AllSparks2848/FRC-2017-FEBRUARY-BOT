@@ -1,15 +1,16 @@
 package org.usfirst.frc.team2852.robot;
 
+import org.spectrum3847.RIOdroid.RIOdroid;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
+import org.usfirst.frc.team2852.robot.vision.TestUpdateReceiver;
+import org.usfirst.frc.team2852.robot.vision.VisionServer;
 
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -23,6 +24,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	public static double x=0.0;
+	public static double distance=0.0;
 	public static OI oi;
 	public static RobotMap robot = new RobotMap();
 
@@ -33,6 +36,14 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
+	public static Logger logger;
+	public static VisionServer visionServer;
+
+	public static TestUpdateReceiver testUpdateReceiver;
+    public static FileIO fileIO = new FileIO();
+    private int LOGGER_LEVEL = 5;
+    boolean useConsole = true, useFile = false;
+
 //	DigitalOutput out1 = new DigitalOutput(13);
 //	
 //	DigitalOutput out2 = new DigitalOutput(14);
@@ -49,6 +60,17 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = new AutonGearLeft();
 		//prefs = Preferences.getInstance();
 		oi = new OI();
+		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
+	        
+	        RIOdroid.initUSB();
+	        
+	       
+		        
+		        visionServer = VisionServer.getInstance();
+		        testUpdateReceiver = new TestUpdateReceiver();
+		        visionServer.addVisionUpdateReceiver(testUpdateReceiver);
+		     
+	        
 		SmartDashboard.putData(Scheduler.getInstance());
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
