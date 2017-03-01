@@ -29,7 +29,7 @@ public class GyroPikatroller extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	currentAngle = DriveTrain.gyro.getAngle();
+    	currentAngle = Robot.drivetrain.gyro.getAngle();
     	initialAngle = currentAngle;
     	newSetpoint = initialAngle - setpoint;
     	
@@ -44,7 +44,7 @@ public class GyroPikatroller extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	currentAngle = DriveTrain.gyro.getAngle();
+    	currentAngle = Robot.drivetrain.gyro.getAngle();
     	error = newSetpoint - currentAngle;
 //    	output = error*pGyro;
 //    	Robot.drivetrain.leftDrive1.pidWrite(-output); 

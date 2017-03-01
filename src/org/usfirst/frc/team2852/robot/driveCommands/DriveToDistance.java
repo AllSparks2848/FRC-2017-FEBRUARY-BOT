@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.robot.driveCommands;
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveToDistance extends Command {
@@ -41,6 +42,12 @@ public class DriveToDistance extends Command {
 
     protected void end() {
     	Robot.drivetrain.disable();
+//    	Robot.drivetrain.leftDrive1.set(0);
+//    	Robot.drivetrain.leftDrive2.set(0);
+//    	Robot.drivetrain.leftDrive3.set(0);
+//    	Robot.drivetrain.rightDrive1.set(0);
+//    	Robot.drivetrain.rightDrive2.set(0);
+//    	Robot.drivetrain.rightDrive3.set(0);
     }
 
     protected void interrupted() {

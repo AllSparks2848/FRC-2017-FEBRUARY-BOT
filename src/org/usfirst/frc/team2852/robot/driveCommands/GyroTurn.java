@@ -2,6 +2,7 @@ package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -11,9 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GyroTurn extends Command {
 
 	private double setpoint;
-	double initialYaw;
-	double newSetpoint;
-	boolean goodSetpoint = false;
     public GyroTurn(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -23,46 +21,30 @@ public class GyroTurn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	initialYaw = Robot.drivetrain.gyro.getYaw();
+    	Robot.drivetrain.gyro.zeroYaw();
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);
-    	newSetpoint = initialYaw - setpoint;
-    	SmartDashboard.putNumber("Initial Yaw", initialYaw);
-    	if(!(newSetpoint>180||newSetpoint<-180)) {
-    		Robot.drivetrain.gyroController.setSetpoint(newSetpoint);
-    		Robot.drivetrain.gyroController.enable();
-    		goodSetpoint = true;
-    	}
+    	Robot.drivetrain.gyroController.setSetpoint(setpoint);
+    	Robot.drivetrain.gyroController.enable();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(newSetpoint>180||newSetpoint<-180){
-    		Robot.drivetrain.gyro.zeroYaw();
-    		initialYaw = Robot.drivetrain.gyro.getYaw();
-    		newSetpoint = initialYaw - setpoint;
-    		SmartDashboard.putNumber("Initial Yaw", initialYaw);
-    		if(!(newSetpoint>180||newSetpoint<-180)) {
-    		Robot.drivetrain.gyroController.setSetpoint(newSetpoint);
-    		Robot.drivetrain.gyroController.enable();
-    		goodSetpoint = true;
-    		}
-    	}
-    	if(goodSetpoint) {
-    	Robot.drivetrain.leftDrive1.pidWrite(-Robot.drivetrain.gyroController.get()); 
-    	Robot.drivetrain.leftDrive2.pidWrite(-Robot.drivetrain.gyroController.get());
-    	Robot.drivetrain.leftDrive3.pidWrite(-Robot.drivetrain.gyroController.get());
     	
-    	Robot.drivetrain.rightDrive1.pidWrite(-Robot.drivetrain.gyroController.get());
-    	Robot.drivetrain.rightDrive2.pidWrite(-Robot.drivetrain.gyroController.get());
-    	Robot.drivetrain.rightDrive3.pidWrite(-Robot.drivetrain.gyroController.get());
-    	}
+    	Robot.drivetrain.leftDrive1.pidWrite(Robot.drivetrain.gyroController.get()); 
+    	Robot.drivetrain.leftDrive2.pidWrite(Robot.drivetrain.gyroController.get());
+    	Robot.drivetrain.leftDrive3.pidWrite(Robot.drivetrain.gyroController.get());
+    	
+    	Robot.drivetrain.rightDrive1.pidWrite(Robot.drivetrain.gyroController.get());
+    	Robot.drivetrain.rightDrive2.pidWrite(Robot.drivetrain.gyroController.get());
+    	Robot.drivetrain.rightDrive3.pidWrite(Robot.drivetrain.gyroController.get());
 		System.out.println("Running Gyro Turn");
 		
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(newSetpoint-Robot.drivetrain.gyro.getYaw()) < 2;
+        return Math.abs(setpoint-Robot.drivetrain.gyro.getYaw()) < 1;
     }
 
     // Called once after isFinished returns true

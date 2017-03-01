@@ -2,6 +2,7 @@ package org.usfirst.frc.team2852.intakeCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -15,7 +16,7 @@ public class SpitGearBreakBeam extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.intake(1);
+    	Robot.intake.intake(.6);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,6 +26,7 @@ public class SpitGearBreakBeam extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(!Robot.intake.isBeamBroken()){
+    		Timer.delay(.5);
     		return true;
     	}
     	return false;

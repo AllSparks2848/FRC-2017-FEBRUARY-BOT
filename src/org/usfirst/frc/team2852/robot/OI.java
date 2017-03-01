@@ -168,7 +168,7 @@ public class OI {
 		
 		
 		a2.whenPressed(new DriveToDistance(70.33));
-		b2.whenPressed(new GyroPikatroller(60));
+		b2.whenPressed(new GyroTurn(60));
 		y2.whenPressed(new DriveToDistance(63)); //bumper to edge of peg = 66.95
 		
 		x2.whenPressed(new RedPosition1());

@@ -1,18 +1,14 @@
 package org.usfirst.frc.team2852.robot;
 
-import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
-import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
-import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
-import org.usfirst.frc.team2852.robot.subsystems.LEDStrip;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -37,7 +33,11 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-	public static LEDStrip ledstrip = new LEDStrip();
+//	DigitalOutput out1 = new DigitalOutput(13);
+//	
+//	DigitalOutput out2 = new DigitalOutput(14);
+//	boolean output1 = false;
+
 	
 	//public static Preferences prefs;
 	/**
@@ -58,6 +58,7 @@ public class Robot extends IterativeRobot {
     	//server.startAutomaticCapture();
     	
     	Robot.drivetrain.gyro.zeroYaw();
+    	
 	}
 
 	/**
@@ -97,7 +98,7 @@ public class Robot extends IterativeRobot {
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	Robot.drivetrain.leftEncoder.reset(); 
     	Robot.drivetrain.rightEncoder.reset();
-    	DriveTrain.gyro.zeroYaw();
+    	Robot.drivetrain.gyro.zeroYaw();
 	}
 
 	@Override
@@ -114,9 +115,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
 		SmartDashboard.putNumber("Back Shooter RPM", Shooter.shooterBackEnc.getRate());
 		SmartDashboard.putNumber("Front Shooter RPM", Shooter.shooterFrontEnc.getRate());
-		SmartDashboard.putNumber("Gyro Angle", DriveTrain.gyro.getAngle());
+		SmartDashboard.putNumber("Gyro Yaw", Robot.drivetrain.gyro.getYaw());
 		
-//		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
+		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
 //		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
 		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
@@ -127,6 +128,13 @@ public class Robot extends IterativeRobot {
 //		SmartDashboard.putNumber("RD1", Robot.drivetrain.rightDrive1.get());
 //		SmartDashboard.putNumber("RD2", Robot.drivetrain.rightDrive2.get());
 //		SmartDashboard.putNumber("RD3", Robot.drivetrain.rightDrive3.get());
+		
+		
+//		if(Robot.intake.isBeamBroken())
+//			output1 = true;
+//		
+//		out1.set(output1);
+//		out2.set(false); //extra 2 options built in
 		
 		Scheduler.getInstance().run();
 	}
