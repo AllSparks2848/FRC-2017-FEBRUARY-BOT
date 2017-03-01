@@ -33,10 +33,11 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-//	DigitalOutput out1 = new DigitalOutput(13);
-//	
-//	DigitalOutput out2 = new DigitalOutput(14);
-//	boolean output1 = false;
+	
+	DigitalOutput out1;
+	
+	DigitalOutput out2;
+	boolean output1 = false;
 
 	
 	//public static Preferences prefs;
@@ -50,14 +51,14 @@ public class Robot extends IterativeRobot {
 		//prefs = Preferences.getInstance();
 		oi = new OI();
 		SmartDashboard.putData(Scheduler.getInstance());
+		out1 = new DigitalOutput(RobotMap.p_out1);
+		out2 = new DigitalOutput(RobotMap.p_out2);
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	//camera code added 2/21 7pm
     	
     	//CameraServer server = CameraServer.getInstance();  //cbc
     	//server.startAutomaticCapture();
-    	
-    	Robot.drivetrain.gyro.zeroYaw();
     	
 	}
 
@@ -78,6 +79,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
+		Robot.drivetrain.gyro.zeroYaw();
 			
 	}
 
@@ -128,11 +130,11 @@ public class Robot extends IterativeRobot {
 //		SmartDashboard.putNumber("RD3", Robot.drivetrain.rightDrive3.get());
 		
 		
-//		if(Robot.intake.isBeamBroken())
-//			output1 = true;
-//		
-//		out1.set(output1);
-//		out2.set(false); //extra 2 options built in
+		if(Robot.intake.isBeamBroken())
+			output1 = true;
+		
+		out1.set(output1);
+		out2.set(false); //extra 2 options built in
 		
 		Scheduler.getInstance().run();
 	}
