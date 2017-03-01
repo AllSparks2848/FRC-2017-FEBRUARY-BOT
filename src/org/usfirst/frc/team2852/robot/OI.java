@@ -137,8 +137,8 @@ public class OI {
 		
 		rTrig1.whenPressed(new NoOmnis());
 		rBump1.whenPressed(new AllOmnis());
-		lBump1.whenPressed(new ShiftHigh());
-		lTrig1.whenPressed(new ShiftLow());
+		lBump1.whenPressed(new ShiftLow());
+		lTrig1.whenPressed(new ShiftHigh());
 		
 		bb8.whileHeld(new SpitGear());
 		bb6.whileHeld(new IntakeDown());

@@ -106,8 +106,6 @@ public class Robot extends IterativeRobot {
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
-		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
-		SmartDashboard.putData("Gyro PID Controller", drivetrain.gyroController);
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());

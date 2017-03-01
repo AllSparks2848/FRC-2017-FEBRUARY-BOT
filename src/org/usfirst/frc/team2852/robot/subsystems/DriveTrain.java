@@ -113,11 +113,11 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void shiftHigh() {
-    	driveShifter.set(DoubleSolenoid.Value.kForward);
+    	driveShifter.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void shiftLow() {
-    	driveShifter.set(DoubleSolenoid.Value.kReverse);
+    	driveShifter.set(DoubleSolenoid.Value.kForward);
     }
     
     public double getLowPressure() {
