@@ -1,6 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
-
-import org.usfirst.frc.team2852.robot.Robot;
+package org.usfirst.frc.team2852.autonCommands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,16 +6,18 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SpitGearBreakBeam extends Command {
+public class Wait extends Command {
 
-    public SpitGearBreakBeam() {
-        requires(Robot.intake);
+	private double seconds;
+    public Wait(double seconds) {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	this.seconds = seconds;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.intake.intake(.6);
-    	Timer.delay(.5);
+    	Timer.delay(seconds);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,21 +26,15 @@ public class SpitGearBreakBeam extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	
-    		
-    		return true;
-    	
-    	
+        return true;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stopIntake();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

@@ -34,7 +34,7 @@ public class RobotMap {
 	public static int p_climbL = 12;
 	
 	public static int p_out1 = 13;
-	public static int p_out2 = 14;
+	public static int p_out2 = 15;
 	
 	//pneumatics
 	public static int p_frontButterfly1 = 1;

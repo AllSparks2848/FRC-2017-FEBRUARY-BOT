@@ -21,7 +21,7 @@ public class GyroTurn extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.drivetrain.gyro.zeroYaw();
+//    	Robot.drivetrain.gyro.zeroYaw();
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);
     	Robot.drivetrain.gyroController.setSetpoint(setpoint);
     	Robot.drivetrain.gyroController.enable();

@@ -20,13 +20,16 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RedPosition1 extends CommandGroup {
 
     public RedPosition1() {
+    	addParallel(new testZeroGyro());
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
     	addSequential(new DriveToDistance(70.3));
+    	addSequential(new Wait(.5));
     	//addSequential(new testZeroGyro());
     	addSequential (new GyroTurn(60));
-    	addSequential(new IntakePID(Robot.intake.spitPos));
+    	addParallel(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new Wait(.5));
     	addSequential(new DriveToDistance(60));//ian lowered at 813
     	addSequential(new SpitGearBreakBeam());
     	addSequential(new DriveToDistance(-20));

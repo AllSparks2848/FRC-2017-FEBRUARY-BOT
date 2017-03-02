@@ -26,7 +26,7 @@ public class Intake extends PIDSubsystem {
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public Spark intakeRoller = new Spark(RobotMap.p_intakeRoller);
 	public Spark intakePivot = new Spark(RobotMap.p_intakePivot);
-	DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
+	public DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
 	public static Encoder intakeEnc = new Encoder(RobotMap.p_intakeEncA, RobotMap.p_intakeEncB, false,
 			EncodingType.k4X);
 	

@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	DigitalOutput out1;
 	
 	DigitalOutput out2;
-	boolean output1 = false;
+	boolean output1;
 
 	
 	//public static Preferences prefs;
@@ -51,8 +51,9 @@ public class Robot extends IterativeRobot {
 		//prefs = Preferences.getInstance();
 		oi = new OI();
 		SmartDashboard.putData(Scheduler.getInstance());
+		output1 = false;
 		out1 = new DigitalOutput(RobotMap.p_out1);
-		out2 = new DigitalOutput(RobotMap.p_out2);
+//		out2 = new DigitalOutput(RobotMap.p_out2);
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	//camera code added 2/21 7pm
@@ -130,11 +131,19 @@ public class Robot extends IterativeRobot {
 //		SmartDashboard.putNumber("RD3", Robot.drivetrain.rightDrive3.get());
 		
 		
-		if(Robot.intake.isBeamBroken())
+		if(Robot.intake.isBeamBroken()){
+			output1 = false;
+			System.out.println("false");
+
+		}
+		else if (!Robot.intake.isBeamBroken()){
 			output1 = true;
+			System.out.println("true");
+			
+		}
 		
 		out1.set(output1);
-		out2.set(false); //extra 2 options built in
+//		out2.set(false); //extra 2 options built in
 		
 		Scheduler.getInstance().run();
 	}
