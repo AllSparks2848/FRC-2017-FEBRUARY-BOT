@@ -1,5 +1,6 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
+
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogInput;
@@ -23,10 +24,11 @@ public class Intake extends PIDSubsystem {
 	public int intakePos = -92;
 	public int spitPos = -18; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
+	public int visionPos = -70;
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public Spark intakeRoller = new Spark(RobotMap.p_intakeRoller);
 	public Spark intakePivot = new Spark(RobotMap.p_intakePivot);
-	public DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
+	DigitalInput breakbeam = new DigitalInput(RobotMap.p_breakbeam);
 	public static Encoder intakeEnc = new Encoder(RobotMap.p_intakeEncA, RobotMap.p_intakeEncB, false,
 			EncodingType.k4X);
 	

@@ -1,15 +1,18 @@
 package org.usfirst.frc.team2852.robot;
 
+
+
+import org.spectrum3847.RIOdroid.RIOdroid;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
+import org.usfirst.frc.team2852.robot.vision.TestUpdateReceiver;
+import org.usfirst.frc.team2852.robot.vision.VisionServer;
 
-import edu.wpi.first.wpilibj.CameraServer;
-import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.RobotState;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -23,6 +26,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
+	public static double x=0.0;
+	public static double distance=0.0;
 	public static OI oi;
 	public static RobotMap robot = new RobotMap();
 
@@ -33,11 +38,18 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-	
-	DigitalOutput out1;
-	
-	DigitalOutput out2;
-	boolean output1;
+	public static Logger logger;
+	public static VisionServer visionServer;
+
+	public static TestUpdateReceiver testUpdateReceiver;
+    public static FileIO fileIO = new FileIO();
+    private int LOGGER_LEVEL = 5;
+    boolean useConsole = true, useFile = false;
+
+//	DigitalOutput out1 = new DigitalOutput(13);
+//	
+//	DigitalOutput out2 = new DigitalOutput(14);
+//	boolean output1 = false;
 
 	
 	//public static Preferences prefs;
@@ -50,16 +62,26 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = new AutonGearLeft();
 		//prefs = Preferences.getInstance();
 		oi = new OI();
+		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
+	        
+	        RIOdroid.initUSB();
+	        
+	       
+		        
+		        visionServer = VisionServer.getInstance();
+		        testUpdateReceiver = new TestUpdateReceiver();
+		        visionServer.addVisionUpdateReceiver(testUpdateReceiver);
+		     
+	        
 		SmartDashboard.putData(Scheduler.getInstance());
-		output1 = false;
-		out1 = new DigitalOutput(RobotMap.p_out1);
-//		out2 = new DigitalOutput(RobotMap.p_out2);
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	//camera code added 2/21 7pm
     	
     	//CameraServer server = CameraServer.getInstance();  //cbc
     	//server.startAutomaticCapture();
+    	
+    	Robot.drivetrain.gyro.zeroYaw();
     	
 	}
 
@@ -80,7 +102,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		Robot.drivetrain.gyro.zeroYaw();
 			
 	}
 
@@ -109,6 +130,8 @@ public class Robot extends IterativeRobot {
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
+		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
+		SmartDashboard.putData("Gyro PID Controller", drivetrain.gyroController);
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
@@ -123,6 +146,8 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
+		SmartDashboard.putNumber("target x", x);
+		SmartDashboard.putNumber("distance", distance);
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
@@ -131,18 +156,10 @@ public class Robot extends IterativeRobot {
 //		SmartDashboard.putNumber("RD3", Robot.drivetrain.rightDrive3.get());
 		
 		
-		if(Robot.intake.isBeamBroken()){
-			output1 = false;
-			System.out.println("false");
-
-		}
-		else if (!Robot.intake.isBeamBroken()){
-			output1 = true;
-			System.out.println("true");
-			
-		}
-		
-		out1.set(output1);
+//		if(Robot.intake.isBeamBroken())
+//			output1 = true;
+//		
+//		out1.set(output1);
 //		out2.set(false); //extra 2 options built in
 		
 		Scheduler.getInstance().run();

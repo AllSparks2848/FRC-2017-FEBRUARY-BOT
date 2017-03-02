@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2852.autonCommands;
 
+
+import org.usfirst.frc.team2852.autonCommands.VisionTurn;
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
@@ -20,17 +22,18 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RedPosition1 extends CommandGroup {
 
     public RedPosition1() {
-    	addParallel(new testZeroGyro());
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
+    	addSequential(new IntakePID(Robot.intake.visionPos));
     	addSequential(new DriveToDistance(70.3));
-    	addSequential(new Wait(.5));
     	//addSequential(new testZeroGyro());
     	addSequential (new GyroTurn(60));
-    	addParallel(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new Wait(.5));
-    	addSequential(new DriveToDistance(60));//ian lowered at 813
+    	
+    	addSequential(new DriveToDistance(15));//ian lowered at 813
+    	addSequential(new VisionTurn());
+    	addSequential(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new DriveToDistance(45));
     	addSequential(new SpitGearBreakBeam());
     	addSequential(new DriveToDistance(-20));
     	
