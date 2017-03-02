@@ -1,11 +1,13 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
 
+import org.usfirst.frc.team2852.intakeCommands.SetLEDStatus;
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.RobotMap;
 import edu.wpi.first.wpilibj.AnalogInput;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -32,6 +34,7 @@ public class Intake extends PIDSubsystem {
 	public static Encoder intakeEnc = new Encoder(RobotMap.p_intakeEncA, RobotMap.p_intakeEncB, false,
 			EncodingType.k4X);
 	
+	public static DigitalOutput out1 = new DigitalOutput(RobotMap.p_out1);
 	
 	DigitalInput photogate = new DigitalInput(RobotMap.p_photogate);
 
@@ -44,6 +47,9 @@ public class Intake extends PIDSubsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+		
+		setDefaultCommand(new SetLEDStatus());
+		
 	}
 
 	protected double returnPIDInput() {

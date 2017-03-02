@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
     private int LOGGER_LEVEL = 5;
     boolean useConsole = true, useFile = false;
 
-//	DigitalOutput out1 = new DigitalOutput(13);
+//  DigitalOutput out1 = new DigitalOutput(13);
 //	
 //	DigitalOutput out2 = new DigitalOutput(14);
 //	boolean output1 = false;
