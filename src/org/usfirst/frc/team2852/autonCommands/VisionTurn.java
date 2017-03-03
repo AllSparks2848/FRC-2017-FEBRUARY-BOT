@@ -17,8 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 */
 public class VisionTurn extends Command {
 	Timer timer;
-	double gain = 3;
-	double tol = .01;
+	double gain = 1.5;
+	double tol = .05;
 	
 
 	
@@ -85,7 +85,7 @@ public class VisionTurn extends Command {
 
    // Make this return true when this Command no longer needs to run execute()
    protected boolean isFinished() {
-	if (timer.get()>1){
+	if (timer.get()>3){
 		return true;
 	}
 	else return false;
