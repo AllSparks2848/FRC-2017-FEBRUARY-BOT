@@ -46,7 +46,7 @@ public class DriveTrain extends PIDSubsystem {
 	
 	private static double pGyro = .15;  
 	private static double iGyro = 0;
-	private static double dGyro = 0;
+	private static double dGyro = .15;
 	
 	public PIDController gyroController = new PIDController(pGyro, iGyro, dGyro, gyro, rightDrive1);
 	

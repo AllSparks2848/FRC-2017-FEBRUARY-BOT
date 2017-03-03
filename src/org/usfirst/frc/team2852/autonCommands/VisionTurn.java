@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 */
 public class VisionTurn extends Command {
 	Timer timer;
-	double gain = 2.0;
+	double gain = 3;
 	double tol = .01;
 	
 
@@ -45,6 +45,7 @@ public class VisionTurn extends Command {
 	   SmartDashboard.putNumber("Vision x", Robot.x);
 	   SmartDashboard.putNumber("Gain", gain);
 	   SmartDashboard.putNumber("Tolerance", tol);
+	   SmartDashboard.putNumber("Vision output", (tol+Robot.x)*gain);
 	   
 	   System.out.println(Robot.x);
 	   

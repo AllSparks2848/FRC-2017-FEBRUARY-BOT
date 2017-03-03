@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class GyroTurn extends Command {
 
 	private double setpoint;
+	Timer timer = new Timer();
     public GyroTurn(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -44,7 +45,9 @@ public class GyroTurn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Math.abs(setpoint-Robot.drivetrain.gyro.getYaw()) < 1;
+    	if(timer.get() > 1.5)
+    		return true;
+        return Math.abs(setpoint-Robot.drivetrain.gyro.getYaw()) < .5;
     }
 
     // Called once after isFinished returns true

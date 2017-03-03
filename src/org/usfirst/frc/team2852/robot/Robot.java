@@ -139,7 +139,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
 		SmartDashboard.putNumber("Back Shooter RPM", Shooter.shooterBackEnc.getRate());
 		SmartDashboard.putNumber("Front Shooter RPM", Shooter.shooterFrontEnc.getRate());
-		SmartDashboard.putNumber("Gyro Yaw", Robot.drivetrain.gyro.getYaw());
+		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		
 		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
 //		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
