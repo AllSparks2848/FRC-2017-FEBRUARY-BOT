@@ -1,5 +1,7 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
+import org.usfirst.frc.team2852.climberCommands.Climb;
+import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Spark;
@@ -19,9 +21,9 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    public void climb() {
-    	climbR.set(1);
-    	climbL.set(-1);
+    public void climb(double speed) {
+    	climbR.set(speed);
+    	climbL.set(-speed);
     }
     
     public void stopClimbing() {

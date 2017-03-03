@@ -64,14 +64,14 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
 	        
-	        RIOdroid.initUSB();
+	   //     RIOdroid.initUSB();
 	        
 	       
-		        
+		       /* 
 		        visionServer = VisionServer.getInstance();
 		        testUpdateReceiver = new TestUpdateReceiver();
 		        visionServer.addVisionUpdateReceiver(testUpdateReceiver);
-		     
+		     */
 	        
 		SmartDashboard.putData(Scheduler.getInstance());
 		Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);

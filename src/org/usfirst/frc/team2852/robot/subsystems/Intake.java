@@ -23,7 +23,7 @@ public class Intake extends PIDSubsystem {
 	public static double i = 0.002;
 	public static double d = 0.0025;
 	public int bottomPos = -93;
-	public int intakePos = -92;
+	public int intakePos = -88;
 	public int spitPos = -16; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
 	public int visionPos = -70;

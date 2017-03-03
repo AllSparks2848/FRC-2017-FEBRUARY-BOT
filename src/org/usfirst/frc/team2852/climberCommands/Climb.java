@@ -3,25 +3,29 @@ package org.usfirst.frc.team2852.climberCommands;
 import org.usfirst.frc.team2852.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class Climb extends Command {
-
-    public Climb() {
+private double speed;
+    public Climb(double speed) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.climber);
+    	this.speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.climber.climb();
+    	Robot.climber.climb(speed);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.climber.climb(speed);
+    	SmartDashboard.putNumber("Climber Speed", speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

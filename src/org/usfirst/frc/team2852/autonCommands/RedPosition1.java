@@ -23,28 +23,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RedPosition1 extends CommandGroup {
 
     public RedPosition1() {
-//    	addSequential(new ShiftLow());
-//    	addSequential(new NoOmnis());
-//    	addSequential(new ZeroIntake());
-//    	addSequential(new testZeroGyro());
-////    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
-//    	addSequential(new DriveToDistance(70.3));
-//    	addSequential(new Wait(.5));
-//    	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
-//    	addSequential (new GyroTurn(60));
-//    	
-//    	addSequential(new Wait(.5));
-//    	addSequential(new DriveToDistance(60));//ian lowered at 813
-//    	
-////    	addSequential(new VisionTurn());
-////    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
-////    	addSequential(new DriveToDistance(45));
-//    	addSequential(new SpitGearBreakBeam());
-//    	addSequential(new DriveToDistance(-20));
-    	
-    	
-    	//non vision above
-    	
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
@@ -52,31 +30,44 @@ public class RedPosition1 extends CommandGroup {
 //    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
     	addSequential(new DriveToDistance(70.3));
     	addSequential(new Wait(.5));
-    	addParallel(new IntakePID(Robot.intake.visionPos));
+    	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
     	addSequential (new GyroTurn(60));
     	
     	addSequential(new Wait(.5));
-    	addSequential(new DriveToDistance(15));//ian lowered at 813
-    	
-    	addSequential(new VisionTurn());
-    	addSequential(new IntakePID(Robot.intake.spitPos));
-//    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(45));
-    	addSequential(new SpitGearBreakBeam());
-    	addSequential(new DriveToDistance(-20));
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    	addSequential(new DriveToDistance(60));//ian lowered at 813
     	
 //    	addSequential(new VisionTurn());
 //    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
 //    	addSequential(new DriveToDistance(45));
     	addSequential(new SpitGearBreakBeam());
     	addSequential(new DriveToDistance(-20));
+    	
+    	
+    	//non vision above
+    	
+//    	addSequential(new ShiftLow());
+//    	addSequential(new NoOmnis());
+//    	addSequential(new ZeroIntake());
+//    	addSequential(new testZeroGyro());
+////    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
+//    	addSequential(new DriveToDistance(70.3));
+//    	addSequential(new Wait(.5));
+//    	addParallel(new IntakePID(Robot.intake.visionPos));
+//    	addSequential (new GyroTurn(60));
+//    	
+//    	addSequential(new Wait(.5));
+//    	addSequential(new DriveToDistance(15));//ian lowered at 813
+//    	
+//    	addSequential(new VisionTurn());
+//    	addSequential(new IntakePID(Robot.intake.spitPos));
+////    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
+//    	addSequential(new DriveToDistance(45));
+//    	addSequential(new SpitGearBreakBeam());
+//    	addSequential(new DriveToDistance(-20));
+    	
+    	//vision above
+    	
+    	
     	
     	
         // Add Commands here:

@@ -45,9 +45,9 @@ public class GyroTurn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(timer.get() > 1.5)
+    	if(timer.get() > 3)
     		return true;
-        return Math.abs(setpoint-Robot.drivetrain.gyro.getYaw()) < .5;
+    	return false;
     }
 
     // Called once after isFinished returns true

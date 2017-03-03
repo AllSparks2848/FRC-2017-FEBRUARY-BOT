@@ -47,6 +47,7 @@ public class OI {
 	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
 	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
 	Joystick buttonBoxL = new Joystick(RobotMap.p_buttonBoxL);
+	Joystick climbControl = new Joystick(5);
 	
 //	Controller 1
 	Button a1 = new JoystickButton(xbox1, 1);
@@ -129,11 +130,11 @@ public class OI {
 		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
 		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bb28.whileHeld(new Convey(.9));
-		bb211.whileHeld(new Climb());
+//		bb211.whileHeld(new Climb());
 		bb214.whileHeld(new IntakeUp());
 		bb215.whileHeld(new IntakeDown());
 		
-		a1.whileHeld(new Climb()); 
+		a1.whileHeld(new Climb(.5)); 
 		x1.whileHeld(new Convey(.9));
 		y1.whileHeld(new ManualShoot(-.675, .7));
 		b1.whenPressed(new ZeroIntake());
@@ -157,11 +158,11 @@ public class OI {
 		bbL1.whenPressed(new IntakePID(Robot.intake.intakePos));
 		bbL2.whenPressed(new IntakePIDNonStop(Robot.intake.spitPos));
 		bbL3.whenPressed(new IntakePID(Robot.intake.tuckPos));
-		bbL4.whileHeld(new Climb());
+		bbL4.whileHeld(new Climb(.5));
 		bbL5.whileHeld(new IntakeUp());
 		bbL6.whileHeld(new IntakeDown());
 		bbL7.whenPressed(new ZeroIntake());
-		
+		bbL8.whileHeld(new Climb(1));
 		bbL9.whileHeld(new BangBangShoot());
 		bbL10.whileHeld(new Convey(.6));
 		bbL11.whileHeld(new ShootAndConvey());
@@ -178,7 +179,11 @@ public class OI {
 		rBump2.whenPressed(new MiddleAuton());
 		
 	}
-	
+	public double getClimberJoystick(){
+		if(climbControl.getRawAxis(1)<0)
+			return 0;
+		return climbControl.getRawAxis(1);
+	}
 	public double getLeftJoystick() {
 		return xbox1.getRawAxis(1);
 	}
