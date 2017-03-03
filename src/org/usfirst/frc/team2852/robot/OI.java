@@ -5,7 +5,7 @@ import org.usfirst.frc.team2852.climberCommands.Climb;
 import org.usfirst.frc.team2852.intakeCommands.IntakeDown;
 import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
-import org.usfirst.frc.team2852.intakeCommands.IntakeToPosition;
+import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.IntakeUp;
 import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
@@ -152,7 +152,7 @@ public class OI {
 		
 		
 		bbL1.whenPressed(new IntakePID(Robot.intake.intakePos));
-		bbL2.whenPressed(new IntakePID(Robot.intake.spitPos));
+		bbL2.whenPressed(new IntakePIDNonStop(Robot.intake.spitPos));
 		bbL3.whenPressed(new IntakePID(Robot.intake.tuckPos));
 		bbL4.whileHeld(new Climb());
 		bbL5.whileHeld(new IntakeUp());

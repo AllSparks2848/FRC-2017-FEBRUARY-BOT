@@ -24,7 +24,7 @@ public class Intake extends PIDSubsystem {
 	public static double d = 0.0025;
 	public int bottomPos = -93;
 	public int intakePos = -92;
-	public int spitPos = -18; //-28 on practice. subject to change on comp
+	public int spitPos = -14; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
 	public int visionPos = -70;
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();

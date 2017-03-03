@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.autonCommands;
 
 import org.usfirst.frc.team2852.autonCommands.VisionTurn;
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
+import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
@@ -25,14 +26,14 @@ public class RedPosition1 extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
-    	addSequential(new IntakePID(Robot.intake.visionPos));
+    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
     	addSequential(new DriveToDistance(70.3));
     	//addSequential(new testZeroGyro());
     	addSequential (new GyroTurn(60));
     	
     	addSequential(new DriveToDistance(15));//ian lowered at 813
     	addSequential(new VisionTurn());
-    	addSequential(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
     	addSequential(new DriveToDistance(45));
     	addSequential(new SpitGearBreakBeam());
     	addSequential(new DriveToDistance(-20));
