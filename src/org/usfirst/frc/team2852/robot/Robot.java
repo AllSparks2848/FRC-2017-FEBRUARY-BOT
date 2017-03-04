@@ -38,10 +38,10 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-	public static Logger logger;
-	public static VisionServer visionServer;
+	//public static Logger logger;
+	//public static VisionServer visionServer;
 
-	public static TestUpdateReceiver testUpdateReceiver;
+	//public static TestUpdateReceiver testUpdateReceiver;
     public static FileIO fileIO = new FileIO();
     private int LOGGER_LEVEL = 5;
     boolean useConsole = true, useFile = false;
@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = new AutonGearLeft();
 		//prefs = Preferences.getInstance();
 		oi = new OI();
-		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
+		 //logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
 	        
 	   //     RIOdroid.initUSB();
 	        
@@ -146,8 +146,8 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
-		SmartDashboard.putNumber("target x", x);
-		SmartDashboard.putNumber("distance", distance);
+		//SmartDashboard.putNumber("target x", x);
+		//SmartDashboard.putNumber("distance", distance);
 //		SmartDashboard.putNumber("LD1", Robot.drivetrain.leftDrive1.get());
 //		SmartDashboard.putNumber("LD2", Robot.drivetrain.leftDrive2.get());
 //		SmartDashboard.putNumber("LD3", Robot.drivetrain.leftDrive3.get());
