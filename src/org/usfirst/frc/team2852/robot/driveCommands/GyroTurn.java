@@ -26,7 +26,7 @@ public class GyroTurn extends Command {
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);
     	Robot.drivetrain.gyroController.setSetpoint(setpoint);
     	Robot.drivetrain.gyroController.enable();
-    	
+    	timer.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -45,9 +45,7 @@ public class GyroTurn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(timer.get() > 3)
-    		return true;
-    	return false;
+    		return (Math.abs(setpoint-Robot.drivetrain.gyro.getYaw()) < 1);
     }
 
     // Called once after isFinished returns true

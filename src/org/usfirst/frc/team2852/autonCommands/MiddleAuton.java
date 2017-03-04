@@ -20,11 +20,11 @@ public class MiddleAuton extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
-        addSequential(new DriveToDistance(67));
+        addSequential(new DriveToDistance(68));
         addSequential(new IntakePID(Robot.intake.spitPos));
         addSequential(new SpitGearBreakBeam());
         addSequential(new Wait(.25));
    		addSequential(new DriveToDistance(-20));
-       //vision?
+       
     }
 }

@@ -1,5 +1,10 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
+import org.usfirst.frc.team2852.autonCommands.BluePosition1;
+import org.usfirst.frc.team2852.autonCommands.BluePosition3;
+import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
+import org.usfirst.frc.team2852.autonCommands.RedPosition1;
+import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -72,12 +77,33 @@ public class AutonSelector extends Subsystem {
     		}
     	}
     }
-//    public Command getAutoCommand() {
-//    	
-//        switch(getAutoNum()) {
-//        case 0: 
-//        }
-//    }
+    public Command getAutoCommand() {
+    	Command autonomousCommand = new MiddleAuton();
+        switch(getAutoNum()) {
+        case 0: autonomousCommand = new RedPosition1();
+        	break;
+        case 1: autonomousCommand = new MiddleAuton();
+    	break;
+        case 2: autonomousCommand = new RedPosition3();
+    	break;
+        case 3: autonomousCommand = new BluePosition1();
+    	break;
+        case 4: autonomousCommand = new BluePosition3();
+    	break;
+        case 5: autonomousCommand = new RedPosition1();
+    	break;
+        case 6: autonomousCommand = new RedPosition1();
+    	break;
+        case 7: autonomousCommand = new RedPosition1();
+    	break;
+        case 8: autonomousCommand = new RedPosition1();
+    	break;
+        case 9: autonomousCommand = new RedPosition1();
+    	break;
+        }
+        System.out.println(autonomousCommand.getName());
+        return autonomousCommand;
+    }
     
     		
 }
