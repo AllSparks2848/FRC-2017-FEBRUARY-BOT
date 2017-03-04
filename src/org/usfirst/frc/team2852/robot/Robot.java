@@ -149,7 +149,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
-		
+		SmartDashboard.putNumber("Robot.x", Robot.x);
 		
 //		if(Robot.intake.isBeamBroken())
 //			output1 = true;
