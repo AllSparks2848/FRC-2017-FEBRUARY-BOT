@@ -3,6 +3,7 @@ package org.usfirst.frc.team2852.robot;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
+import org.usfirst.frc.team2852.autonCommands.VisionTurn;
 import org.usfirst.frc.team2852.climberCommands.Climb;
 import org.usfirst.frc.team2852.intakeCommands.IntakeDown;
 import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
@@ -13,32 +14,21 @@ import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.ArcadeDrive;
-import org.usfirst.frc.team2852.robot.driveCommands.BackOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.DriveNoPID;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
-import org.usfirst.frc.team2852.robot.driveCommands.FrontOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.GyroPikatroller;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
-import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
 import org.usfirst.frc.team2852.robot.shooterCommands.BangBangShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
-import org.usfirst.frc.team2852.robot.shooterCommands.PIDShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.ShootAndConvey;
-import org.usfirst.frc.team2852.robot.subsystems.Intake;
-import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 import org.usfirst.frc.team2852.robot.util.XboxTrigger;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
 	Joystick xbox1 = new Joystick(RobotMap.p_xbox1);
@@ -172,7 +162,7 @@ public class OI {
 		
 		a2.whenPressed(new DriveToDistance(70.33));
 		b2.whenPressed(new GyroTurn(-60));
-		y2.whenPressed(new DriveToDistance(63)); //bumper to edge of peg = 66.95
+		y2.whenPressed(new VisionTurn()); //bumper to edge of peg = 66.95
 		lBump2.whenPressed(new RedPosition3());
 		x2.whenPressed(new RedPosition1());
 		rBump2.whenPressed(new MiddleAuton());

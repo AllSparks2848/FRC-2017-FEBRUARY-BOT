@@ -1,7 +1,5 @@
 package org.usfirst.frc.team2852.robot.subsystems;
 
-import org.usfirst.frc.team2852.climberCommands.Climb;
-import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Spark;

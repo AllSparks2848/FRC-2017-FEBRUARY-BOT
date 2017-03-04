@@ -1,11 +1,9 @@
 package org.usfirst.frc.team2852.intakeCommands;
 
-import edu.wpi.first.wpilibj.DigitalOutput;
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team2852.robot.Robot;
-import org.usfirst.frc.team2852.robot.RobotMap;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
