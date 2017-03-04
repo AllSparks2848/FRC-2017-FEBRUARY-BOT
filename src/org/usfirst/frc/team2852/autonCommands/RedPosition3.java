@@ -1,7 +1,6 @@
 package org.usfirst.frc.team2852.autonCommands;
 
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
-import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
