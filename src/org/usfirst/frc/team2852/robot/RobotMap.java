@@ -34,7 +34,7 @@ public class RobotMap {
 	public static int p_climbL = 12;
 	
 	public static int p_out1 = 13;
-	public static int p_out2 = 15;
+//	public static int p_out2 = 15;
 	
 	//pneumatics
 	public static int p_frontButterfly1 = 1;
@@ -43,7 +43,7 @@ public class RobotMap {
 	public static int p_backButterfly2 = 2;
 	public static int p_driveshifter1 = 4;
 	public static int p_driveshifter2 = 5;
-	
+	 
 	//Sensor ports - Drivetrain
 	public static int p_leftEncoderA = 0;
 	public static int p_leftEncoderB = 1;

@@ -12,6 +12,7 @@ import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
 import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -33,6 +34,8 @@ public class RedPosition1 extends CommandGroup {
     	addSequential(new DriveToDistance(30));
     	
     	addSequential(new Wait(.75));
+//    	SmartDashboard.putNumber("Odith: ", Robot.visiontable.getAngleToTurn(Robot.visiontable.getIndex(Robot.x)));
+//    	addSequential(new GyroTurn(Robot.visiontable.getAngleToTurn(Robot.visiontable.getIndex(Robot.x))));
     
     	/*addSequential(new VisionTurn());
     	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));

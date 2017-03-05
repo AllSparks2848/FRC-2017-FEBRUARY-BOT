@@ -7,17 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class PrintAutonSelection extends Command {
+public class SetAngle extends Command {
 
-    public PrintAutonSelection() {
+    public SetAngle() {
         // Use requires() here to declare subsystem dependencies
-//         eg. requires(chassis);
-    	requires(Robot.autonselector);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	System.out.println(Robot.autonselector.autoNum);
+    	Robot.setAngle((45.257*Robot.x - .15077));
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,7 +25,7 @@ public class PrintAutonSelection extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

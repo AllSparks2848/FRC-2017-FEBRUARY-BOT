@@ -15,7 +15,6 @@ import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
@@ -110,7 +109,11 @@ public class OI {
 	Button bbL12 = new JoystickButton(buttonBoxL, 7);
 	Button bbL13 = new JoystickButton(buttonBoxL, 9);
 	
+	
 	public OI() {
+		
+		
+		
 		LiveWindow.addActuator("drivetrain", "Drivetrain", Robot.drivetrain.getPIDController());
 		
 		bb21.whenPressed(new IntakeGear());
@@ -163,11 +166,12 @@ public class OI {
 		
 		
 		a2.whenPressed(new testZeroGyro());
-		b2.whenPressed(new PrintAutonSelection());
+		b2.whenPressed(new VisionTurn());
 		y2.whenPressed(new VisionTurn()); //bumper to edge of peg = 66.95
 		lBump2.whenPressed(new RedPosition3());
 		x2.whenPressed(new RedPosition1());
 		rBump2.whenPressed(new MiddleAuton());
+		
 		
 	}
 	public double getClimberJoystick(){

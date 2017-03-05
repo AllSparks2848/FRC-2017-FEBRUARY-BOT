@@ -1,8 +1,11 @@
 package org.usfirst.frc.team2852.robot.util;
 
 public class VisionTable {
+	double[] visionArr;
+	public VisionTable() {
+//		visionArr = new double[]{-13.6,-11.4,-9.7,-6.75,-4.95,-1.85,0,2.64,3.5,6.3,8.6,12,13.25};
+	}
 	
-	double[] visionArr = {0,1,2,3,4,5,6,7,8,9,10,11,12};
 	
 
 	public int getIndex(double robotX) {

@@ -12,6 +12,7 @@ import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
 import org.usfirst.frc.team2852.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team2852.robot.subsystems.Intake;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
+import org.usfirst.frc.team2852.robot.util.VisionTable;
 import org.usfirst.frc.team2852.robot.vision.TestUpdateReceiver;
 import org.usfirst.frc.team2852.robot.vision.VisionServer;
 
@@ -33,15 +34,16 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robot = new RobotMap();
 	public static double x=0.0;
 	public static double distance=0.0;
-
+	public static double xValOdtih = 0;
 	Command autonomousCommand;
-
+	
 	public static DriveTrain drivetrain = new DriveTrain();
 	public static Intake intake = new Intake();
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
 	public static AutonSelector autonselector = new AutonSelector();
+	public static VisionTable visiontable = new VisionTable();
 	
 	public static Logger logger;
 	public static VisionServer visionServer;
@@ -51,7 +53,11 @@ public class Robot extends IterativeRobot {
     private int LOGGER_LEVEL = 5;
     boolean useConsole = true, useFile = false;
 
-
+    public static double angle = 0;
+    
+    public static void setAngle(double newAngle) {
+    	angle = newAngle;
+    }
 	
 	//public static Preferences prefs;
 	/**
@@ -77,6 +83,7 @@ public class Robot extends IterativeRobot {
     	//camera code added 2/21 7pm
     	
     	//CameraServer server = CameraServer.getInstance();  //cbc
+    	
     	//server.startAutomaticCapture();
     	
     	Robot.drivetrain.gyro.zeroYaw();
@@ -100,8 +107,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-			autonomousCommand = autonselector.getAutoCommand();
-			autonomousCommand.start();
+//			autonomousCommand = autonselector.getAutoCommand();
+//			autonomousCommand.start();
 	}
 
 	/**
@@ -114,8 +121,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
-		if(autonomousCommand.isRunning())
-			autonomousCommand.cancel();
+		
+//		if(autonomousCommand.isRunning())
+//			autonomousCommand.cancel();
 		
 		drivetrain.gyroController.disable();
 		
@@ -129,6 +137,11 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
+		int times = 1;
+		if (times == 50) {
+			xValOdtih = Robot.x;
+			times++;
+		}
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
@@ -142,14 +155,18 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Back Shooter RPM", Shooter.shooterBackEnc.getRate());
 		SmartDashboard.putNumber("Front Shooter RPM", Shooter.shooterFrontEnc.getRate());
 		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
-		
+		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
 //		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
+//		angle = Robot.visiontable.getAngleToTurn(Robot.visiontable.getIndex(Robot.x));
 		
+		System.out.println("Angle: " + angle);
+		SmartDashboard.putNumber("Odith: ", angle);
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
 		SmartDashboard.putNumber("Robot.x", Robot.x);
+		
 		
 //		if(Robot.intake.isBeamBroken())
 //			output1 = true;
