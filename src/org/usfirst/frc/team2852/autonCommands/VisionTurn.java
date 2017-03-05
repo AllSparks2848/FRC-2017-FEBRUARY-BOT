@@ -14,7 +14,8 @@ public class VisionTurn extends CommandGroup {
     public VisionTurn() {
     	addSequential(new testZeroGyro());
     	addSequential(new SetAngle());
-    	final double angle = Robot.angle;
-        addSequential(new GyroTurn(angle));
+    	final double angle1=Robot.angle;
+    	int angle2 = ((int)angle1);
+        addSequential(new GyroTurn(angle2));
     }
 }
