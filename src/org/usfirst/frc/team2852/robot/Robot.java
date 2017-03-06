@@ -52,12 +52,6 @@ public class Robot extends IterativeRobot {
     public static FileIO fileIO = new FileIO();
     private int LOGGER_LEVEL = 5;
     boolean useConsole = true, useFile = false;
-
-    public static double angle = 0;
-    
-    public static void setAngle(double newAngle) {
-    	angle = newAngle;
-    }
 	
 	//public static Preferences prefs;
 	/**
@@ -137,11 +131,6 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
-		int times = 1;
-		if (times == 50) {
-			xValOdtih = Robot.x;
-			times++;
-		}
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
@@ -157,11 +146,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		//System.out.println(Robot.drivetrain.gyro.getAngle());
 		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
-//		SmartDashboard.putNumber("Angle Setpoint", drivetrain.gyroController.getSetpoint());
-//		angle = Robot.visiontable.getAngleToTurn(Robot.visiontable.getIndex(Robot.x));
-		
-		System.out.println("Angle: " + angle);
-		SmartDashboard.putNumber("Odith: ", angle);
+
+
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
