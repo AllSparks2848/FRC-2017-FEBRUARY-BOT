@@ -4,13 +4,14 @@ import org.usfirst.frc.team2852.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class VisionTurn extends Command {
 Timer timer = new Timer();
-double angle = 0;
+double angle = 0.0;
     public VisionTurn() {
     	requires(Robot.drivetrain);
     }
@@ -18,6 +19,7 @@ double angle = 0;
     // Called just before this Command runs the first time
     protected void initialize() {
     	angle = (45.257*Robot.x - .15077);
+    	SmartDashboard.putNumber("Angle", angle);
     	Robot.drivetrain.gyro.zeroYaw();
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);
     	Robot.drivetrain.gyroController.setSetpoint(angle);
