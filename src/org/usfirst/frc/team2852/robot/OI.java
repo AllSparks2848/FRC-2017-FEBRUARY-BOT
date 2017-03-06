@@ -167,7 +167,7 @@ public class OI {
 		
 		a2.whenPressed(new testZeroGyro());
 		b2.whenPressed(new VisionTurn());
-		//y2.whenPressed(new VisionTurn()); //bumper to edge of peg = 66.95
+		y2.whenPressed(new PrintAutonSelection()); //bumper to edge of peg = 66.95
 		lBump2.whenPressed(new RedPosition3());
 		x2.whenPressed(new RedPosition1());
 		rBump2.whenPressed(new MiddleAuton());

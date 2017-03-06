@@ -68,8 +68,8 @@ public class RobotMap {
 	
 	//DIO auton selector ports
 	
-	public static int p_autoSelect1 = 16;
-	public static int p_autoSelect2 = 17;
-	public static int p_autoSelect3 = 21;
-	public static int p_autoSelect4 = 22;
+	public static int p_autoSelect1 = 20;
+	public static int p_autoSelect2 = 21;
+	public static int p_autoSelect3 = 22;
+	public static int p_autoSelect4 = 23;
 }

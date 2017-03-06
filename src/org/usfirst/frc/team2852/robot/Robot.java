@@ -101,8 +101,10 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-//			autonomousCommand = autonselector.getAutoCommand();
-//			autonomousCommand.start();
+			autonomousCommand = autonselector.getAutoCommand();
+			
+			if(!autonomousCommand.equals(null))
+				autonomousCommand.start();
 	}
 
 	/**
@@ -110,14 +112,14 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-	
+		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void teleopInit() {
 		
-//		if(autonomousCommand.isRunning())
-//			autonomousCommand.cancel();
+		if(!autonomousCommand.equals(null))
+			autonomousCommand.cancel();
 		
 		drivetrain.gyroController.disable();
 		

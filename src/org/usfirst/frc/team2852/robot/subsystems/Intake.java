@@ -24,7 +24,7 @@ public class Intake extends PIDSubsystem {
 	public int intakePos = -88;
 	public int spitPos = -16; //-28 on practice. subject to change on comp
 	public int tuckPos = 0;
-	public int visionPos = -70;
+	public int visionPos = -50;
 	public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public Spark intakeRoller = new Spark(RobotMap.p_intakeRoller);
 	public Spark intakePivot = new Spark(RobotMap.p_intakePivot);
