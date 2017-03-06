@@ -17,7 +17,7 @@ public class SpitGearBreakBeam extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.intake.intake(.6);
-    	Timer.delay(.5);
+    	Timer.delay(.2);
     }
 
     // Called repeatedly when this Command is scheduled to run

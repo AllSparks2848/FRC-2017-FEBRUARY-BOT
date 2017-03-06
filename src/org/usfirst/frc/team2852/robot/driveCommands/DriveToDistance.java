@@ -37,10 +37,20 @@ public class DriveToDistance extends Command {
     protected boolean isFinished() {
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
+    	if(setpoint>50){
+    		if(timer.get() > 3)
+        		return true;
+        	return false;
+    	}
+    	else if(timer.get()<2){
+    			return true;
+    	}
+    	else 
+    		return false;
+        	
     	
-    	if(timer.get() > 3)
-    		return true;
-    	return false;
+    		
+    	
         //return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .5);
     }
 

@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MiddleAuton extends CommandGroup {
 
     public MiddleAuton() {
+    //non vision	
+    	/*
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
@@ -24,6 +26,13 @@ public class MiddleAuton extends CommandGroup {
         addSequential(new SpitGearBreakBeam());
         addSequential(new Wait(.25));
    		addSequential(new DriveToDistance(-20));
-       
+   		*/
+    	addSequential(new ShiftLow());
+    	addSequential(new NoOmnis());
+    	addSequential(new ZeroIntake());
+        addSequential(new DriveToDistance(30));
+        addSequential(new IntakePID(Robot.intake.visionPos));
+        System.out.println(Robot.distance);
     }
+    
 }

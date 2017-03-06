@@ -6,6 +6,7 @@ package org.usfirst.frc.team2852.robot;
 
 
 import org.spectrum3847.RIOdroid.RIOdroid;
+import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.robot.subsystems.AutonSelector;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
@@ -101,8 +102,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-			autonomousCommand = autonselector.getAutoCommand();
-			
+		//	autonomousCommand = autonselector.getAutoCommand();
+		autonomousCommand = new RedPosition1();
 			if(!autonomousCommand.equals(null))
 				autonomousCommand.start();
 	}

@@ -24,6 +24,7 @@ double angle = 0.0;
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);
     	Robot.drivetrain.gyroController.setSetpoint(angle);
     	Robot.drivetrain.gyroController.enable();
+    	timer.reset();
     	timer.start();
     }
 
@@ -42,7 +43,7 @@ double angle = 0.0;
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Math.abs(angle-Robot.drivetrain.gyro.getYaw()) < 1);
+        return (Math.abs(angle-Robot.drivetrain.gyro.getYaw()) < 1)||timer.get()>3.5;
     }
 
     // Called once after isFinished returns true
