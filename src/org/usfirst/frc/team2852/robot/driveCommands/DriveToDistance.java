@@ -23,7 +23,7 @@ public class DriveToDistance extends Command {
     	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	
-    	Robot.drivetrain.setOutputRange(-.5, .5); //good at .9
+    	Robot.drivetrain.setOutputRange(-.7, .7); //good at .9
     	Robot.drivetrain.setSetpoint(setpoint);
     	
     	Robot.drivetrain.enable();

@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.intakeCommands;
+package org.usfirst.frc.team2852.robot.driveCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
 
@@ -8,17 +8,27 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class SpitGearBreakBeam extends Command {
-
+public class BackAway extends Command {
 	Timer timer = new Timer();
-    public SpitGearBreakBeam() {
-        requires(Robot.intake);
+    public BackAway() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+    	requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.drivetrain.leftEncoder.reset();
+    	Robot.drivetrain.rightEncoder.reset();
+    	
+    	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
+    	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
+    	
+    	Robot.drivetrain.setOutputRange(-.4, .4); //good at .9
+    	Robot.drivetrain.setSetpoint(-20);
+    	
+    	Robot.drivetrain.enable();
     	timer.start();
-    	Robot.intake.intake(.6);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -27,16 +37,14 @@ public class SpitGearBreakBeam extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(timer.get()>1)
+    	if(timer.get() > 1)
     		return true;
     	return false;
-    	
-    	
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.intake.stopIntake();
+    	Robot.drivetrain.disable();
     }
 
     // Called when another command which requires one or more of the same
