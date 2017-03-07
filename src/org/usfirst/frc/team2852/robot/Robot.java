@@ -36,14 +36,14 @@ public class Robot extends IterativeRobot {
 	public static double x=0.0;
 	public static double distance=0.0;
 	public static double xValOdtih = 0;
-	Command autonomousCommand;
+	public static Command autonomousCommand;
 	
 	public static DriveTrain drivetrain = new DriveTrain();
 	public static Intake intake = new Intake();
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-	public static AutonSelector autonselector = new AutonSelector();
+	public static AutonSelector autonselector;
 	public static VisionTable visiontable = new VisionTable();
 	
 	public static Logger logger;
@@ -59,6 +59,11 @@ public class Robot extends IterativeRobot {
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
+    
+    public static void setAutonCommand(Command autonCommand) {
+    	autonomousCommand = autonCommand;
+    }
+    
 	@Override
 	public void robotInit() {
 		oi = new OI();
@@ -96,15 +101,14 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
-		autonomousCommand = autonselector.getAutoCommand();
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-			autonomousCommand = autonselector.getAutoCommand();
-			System.out.println(autonselector.getAutoCommand().getName());
+			autonselector = new AutonSelector();
+			setAutonCommand(autonselector.getAutoCommand());
 			if(!autonomousCommand.equals(null))
 				autonomousCommand.start();
 	}

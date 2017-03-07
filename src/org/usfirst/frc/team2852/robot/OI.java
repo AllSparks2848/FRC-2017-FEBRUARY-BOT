@@ -1,7 +1,7 @@
 package org.usfirst.frc.team2852.robot;
 
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
-import org.usfirst.frc.team2852.autonCommands.PrintAutonSelection;
+import org.usfirst.frc.team2852.autonCommands.SelectAuton;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.climberCommands.Climb;
@@ -167,7 +167,7 @@ public class OI {
 		
 		a2.whenPressed(new testZeroGyro());
 		b2.whenPressed(new VisionTurn());
-		y2.whenPressed(new PrintAutonSelection()); //bumper to edge of peg = 66.95
+		y2.whenPressed(new SelectAuton()); //bumper to edge of peg = 66.95
 		lBump2.whenPressed(new RedPosition3());
 		x2.whenPressed(new RedPosition1());
 		rBump2.whenPressed(new MiddleAuton());
