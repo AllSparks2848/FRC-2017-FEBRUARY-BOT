@@ -19,6 +19,9 @@ double angle = 0.0;
     // Called just before this Command runs the first time
     protected void initialize() {
     	angle = (45.257*Robot.x - .15077);
+    	if(Robot.x==0.0) {
+    		angle = 0.0;
+    	}
     	SmartDashboard.putNumber("Angle", angle);
     	Robot.drivetrain.gyro.zeroYaw();
     	Robot.drivetrain.gyroController.setOutputRange(-.5, .5);

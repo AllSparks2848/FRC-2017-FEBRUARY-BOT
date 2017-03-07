@@ -25,7 +25,7 @@ public class BackAway extends Command {
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	
     	Robot.drivetrain.setOutputRange(-.4, .4); //good at .9
-    	Robot.drivetrain.setSetpoint(-20);
+    	Robot.drivetrain.setSetpoint(-40);
     	
     	Robot.drivetrain.enable();
     	timer.start();

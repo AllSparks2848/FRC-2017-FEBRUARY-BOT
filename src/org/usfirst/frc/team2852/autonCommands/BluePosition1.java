@@ -1,36 +1,45 @@
 package org.usfirst.frc.team2852.autonCommands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team2852.intakeCommands.IntakePID;
+import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
+import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
+import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
+import org.usfirst.frc.team2852.robot.Robot;
+import org.usfirst.frc.team2852.robot.driveCommands.BackAway;
+import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
+import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
+import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
+import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
+import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class BluePosition1 extends Command {
+public class BluePosition1 extends CommandGroup {
 
     public BluePosition1() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    	addSequential(new ShiftLow());
+    	addSequential(new NoOmnis());
+    	addSequential(new ZeroIntake());
+    	addSequential(new testZeroGyro());
+    
+    	addSequential(new DriveToDistance(70.3)); 
+    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
+    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+    	addSequential (new GyroTurn(60));
+    	addSequential(new DriveToDistance(39));
+    	addSequential(new VisionTurn());
+    	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+    	addSequential(new Wait(.5));
+    	addSequential(new DriveToDistance(29));
+    	addParallel(new SpitGearBreakBeam());
+    	addSequential(new BackAway());
+//    	addSequential(new GyroTurn(60));
+//    	addSequential(new DriveToDistance(60));
+//    	addSequential(new ShiftHigh());
+//    	addSequential(new AllOmnis());
     }
 }

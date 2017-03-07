@@ -7,14 +7,19 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveToDistance extends Command {
 	private double setpoint;
+	private double time;
 	Timer timer = new Timer();
 	
-	public DriveToDistance() {
+	public DriveToDistance(double setpoint) {
 		requires(Robot.drivetrain);
+		this.setpoint = setpoint;
+		if(setpoint > 40) {
+			time = 3;
+		}
+		else {
+			time = 1.5;
+		}
 	}
-    public DriveToDistance(double setpoint) {
-        this.setpoint = setpoint;
-    }
 
     protected void initialize() {
     	Robot.drivetrain.leftEncoder.reset();
@@ -23,7 +28,7 @@ public class DriveToDistance extends Command {
     	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	
-    	Robot.drivetrain.setOutputRange(-.7, .7); //good at .9
+    	Robot.drivetrain.setOutputRange(-.6, .6);
     	Robot.drivetrain.setSetpoint(setpoint);
     	
     	Robot.drivetrain.enable();
@@ -38,7 +43,7 @@ public class DriveToDistance extends Command {
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
     	
-    	if(timer.get() > 3)
+    	if(timer.get() > time)
     		return true;
     	return false;
         //return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .5);

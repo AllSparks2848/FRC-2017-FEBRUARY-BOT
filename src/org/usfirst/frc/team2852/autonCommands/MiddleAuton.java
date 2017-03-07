@@ -35,10 +35,7 @@ public class MiddleAuton extends CommandGroup {
     	addSequential(new ZeroIntake());
     	addParallel(new IntakePID(Robot.intake.visionPos));
         addSequential(new DriveToDistance(45));
-       
-        addSequential(new Wait(.25));
         addSequential(new VisionTurn());
-        addSequential(new Wait(.25));
        
        
         //addSequential(new IntakePID(Robot.intake.spitPos));

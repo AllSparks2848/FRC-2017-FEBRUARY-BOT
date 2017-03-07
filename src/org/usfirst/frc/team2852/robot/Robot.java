@@ -6,7 +6,13 @@ package org.usfirst.frc.team2852.robot;
 
 
 import org.spectrum3847.RIOdroid.RIOdroid;
+import org.usfirst.frc.team2852.autonCommands.BluePosition1;
+import org.usfirst.frc.team2852.autonCommands.BluePosition3;
+import org.usfirst.frc.team2852.autonCommands.CrossBaseline;
+import org.usfirst.frc.team2852.autonCommands.DoNothing;
+import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
+import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.robot.subsystems.AutonSelector;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
@@ -17,6 +23,7 @@ import org.usfirst.frc.team2852.robot.util.VisionTable;
 import org.usfirst.frc.team2852.robot.vision.TestUpdateReceiver;
 import org.usfirst.frc.team2852.robot.vision.VisionServer;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -43,7 +50,6 @@ public class Robot extends IterativeRobot {
 	public static Shooter shooter = new Shooter();
 	public static Conveyor conveyor = new Conveyor();
 	public static Climber climber = new Climber();
-	public static AutonSelector autonselector;
 	public static VisionTable visiontable = new VisionTable();
 	
 	public static Logger logger;
@@ -53,17 +59,14 @@ public class Robot extends IterativeRobot {
     public static FileIO fileIO = new FileIO();
     private int LOGGER_LEVEL = 5;
     boolean useConsole = true, useFile = false;
+    
+    public int autoNum;
 	
 	//public static Preferences prefs;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
-    
-    public static void setAutonCommand(Command autonCommand) {
-    	autonomousCommand = autonCommand;
-    }
-    
 	@Override
 	public void robotInit() {
 		oi = new OI();
@@ -107,8 +110,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-			autonselector = new AutonSelector();
-			setAutonCommand(autonselector.getAutoCommand());
+		autoNum = getAutoNum();
+		setAutoCommand();
 			if(!autonomousCommand.equals(null))
 				autonomousCommand.start();
 	}
@@ -176,4 +179,85 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
+	
+	DigitalInput autoSelect1 = new DigitalInput(RobotMap.p_autoSelect1);
+    DigitalInput autoSelect2 = new DigitalInput(RobotMap.p_autoSelect2);
+    DigitalInput autoSelect3 = new DigitalInput(RobotMap.p_autoSelect3);
+    DigitalInput autoSelect4 = new DigitalInput(RobotMap.p_autoSelect4);
+    
+    public int getAutoNum() {
+    	if(autoSelect1.get()){ //true
+    		if(autoSelect2.get()) { //true-true
+    			if(autoSelect3.get()) { //true-true-true
+    				return 7;
+    			}
+    			else { //true-true-false
+    				return 6;
+    			}
+    		}
+    		else { //true-false
+    			if(autoSelect3.get()) { //true-false-true
+    				return 3;
+    			}
+    			else { //true-false-false
+    				return 2;
+    			}
+    		}
+    	}
+    	else { //false
+    		if(autoSelect2.get()) { //false-true
+    			if(autoSelect3.get()) { //false-true-true
+    				return 5;
+    			}
+    			else { //false-true-false
+    				return 4;
+    			}
+    		}
+    		else { //false-false
+    			if(autoSelect3.get()) { //false-false-true
+    				if(autoSelect4.get()) { //false-false-true-true
+    					return 9;
+    				}
+    				else { //false-false-true-false
+    					return 1;
+    				}
+    			}
+    			else { //false-false-false
+    				if(autoSelect4.get()) {
+    					return 8;
+    				}
+    				else {
+    					return 0;
+    				}
+    			}
+    		}
+    	}
+    }
+    
+    public void setAutoCommand() {
+    	Command autonCommand = new MiddleAuton();
+        switch(autoNum) {
+        case 0: autonCommand = new RedPosition1();
+        	break;
+        case 1: autonCommand = new MiddleAuton();
+    	break;
+        case 2: autonCommand = new RedPosition3();
+    	break;
+        case 3: autonCommand = new BluePosition1();
+    	break;
+        case 4: autonCommand = new MiddleAuton();
+    	break;
+        case 5: autonCommand = new BluePosition3();
+    	break;
+        case 6: autonCommand = new CrossBaseline();
+    	break;
+        case 7: autonCommand = new DoNothing();
+    	break;
+        case 8: autonCommand = new DoNothing();
+    	break;
+        case 9: autonCommand = new DoNothing();
+    	break;
+        }
+        autonomousCommand = autonCommand;
+    }
 }
