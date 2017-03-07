@@ -88,9 +88,9 @@ public class AutonSelector extends Subsystem {
     	break;
         case 3: autonomousCommand = new BluePosition1();
     	break;
-        case 4: autonomousCommand = new BluePosition3();
+        case 4: autonomousCommand = new MiddleAuton();
     	break;
-        case 5: autonomousCommand = new RedPosition1();
+        case 5: autonomousCommand = new BluePosition3();
     	break;
         case 6: autonomousCommand = new RedPosition1();
     	break;

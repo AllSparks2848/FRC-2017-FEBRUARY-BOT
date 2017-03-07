@@ -96,14 +96,15 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void disabledPeriodic() {
+		autonomousCommand = autonselector.getAutoCommand();
 		Scheduler.getInstance().run();
 	}
 
 	@Override
 	public void autonomousInit() {
 		// schedule the autonomous command (example)
-		//	autonomousCommand = autonselector.getAutoCommand();
-		autonomousCommand = new RedPosition1();
+			autonomousCommand = autonselector.getAutoCommand();
+			System.out.println(autonselector.getAutoCommand().getName());
 			if(!autonomousCommand.equals(null))
 				autonomousCommand.start();
 	}
@@ -155,6 +156,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
 		SmartDashboard.putNumber("Robot.x", Robot.x);
+		SmartDashboard.putNumber("Robot.distance", Robot.distance);
 		
 		
 //		if(Robot.intake.isBeamBroken())

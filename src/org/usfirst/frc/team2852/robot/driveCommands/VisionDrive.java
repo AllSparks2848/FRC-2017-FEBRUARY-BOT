@@ -1,20 +1,19 @@
 package org.usfirst.frc.team2852.robot.driveCommands;
 
+
 import org.usfirst.frc.team2852.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveToDistance extends Command {
+public class VisionDrive extends Command {
 	private double setpoint;
 	Timer timer = new Timer();
 	
-	public DriveToDistance() {
+	public VisionDrive() {
 		requires(Robot.drivetrain);
 	}
-    public DriveToDistance(double setpoint) {
-        this.setpoint = setpoint;
-    }
+    
 
     protected void initialize() {
     	Robot.drivetrain.leftEncoder.reset();
@@ -22,12 +21,13 @@ public class DriveToDistance extends Command {
     	
     	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
-    	
+    	 setpoint=Robot.distance-16;
     	Robot.drivetrain.setOutputRange(-.5, .5); //good at .9
     	Robot.drivetrain.setSetpoint(setpoint);
     	
     	Robot.drivetrain.enable();
     	timer.start();
+    	 setpoint=Robot.distance-20;
     }
 
     protected void execute() {
