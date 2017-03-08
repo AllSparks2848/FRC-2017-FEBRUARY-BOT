@@ -71,10 +71,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
-	        
-	        RIOdroid.initUSB();
-	        
-	       
 		        
 		        visionServer = VisionServer.getInstance();
 		        testUpdateReceiver = new TestUpdateReceiver();
@@ -127,9 +123,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 		
-		if(!autonomousCommand.equals(null))
-			autonomousCommand.cancel();
-		
 		drivetrain.gyroController.disable();
 		
 		//Scheduler.getInstance().add(new ZeroIntake());
@@ -145,25 +138,15 @@ public class Robot extends IterativeRobot {
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
-		SmartDashboard.putData("PID Controller", drivetrain.getPIDController());
-		SmartDashboard.putData("Gyro PID Controller", drivetrain.gyroController);
+		
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
-		SmartDashboard.putNumber("Left Encoder Val", drivetrain.leftEncoder.getDistance());
-		SmartDashboard.putNumber("Right Encoder Val", drivetrain.rightEncoder.getDistance());
-		SmartDashboard.putNumber("Back Shooter RPM", Shooter.shooterBackEnc.getRate());
-		SmartDashboard.putNumber("Front Shooter RPM", Shooter.shooterFrontEnc.getRate());
+		
 		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
-		//System.out.println(Robot.drivetrain.gyro.getAngle());
-		SmartDashboard.putNumber("GyroPID Output", drivetrain.gyroController.get());
-
 
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
-		
-		SmartDashboard.putNumber("Robot.x", Robot.x);
-		SmartDashboard.putNumber("Robot.distance", Robot.distance);
 		
 		
 //		if(Robot.intake.isBeamBroken())

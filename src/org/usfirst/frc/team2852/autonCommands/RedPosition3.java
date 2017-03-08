@@ -56,7 +56,7 @@ public class RedPosition3 extends CommandGroup {
     	addSequential (new GyroTurn(-60));
     	addSequential(new DriveToDistance(39));
     	addSequential(new VisionTurn());
-    	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+    	addSequential(new IntakePID(Robot.intake.spitPos));
     	addSequential(new Wait(.5));
     	addSequential(new DriveToDistance(29));
     	addParallel(new SpitGearBreakBeam());
