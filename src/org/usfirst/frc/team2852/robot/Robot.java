@@ -71,7 +71,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		 logger = new Logger(useConsole, useFile, LOGGER_LEVEL);
-		        
 		        visionServer = VisionServer.getInstance();
 		        testUpdateReceiver = new TestUpdateReceiver();
 		        visionServer.addVisionUpdateReceiver(testUpdateReceiver);
@@ -144,11 +143,12 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 		
 		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
-
+		SmartDashboard.putNumber("Vision Angle", (45.257*Robot.x - .15077));
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
-		
+		SmartDashboard.putNumber("Encoder Left", Robot.drivetrain.leftEncoder.getDistance());
+		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
 //		if(Robot.intake.isBeamBroken())
 //			output1 = true;
 //		

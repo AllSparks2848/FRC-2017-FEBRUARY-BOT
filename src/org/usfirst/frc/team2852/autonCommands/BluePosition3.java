@@ -26,11 +26,11 @@ public class BluePosition3 extends CommandGroup {
     	addSequential(new ZeroIntake());
     	addSequential(new testZeroGyro());
     
-    	addSequential(new DriveToDistance(70.3)); 
+    	addSequential(new DriveToDistance(66.3)); //initially 70.3
     	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
     	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
     	addSequential (new GyroTurn(-60));
-    	addSequential(new DriveToDistance(30));
+    	addSequential(new DriveToDistance(34)); //initially 30
     	addSequential(new VisionTurn());
     	addParallel(new IntakePID(Robot.intake.spitPos));
     	addSequential(new DriveToDistance(34));

@@ -34,7 +34,7 @@ public class BluePosition1 extends CommandGroup {
     	addSequential(new VisionTurn());
     	addSequential(new IntakePID(Robot.intake.spitPos));
     	addSequential(new Wait(.5));
-    	addSequential(new DriveToDistance(29));
+    	addSequential(new DriveToDistance(29)); 
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
 //    	addSequential(new GyroTurn(60));

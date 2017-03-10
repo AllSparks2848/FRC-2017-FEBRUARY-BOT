@@ -32,11 +32,11 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class OI {
 	Joystick xbox1 = new Joystick(RobotMap.p_xbox1);
-	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
-	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
-	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
+//	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
+//	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
+//	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
 	Joystick buttonBoxL = new Joystick(RobotMap.p_buttonBoxL);
-	Joystick climbControl = new Joystick(5);
+//	Joystick climbControl = new Joystick(5);
 	
 //	Controller 1
 	Button a1 = new JoystickButton(xbox1, 1);
@@ -50,47 +50,47 @@ public class OI {
 	Button rBump1 = new JoystickButton(xbox1, 6);
 	
 //	Controller 2
-	Button a2 = new JoystickButton(xbox2, 1);
-	Button b2 = new JoystickButton(xbox2, 2);
-	Button x2 = new JoystickButton(xbox2, 3);
-	Button y2 = new JoystickButton(xbox2, 4);
-	
-	Button start = new JoystickButton(xbox2, 8);
-	
-	Button lBump2 = new JoystickButton(xbox2, 5);
-	Button rBump2 = new JoystickButton(xbox2, 6);
-	XboxTrigger lTrig2 = new XboxTrigger(xbox2, 2);
-	XboxTrigger rTrig2 = new XboxTrigger(xbox2, 3);
-	
-	Button clickRight2 = new JoystickButton(xbox2, 10);
-	
-//	Button bOx
-	Button bb1 = new JoystickButton(buttonBox, 6);
-	Button bb2 = new JoystickButton(buttonBox, 4);
-	Button bb3 = new JoystickButton(buttonBox, 2);
-	Button bb4 = new JoystickButton(buttonBox, 5);
-	Button bb5 = new JoystickButton(buttonBox, 3);
-	Button bb6 = new JoystickButton(buttonBox, 1);
-	Button bb7 = new JoystickButton(buttonBox, 7);
-	Button bb8 = new JoystickButton(buttonBox, 9);
-	Button bb9 = new JoystickButton(buttonBox, 8);
-	
-//	button Box 2
-	Button bb21 = new JoystickButton(buttonBox2, 3);
-	Button bb22 = new JoystickButton(buttonBox2, 12);
-	Button bb23 = new JoystickButton(buttonBox2, 15);
-	Button bb24 = new JoystickButton(buttonBox2, 6);
-	Button bb25 = new JoystickButton(buttonBox2, 9);
-	Button bb26 = new JoystickButton(buttonBox2, 2);
-	Button bb27 = new JoystickButton(buttonBox2, 13);
-	Button bb28 = new JoystickButton(buttonBox2, 16);
-	Button bb29 = new JoystickButton(buttonBox2, 5);
-	Button bb210 = new JoystickButton(buttonBox2, 10);
-	Button bb211 = new JoystickButton(buttonBox2, 4); 
-	Button bb212 = new JoystickButton(buttonBox2, 11);
-	Button bb213 = new JoystickButton(buttonBox2, 14);
-	Button bb214 = new JoystickButton(buttonBox2, 7);
-	Button bb215 = new JoystickButton(buttonBox2, 8);
+//	Button a2 = new JoystickButton(xbox2, 1);
+//	Button b2 = new JoystickButton(xbox2, 2);
+//	Button x2 = new JoystickButton(xbox2, 3);
+//	Button y2 = new JoystickButton(xbox2, 4);
+//	
+//	Button start = new JoystickButton(xbox2, 8);
+//	
+//	Button lBump2 = new JoystickButton(xbox2, 5);
+//	Button rBump2 = new JoystickButton(xbox2, 6);
+//	XboxTrigger lTrig2 = new XboxTrigger(xbox2, 2);
+//	XboxTrigger rTrig2 = new XboxTrigger(xbox2, 3);
+//	
+//	Button clickRight2 = new JoystickButton(xbox2, 10);
+//	
+////	Button bOx
+//	Button bb1 = new JoystickButton(buttonBox, 6);
+//	Button bb2 = new JoystickButton(buttonBox, 4);
+//	Button bb3 = new JoystickButton(buttonBox, 2);
+//	Button bb4 = new JoystickButton(buttonBox, 5);
+//	Button bb5 = new JoystickButton(buttonBox, 3);
+//	Button bb6 = new JoystickButton(buttonBox, 1);
+//	Button bb7 = new JoystickButton(buttonBox, 7);
+//	Button bb8 = new JoystickButton(buttonBox, 9);
+//	Button bb9 = new JoystickButton(buttonBox, 8);
+//	
+////	button Box 2
+//	Button bb21 = new JoystickButton(buttonBox2, 3);
+//	Button bb22 = new JoystickButton(buttonBox2, 12);
+//	Button bb23 = new JoystickButton(buttonBox2, 15);
+//	Button bb24 = new JoystickButton(buttonBox2, 6);
+//	Button bb25 = new JoystickButton(buttonBox2, 9);
+//	Button bb26 = new JoystickButton(buttonBox2, 2);
+//	Button bb27 = new JoystickButton(buttonBox2, 13);
+//	Button bb28 = new JoystickButton(buttonBox2, 16);
+//	Button bb29 = new JoystickButton(buttonBox2, 5);
+//	Button bb210 = new JoystickButton(buttonBox2, 10);
+//	Button bb211 = new JoystickButton(buttonBox2, 4); 
+//	Button bb212 = new JoystickButton(buttonBox2, 11);
+//	Button bb213 = new JoystickButton(buttonBox2, 14);
+//	Button bb214 = new JoystickButton(buttonBox2, 7);
+//	Button bb215 = new JoystickButton(buttonBox2, 8);
 	
 	
 	//button box L
@@ -115,17 +115,17 @@ public class OI {
 		
 		LiveWindow.addActuator("drivetrain", "Drivetrain", Robot.drivetrain.getPIDController());
 		
-		bb21.whenPressed(new IntakeGear());
-		bb22.whileHeld(new SpitGear());
-		
-		bb24.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
-		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
-		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
-		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
-		bb28.whileHeld(new Convey(.9));
+//		bb21.whenPressed(new IntakeGear());
+//		bb22.whileHeld(new SpitGear());
+//		
+//		bb24.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
+//		bb25.whenPressed(new IntakePID(Robot.intake.spitPos));
+//		bb29.whenPressed(new IntakePID(Robot.intake.intakePos));
+//		bb210.whenPressed(new IntakePID(Robot.intake.tuckPos));
+//		bb28.whileHeld(new Convey(.9));
 //		bb211.whileHeld(new Climb());
-		bb214.whileHeld(new IntakeUp());
-		bb215.whileHeld(new IntakeDown());
+//		bb214.whileHeld(new IntakeUp());
+//		bb215.whileHeld(new IntakeDown());
 		
 		a1.whileHeld(new Climb(.5)); 
 		x1.whileHeld(new SetBottomPos());
@@ -137,15 +137,15 @@ public class OI {
 		lBump1.whenPressed(new ShiftLow());
 		lTrig1.whenPressed(new ShiftHigh());
 		
-		bb8.whileHeld(new SpitGear());
-		bb6.whileHeld(new IntakeDown());
-		bb3.whileHeld(new IntakeUp());
-		bb9.whenPressed(new IntakeGear());
-		bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
-		bb2.whenPressed(new IntakePID(Robot.intake.intakePos));
-		bb4.whenPressed(new IntakePID(Robot.intake.spitPos));
-		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
-		bb7.whileHeld(new ShootAndConvey()); 
+//		bb8.whileHeld(new SpitGear());
+//		bb6.whileHeld(new IntakeDown());
+//		bb3.whileHeld(new IntakeUp());
+//		bb9.whenPressed(new IntakeGear());
+//		bb1.whenPressed(new IntakePID(Robot.intake.bottomPos)); 
+//		bb2.whenPressed(new IntakePID(Robot.intake.intakePos));
+//		bb4.whenPressed(new IntakePID(Robot.intake.spitPos));
+//		bb5.whenPressed(new IntakePID(Robot.intake.tuckPos));
+//		bb7.whileHeld(new ShootAndConvey()); 
 		
 		
 		bbL1.whenPressed(new IntakePID(Robot.intake.intakePos));
@@ -164,19 +164,15 @@ public class OI {
 		
 		
 		
-		a2.whenPressed(new testZeroGyro());
-		b2.whenPressed(new VisionTurn());
-		lBump2.whenPressed(new RedPosition3());
-		x2.whenPressed(new RedPosition1());
-		rBump2.whenPressed(new MiddleAuton());
+//		a2.whenPressed(new testZeroGyro());
+//		b2.whenPressed(new VisionTurn());
+//		lBump2.whenPressed(new RedPosition3());
+//		x2.whenPressed(new RedPosition1());
+//		rBump2.whenPressed(new MiddleAuton());
 		
 		
 	}
-	public double getClimberJoystick(){
-		if(climbControl.getRawAxis(1)<0)
-			return 0;
-		return climbControl.getRawAxis(1);
-	}
+//	public double getClimberJoystick(){ 
 	public double getLeftJoystick() {
 		return xbox1.getRawAxis(1);
 	}
