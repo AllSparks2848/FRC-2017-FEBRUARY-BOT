@@ -14,7 +14,7 @@ public class DriveToDistance extends Command {
 		requires(Robot.drivetrain);
 		this.setpoint = setpoint;
 		if(setpoint > 40) {
-			time = 3;
+			time = 2.5;
 		}
 		else {
 			time = 1.5;

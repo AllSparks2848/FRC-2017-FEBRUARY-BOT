@@ -138,17 +138,19 @@ public class Robot extends IterativeRobot {
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
 		
-		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
-		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
-		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
-		
-		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
-		SmartDashboard.putNumber("Vision Angle", (45.257*Robot.x - .15077));
+//		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
+//		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
+//		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
+//		
+//		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
 		SmartDashboard.putNumber("Encoder Left", Robot.drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
+		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
+		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
+		
 //		if(Robot.intake.isBeamBroken())
 //			output1 = true;
 //		

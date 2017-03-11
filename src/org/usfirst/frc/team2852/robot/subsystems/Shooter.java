@@ -5,6 +5,7 @@ import org.usfirst.frc.team2852.robot.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
 /**
@@ -15,13 +16,13 @@ public class Shooter extends PIDSubsystem {
 	public static double i = 0.0; //Robot.prefs.getDouble("kIShoot", 0.0);
 	public static double d = 0.0; //Robot.prefs.getDouble("kDShoot", 0.0);
 	
-	public static double targetRPM = 510; //Robot.prefs.getDouble("targetRPM", 500);
+	public static double targetRPM = 530; //Robot.prefs.getDouble("targetRPM", 500);
 	
     public static Spark shooterBack = new Spark(RobotMap.p_shooterBack);
     public static Spark shooterFront = new Spark(RobotMap.p_shooterFront);
     
-    public static Encoder shooterFrontEnc = new Encoder(RobotMap.p_shooterFrontEncA, RobotMap.p_shooterFrontEncB);
-    public static Encoder shooterBackEnc = new Encoder(RobotMap.p_shooterBackEncA, RobotMap.p_shooterBackEncB);
+    public static Encoder shooterFrontEnc = new Encoder(RobotMap.p_shooterFrontEncA, RobotMap.p_shooterFrontEncB, true, EncodingType.k4X);
+    public static Encoder shooterBackEnc = new Encoder(RobotMap.p_shooterBackEncA, RobotMap.p_shooterBackEncB, true, EncodingType.k4X);
     
     public double gain = 1.1;
     
