@@ -6,13 +6,16 @@ package org.usfirst.frc.team2852.robot;
 
 
 import org.spectrum3847.RIOdroid.RIOdroid;
+import org.usfirst.frc.team2852.autonCommands.BP1Shoot;
 import org.usfirst.frc.team2852.autonCommands.BluePosition1;
 import org.usfirst.frc.team2852.autonCommands.BluePosition3;
 import org.usfirst.frc.team2852.autonCommands.CrossBaseline;
 import org.usfirst.frc.team2852.autonCommands.DoNothing;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
+import org.usfirst.frc.team2852.autonCommands.RP3Shoot;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
+import org.usfirst.frc.team2852.autonCommands.ShootAuton;
 import org.usfirst.frc.team2852.robot.subsystems.AutonSelector;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
@@ -138,9 +141,9 @@ public class Robot extends IterativeRobot {
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
 		
-//		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
-//		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
-//		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
+		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
+		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
+		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 //		
 //		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
@@ -236,11 +239,11 @@ public class Robot extends IterativeRobot {
     	break;
         case 6: autonCommand = new CrossBaseline();
     	break;
-        case 7: autonCommand = new DoNothing();
+        case 7: autonCommand = new ShootAuton();
     	break;
-        case 8: autonCommand = new DoNothing();
+        case 8: autonCommand = new RP3Shoot();
     	break;
-        case 9: autonCommand = new DoNothing();
+        case 9: autonCommand = new BP1Shoot();
     	break;
         }
         autonomousCommand = autonCommand;
