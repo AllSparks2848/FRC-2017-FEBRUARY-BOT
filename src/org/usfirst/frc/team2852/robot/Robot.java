@@ -28,6 +28,7 @@ import org.usfirst.frc.team2852.robot.vision.VisionServer;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -64,7 +65,10 @@ public class Robot extends IterativeRobot {
     boolean useConsole = true, useFile = false;
     
     public int autoNum;
-	
+    
+    public PowerDistributionPanel pdp = new PowerDistributionPanel();
+	public boolean isLowVoltage = false;
+    
 	//public static Preferences prefs;
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -153,6 +157,14 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
 		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
 		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
+		
+		if(pdp.getVoltage()<7.5)
+			isLowVoltage = true;
+		else
+			isLowVoltage = false;
+		SmartDashboard.putBoolean("Voltage", isLowVoltage);
+		
+		
 		
 //		if(Robot.intake.isBeamBroken())
 //			output1 = true;

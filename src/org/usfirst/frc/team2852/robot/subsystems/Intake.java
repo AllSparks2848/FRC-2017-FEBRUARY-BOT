@@ -37,6 +37,8 @@ public class Intake extends PIDSubsystem {
 	DigitalInput photogate = new DigitalInput(RobotMap.p_photogate);
 
 	public Timer timer = new Timer();
+	
+	public boolean isIntakePos = false;
 
 	public Intake() {
 		super("Intake", p, i, d);
@@ -106,5 +108,11 @@ public class Intake extends PIDSubsystem {
 	}
 	public boolean isPhotoGateBroken(){
 		return(!photogate.get());
+	}
+	public void setIsIntakePos(){
+		if(Intake.intakeEnc.get()>-86)
+			isIntakePos = false;
+		else
+			isIntakePos = true;
 	}
 }
