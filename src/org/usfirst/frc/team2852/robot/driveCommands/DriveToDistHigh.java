@@ -12,16 +12,16 @@ public class DriveToDistHigh extends Command {
 	
 	final double P = .1;
 	final double I = .00;
-	final double D = .2;
+	final double D = .25;
 	
 	public DriveToDistHigh(double setpoint) {
 		requires(Robot.drivetrain);
 		this.setpoint = setpoint;
 		if(setpoint > 40) {
-			time = 2.5;
+			time = 1.25;
 		}
 		else {
-			time = 1.5;
+			time = .8;
 		}
 	}
 
@@ -50,8 +50,8 @@ public class DriveToDistHigh extends Command {
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
     	
-//    	if(timer.get() > time)
-//    		return true;
+    	if(timer.get() > time)
+    		return true;
     	return false;
         //return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .5);
     }
