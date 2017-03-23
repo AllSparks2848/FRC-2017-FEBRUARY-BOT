@@ -52,7 +52,7 @@ public class RedPosition1 extends CommandGroup {
     	addSequential (new GyroTurn(60));
     	addSequential(new DriveToDistance(38)); //was 30
     	addSequential(new VisionTurn());
-    	addParallel(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new IntakePID(Robot.intake.spitPos));
     	addSequential(new DriveToDistance(34));
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());

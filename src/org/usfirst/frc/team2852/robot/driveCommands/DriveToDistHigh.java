@@ -5,12 +5,16 @@ import org.usfirst.frc.team2852.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveToDistance extends Command {
+public class DriveToDistHigh extends Command {
 	private double setpoint;
 	private double time;
 	Timer timer = new Timer();
 	
-	public DriveToDistance(double setpoint) {
+	final double P = .1;
+	final double I = .00;
+	final double D = .2;
+	
+	public DriveToDistHigh(double setpoint) {
 		requires(Robot.drivetrain);
 		this.setpoint = setpoint;
 		if(setpoint > 40) {
@@ -28,7 +32,10 @@ public class DriveToDistance extends Command {
     	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	
-    	Robot.drivetrain.setOutputRange(-.6, .6); //was .6
+    	Robot.drivetrain.getPIDController().setPID(P, I, D);
+    	
+    	
+    	Robot.drivetrain.setOutputRange(-1, 1); //was .6
     	Robot.drivetrain.setSetpoint(setpoint);
     	
     	Robot.drivetrain.enable();
@@ -43,8 +50,8 @@ public class DriveToDistance extends Command {
     	System.out.println("Error: " + Robot.drivetrain.getPIDController().getError());
     	System.out.println("PID Out: " + Robot.drivetrain.getPIDController().get());
     	
-    	if(timer.get() > time)
-    		return true;
+//    	if(timer.get() > time)
+//    		return true;
     	return false;
         //return (Math.abs(Robot.drivetrain.getPosition()-setpoint) < .5);
     }
