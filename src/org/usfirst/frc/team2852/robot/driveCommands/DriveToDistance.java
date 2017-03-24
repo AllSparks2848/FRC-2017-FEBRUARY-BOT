@@ -17,7 +17,7 @@ public class DriveToDistance extends Command {
 			time = 2.5;
 		}
 		else {
-			time = 1.5;
+			time = .8;
 		}
 	}
 
