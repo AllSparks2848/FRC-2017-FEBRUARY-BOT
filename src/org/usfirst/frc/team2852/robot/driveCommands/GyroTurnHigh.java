@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class GyroTurn extends Command {
+public class GyroTurnHigh extends Command {
 
 	private double setpoint;
 	Timer timer = new Timer();
-    public GyroTurn(double setpoint) {
+    public GyroTurnHigh(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
@@ -22,7 +22,7 @@ public class GyroTurn extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
 //    	Robot.drivetrain.gyro.zeroYaw();
-    	Robot.drivetrain.gyroController.setOutputRange(-.5, .5); 
+    	Robot.drivetrain.gyroController.setOutputRange(-.65, .65);
     	Robot.drivetrain.gyroController.setSetpoint(setpoint);
     	Robot.drivetrain.gyroController.enable();
     	timer.reset();

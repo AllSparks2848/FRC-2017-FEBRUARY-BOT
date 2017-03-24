@@ -11,6 +11,7 @@ import org.usfirst.frc.team2852.robot.driveCommands.BackAway;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
@@ -50,13 +51,14 @@ public class RedPosition1 extends CommandGroup {
     	addSequential(new DriveToDistHigh(70.3)); 
     	
     	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
-    	addSequential (new GyroTurn(60));
+    	addSequential (new GyroTurnHigh(60));
     	addSequential(new Wait(.1));
     	addSequential(new ShiftLow());
     	addSequential(new DriveToDistance(38)); //was 30
     	addSequential(new VisionTurn());
+//    	addSequential(new Wait(.1));
     	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(32)); //was 34
+    	addSequential(new DriveToDistance(30)); //was 34
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
 //    	addSequential(new ShiftHigh());

@@ -18,7 +18,7 @@ public class DriveToDistHigh extends Command {
 		requires(Robot.drivetrain);
 		this.setpoint = setpoint;
 		if(setpoint > 40) {
-			time = 1.25;
+			time = 1.35;
 		}
 		else {
 			time = .8;
