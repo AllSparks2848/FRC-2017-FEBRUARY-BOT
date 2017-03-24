@@ -18,7 +18,7 @@ public class BangBangShoot extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Shooter.shooterFront.set(-1);
+//    	Shooter.shooterFront.set(-1);
     }
 
     // Called repeatedly when this Command is scheduled to run

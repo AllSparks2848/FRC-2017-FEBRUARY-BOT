@@ -24,17 +24,13 @@ public class ShootInPlace extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM) {
+    	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM) { //was *1.2
+    		Shooter.shooterFront.set(-.8);
     		Shooter.shooterBack.set(.8);
     	}
     	else {
-    		Shooter.shooterBack.set(0);
-    	}
-    	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM*1.2) {
-    		Shooter.shooterFront.set(-.8);
-    	}
-    	else {
     		Shooter.shooterFront.set(0);
+    		Shooter.shooterBack.set(0);
     	}
     }
 

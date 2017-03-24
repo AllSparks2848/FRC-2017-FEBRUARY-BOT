@@ -18,7 +18,7 @@ public class ConveyAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.conveyor.elevator(.6);
+    	Robot.conveyor.elevator(.5); //was .6
     	timer.start();
     }
 
