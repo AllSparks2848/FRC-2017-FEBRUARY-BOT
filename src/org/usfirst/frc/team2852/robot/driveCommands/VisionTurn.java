@@ -46,7 +46,7 @@ double angle = 0.0;
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Math.abs(angle-Robot.drivetrain.gyro.getYaw()) < 1)||timer.get()>3.5;
+        return (Math.abs(angle-Robot.drivetrain.gyro.getYaw()) < 1)||timer.get()>1;
     }
 
     // Called once after isFinished returns true

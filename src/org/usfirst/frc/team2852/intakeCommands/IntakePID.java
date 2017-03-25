@@ -41,12 +41,15 @@ public class IntakePID extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	System.out.println("Encoder Reading: " + Intake.intakeEnc.get());
     	System.out.println("Motor Power: " + Robot.intake.getPivot());
+    	
+    	Robot.intake.setIsIntakePos();
     	
         if(Math.abs((setpoint - Intake.intakeEnc.get())) <= 1) {
         	return true;
