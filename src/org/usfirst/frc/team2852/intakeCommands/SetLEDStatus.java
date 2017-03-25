@@ -22,7 +22,6 @@ public class SetLEDStatus extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.intake.setIsIntakePos();
     	Intake.out1.set(!Robot.intake.isBeamBroken());
     	Intake.out2.set(!Robot.intake.isIntakePos);//changed by ian 4:26
     }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2852.intakeCommands;
 
 import org.usfirst.frc.team2852.robot.Robot;
+import org.usfirst.frc.team2852.robot.subsystems.Intake;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,6 +28,8 @@ public class IntakePIDNonStop extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+    	Robot.intake.setIsIntakePos();
+    	Intake.out2.set(!Robot.intake.isIntakePos);
         return false;
     }
 

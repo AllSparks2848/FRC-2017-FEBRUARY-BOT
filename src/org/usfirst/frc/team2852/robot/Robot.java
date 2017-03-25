@@ -145,6 +145,7 @@ public class Robot extends IterativeRobot {
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
+		Robot.intake.setIsIntakePos();
 		
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());

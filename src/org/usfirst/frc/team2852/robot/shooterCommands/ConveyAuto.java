@@ -18,7 +18,7 @@ public class ConveyAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.conveyor.elevator(.65); //was .6
+    	Robot.conveyor.elevator(.7); //was .6
     	timer.start();
     }
 
@@ -28,7 +28,7 @@ public class ConveyAuto extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (timer.get()>5);
+        return (timer.get()>3);
     }
 
     // Called once after isFinished returns true
