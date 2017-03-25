@@ -11,7 +11,7 @@ public class ShootAuton extends CommandGroup {
 
     public ShootAuton() {
     	addParallel(new ShootInPlace());
-    	addSequential(new Wait(2));
+    	addSequential(new Wait(.2));
     	addSequential(new ConveyAuto());
         // Add Commands here:
         // e.g. addSequential(new Command1());

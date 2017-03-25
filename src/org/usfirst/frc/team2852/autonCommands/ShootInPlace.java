@@ -36,7 +36,7 @@ public class ShootInPlace extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (timer.get()>10);
+        return (timer.get()>5.3);
     }
 
     // Called once after isFinished returns true
