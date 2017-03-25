@@ -15,6 +15,7 @@ import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
@@ -33,7 +34,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class OI {
 	Joystick xbox1 = new Joystick(RobotMap.p_xbox1);
-//	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
+	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
 //	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
 //	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
 	Joystick buttonBoxL = new Joystick(RobotMap.p_buttonBoxL);
@@ -51,11 +52,11 @@ public class OI {
 	Button rBump1 = new JoystickButton(xbox1, 6);
 	
 //	Controller 2
-//	Button a2 = new JoystickButton(xbox2, 1);
-//	Button b2 = new JoystickButton(xbox2, 2);
-//	Button x2 = new JoystickButton(xbox2, 3);
-//	Button y2 = new JoystickButton(xbox2, 4);
-//	
+	Button a2 = new JoystickButton(xbox2, 1);
+	Button b2 = new JoystickButton(xbox2, 2);
+	Button x2 = new JoystickButton(xbox2, 3);
+	Button y2 = new JoystickButton(xbox2, 4);
+	
 //	Button start = new JoystickButton(xbox2, 8);
 //	
 //	Button lBump2 = new JoystickButton(xbox2, 5);
@@ -165,8 +166,8 @@ public class OI {
 		
 		
 		
-//		a2.whenPressed(new GyroTurn(60));
-//		b2.whenPressed(new testZeroGyro());
+		a2.whenPressed(new GyroTurnHigh(60));
+		b2.whenPressed(new VisionTurn());
 //		lBump2.whenPressed(new RedPosition3());
 //		x2.whenPressed(new RedPosition1());
 //		rBump2.whenPressed(new MiddleAuton());

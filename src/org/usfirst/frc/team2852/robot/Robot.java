@@ -149,7 +149,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
 //		
-//		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
+		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
 		
