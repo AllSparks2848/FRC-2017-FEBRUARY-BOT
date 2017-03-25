@@ -1,8 +1,5 @@
 package org.usfirst.frc.team2852.robot;
 
-import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
-import org.usfirst.frc.team2852.autonCommands.RedPosition1;
-import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.climberCommands.Climb;
 import org.usfirst.frc.team2852.intakeCommands.IntakeDown;
 import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
@@ -11,16 +8,14 @@ import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.IntakeUp;
 import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
+import org.usfirst.frc.team2852.intakeCommands.TeleOpGearAlign;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistHigh;
-import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
 import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
-import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
 import org.usfirst.frc.team2852.robot.shooterCommands.BangBangShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
@@ -129,7 +124,7 @@ public class OI {
 //		bb214.whileHeld(new IntakeUp());
 //		bb215.whileHeld(new IntakeDown());
 		
-		a1.whileHeld(new Climb(.5)); 
+//		a1.whenPressed(new TeleOpGearAlign()); 
 		x1.whileHeld(new SetBottomPos());
 		y1.whileHeld(new ManualShoot(-.675, .7));
 		b1.whenPressed(new ZeroIntake());
