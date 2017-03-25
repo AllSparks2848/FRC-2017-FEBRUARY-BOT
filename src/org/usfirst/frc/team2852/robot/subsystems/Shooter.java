@@ -22,7 +22,7 @@ public class Shooter extends PIDSubsystem {
     public static Spark shooterFront = new Spark(RobotMap.p_shooterFront);
     
     public static Encoder shooterFrontEnc = new Encoder(RobotMap.p_shooterFrontEncA, RobotMap.p_shooterFrontEncB, true, EncodingType.k4X);
-    public static Encoder shooterBackEnc = new Encoder(RobotMap.p_shooterBackEncA, RobotMap.p_shooterBackEncB, true, EncodingType.k4X);
+//    public static Encoder shooterBackEnc = new Encoder(RobotMap.p_shooterBackEncA, RobotMap.p_shooterBackEncB, true, EncodingType.k4X);
     
     public double gain = 1.1;
     
@@ -37,7 +37,7 @@ public class Shooter extends PIDSubsystem {
     }
 
     protected double returnPIDInput() {
-        return -shooterBackEnc.getRate();
+        return -shooterFrontEnc.getRate();
     }
 
     protected void usePIDOutput(double output) {

@@ -14,7 +14,7 @@ public class IntakePID extends Command {
     public IntakePID(double setpoint) {
     	this.setpoint = setpoint;
         requires(Robot.intake);
-        Robot.intake.setOutputRange(-.45, .45);
+        Robot.intake.setOutputRange(-1, 1);
     }
 
     protected void initialize() {

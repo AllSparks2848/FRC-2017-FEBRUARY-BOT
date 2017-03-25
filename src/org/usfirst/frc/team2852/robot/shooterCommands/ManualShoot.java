@@ -35,7 +35,7 @@ public class ManualShoot extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	System.out.println("Front Motor Speed: " + Shooter.shooterFrontEnc.getRate());
-    	System.out.println("Back Motor Speed: " + Shooter.shooterBackEnc.getRate());
+//    	System.out.println("Back Motor Speed: " + Shooter.shooterBackEnc.getRate());
     	System.out.println("\n");
 //        return Robot.shooter.shootTime.get() > time;
     	return false;

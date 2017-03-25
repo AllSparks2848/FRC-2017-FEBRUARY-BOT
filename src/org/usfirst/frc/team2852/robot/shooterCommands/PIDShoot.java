@@ -23,7 +23,7 @@ public class PIDShoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
+//    	SmartDashboard.putNumber("Shoot RPM", Shooter.shooterBackEnc.getRate());
     	SmartDashboard.putNumber("Shoot Power", Shooter.shooterBack.get());
     }
 

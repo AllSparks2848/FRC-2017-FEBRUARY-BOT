@@ -24,7 +24,7 @@ public class SetLEDStatus extends Command {
     protected void execute() {
     	Robot.intake.setIsIntakePos();
     	Intake.out1.set(!Robot.intake.isBeamBroken());
-//    	Intake.out2.set(Robot.intake.isintakePos);
+    	Intake.out2.set(Robot.intake.isIntakePos);
     }
 
     // Make this return true when this Command no longer needs to run execute()

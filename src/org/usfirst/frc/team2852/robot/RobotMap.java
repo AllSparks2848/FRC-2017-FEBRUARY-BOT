@@ -34,7 +34,7 @@ public class RobotMap {
 	public static int p_climbL = 12;
 	
 	public static int p_out1 = 13;
-//	public static int p_out2 = 15;
+	public static int p_out2 = 7;
 	
 	//pneumatics
 	public static int p_frontButterfly1 = 1;
@@ -59,8 +59,8 @@ public class RobotMap {
 	//Sensor ports - Shooter
 	public static int p_shooterFrontEncA = 5;
 	public static int p_shooterFrontEncB = 6;
-	public static int p_shooterBackEncA = 7;
-	public static int p_shooterBackEncB = 8;
+//	public static int p_shooterBackEncA = 7;
+//	public static int p_shooterBackEncB = 8;
 	
 	//Analog ports
 	public static int p_lowPressureSensor = 0;
