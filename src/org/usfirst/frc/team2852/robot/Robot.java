@@ -9,6 +9,7 @@ import org.spectrum3847.RIOdroid.RIOdroid;
 import org.usfirst.frc.team2852.autonCommands.BP1Shoot;
 import org.usfirst.frc.team2852.autonCommands.BluePosition1;
 import org.usfirst.frc.team2852.autonCommands.BluePosition3;
+import org.usfirst.frc.team2852.autonCommands.BlueShootFirst;
 import org.usfirst.frc.team2852.autonCommands.CrossBaseline;
 import org.usfirst.frc.team2852.autonCommands.DoNothing;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
@@ -253,7 +254,7 @@ public class Robot extends IterativeRobot {
     	break;
         case 6: autonCommand = new RedShootFirst();
     	break;
-        case 7: autonCommand = new ShootAuton();
+        case 7: autonCommand = new BlueShootFirst();
     	break;
         case 8: autonCommand = new RP3Shoot();
     	break;

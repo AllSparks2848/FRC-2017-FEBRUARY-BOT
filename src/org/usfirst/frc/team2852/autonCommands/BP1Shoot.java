@@ -42,7 +42,7 @@ public class BP1Shoot extends CommandGroup {
     	addSequential(new GyroTurn(156));
     	addParallel(new IntakePID(Robot.intake.tuckPos));
     	addParallel(new ShootAuton());
-    	addSequential(new DriveFAST(100));
+    	addSequential(new DriveFAST(78));
     	
     	
         // Add Commands here:
