@@ -43,22 +43,19 @@ public class RedPosition1 extends CommandGroup {
     	addSequential(new Wait(.75)); */
     	//NON VISION
     
-    	addSequential(new ShiftHigh());
+    	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addParallel(new ZeroAndVisionPos());
     	addSequential(new testZeroGyro());
     
-    	addSequential(new DriveToDistHigh(70.3)); 
+    	addSequential(new DriveToDistance(74.3)); 
     	
     	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
-    	addSequential (new GyroTurnHigh(60));
-    	addSequential(new Wait(.1));
-    	addSequential(new ShiftLow());
-    	addSequential(new DriveToDistance(38)); //was 30
+    	addSequential (new GyroTurn(60));
+    	addSequential(new DriveToDistance(30)); //was 30
     	addSequential(new VisionTurn());
-//    	addSequential(new Wait(.1));
     	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(30)); //was 34
+    	addSequential(new DriveToDistance(34)); //was 34
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
 //    	addSequential(new ShiftHigh());

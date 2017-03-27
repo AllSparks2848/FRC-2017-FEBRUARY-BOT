@@ -28,18 +28,19 @@ public class RedShootFirst extends CommandGroup {
     	addSequential(new testZeroGyro());
     	
     	addSequential(new ShootAuton());
-    	addSequential(new DriveToDistance(-36)); //was -43.3
+    	addSequential(new DriveToDistance(-25)); //was -43.3
     	addSequential(new Wait(.1));
     	addSequential(new ShiftHigh());
     	addParallel(new IntakePID(Robot.intake.visionPos));
-    	addSequential(new GyroTurnHigh(-112.6));
-    	addSequential(new DriveToDistHigh(70)); //was 66.2
+    	addSequential(new GyroTurnHigh(-105)); //was -112.6
+    	addSequential(new DriveToDistHigh(74)); //was 66.2
     	addSequential(new testZeroGyro());
     	addSequential(new GyroTurnHigh(-60));
+    	addSequential(new ShiftLow());
+    	addSequential(new DriveToDistance(8));
     	addSequential(new VisionTurn());
     	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new ShiftLow());
-    	addSequential(new DriveToDistance(32)); //was 30
+    	addSequential(new DriveToDistance(34)); //was 30
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
     	

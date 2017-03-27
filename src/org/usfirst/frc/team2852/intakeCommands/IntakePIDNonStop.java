@@ -14,7 +14,7 @@ public class IntakePIDNonStop extends Command {
     public IntakePIDNonStop(double setpoint) {
     	this.setpoint = setpoint;
         requires(Robot.intake);
-        Robot.intake.setOutputRange(-.45, .45);
+        Robot.intake.setOutputRange(-1, 1); //was .45
     }
 
     protected void initialize() {
