@@ -14,6 +14,8 @@ import org.usfirst.frc.team2852.autonCommands.CrossBaseline;
 import org.usfirst.frc.team2852.autonCommands.DoNothing;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
 import org.usfirst.frc.team2852.autonCommands.RP3Shoot;
+import org.usfirst.frc.team2852.autonCommands.RedHopperShot;
+import org.usfirst.frc.team2852.autonCommands.RedMidShot;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.autonCommands.RedShootFirst;
@@ -256,10 +258,14 @@ public class Robot extends IterativeRobot {
     	break;
         case 7: autonCommand = new BlueShootFirst();
     	break;
-        case 8: autonCommand = new RP3Shoot();
+//        case 8: autonCommand = new RP3Shoot();
+//    	break;
+//        case 9: autonCommand = new BP1Shoot();
+//    	break;
+        case 8: autonCommand = new RedMidShot();
     	break;
-        case 9: autonCommand = new BP1Shoot();
-    	break;
+        case 9: autonCommand = new RedHopperShot();
+    	
         }
         autonomousCommand = autonCommand;
     }
