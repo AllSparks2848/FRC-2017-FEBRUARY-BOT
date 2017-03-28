@@ -25,48 +25,39 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RedPosition3 extends CommandGroup {
 
     public RedPosition3() {
-    	// non vision
-    	/*
+    	//fast version
+    	
+//    	addSequential(new ShiftHigh());
+//    	addSequential(new NoOmnis());
+//    	addParallel(new ZeroAndVisionPos());
+//    	addSequential(new testZeroGyro());
+//    
+//    	addSequential(new DriveToDistHigh(74.3)); //was 74.3
+//    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+//    	addSequential (new GyroTurnHigh(-55));
+//    	addSequential(new ShiftLow());
+//    	addSequential(new DriveToDistance(38)); //was 39
+//    	addSequential(new VisionTurn());
+//    	addParallel(new IntakePID(Robot.intake.spitPos));
+//    	addSequential(new DriveToDistance(36)); //was 29
+//    	addParallel(new SpitGearBreakBeam());
+//    	addSequential(new BackAway());
+    	
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
     	addSequential(new testZeroGyro());
-//    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
-    	addSequential(new DriveToDistance(70.3));
-    	addSequential(new Wait(.75));
-    	addSequential (new GyroTurn(-60));
-    	
-    	addSequential(new Wait(.75));
-    	addSequential(new DriveToDistance(55));//ian lowered at 813
-    	addParallel(new IntakePID(Robot.intake.spitPos));
-//    	addSequential(new VisionTurn());
-//    	addSequential(new IntakePIDNonStop(Robot.intake.spitPos));
-//    	addSequential(new DriveToDistance(45));
-    	addSequential(new SpitGearBreakBeam());
-    	addSequential(new DriveToDistance(-20));
-    	*/
-    	
-
-    	addSequential(new ShiftHigh());
-    	addSequential(new NoOmnis());
-    	addParallel(new ZeroAndVisionPos());
-    	addSequential(new testZeroGyro());
     
-    	addSequential(new DriveToDistHigh(74.3)); //was 74.3
+    	addSequential(new DriveToDistance(74.3)); //was 70.3
+    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
     	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
-    	addSequential (new GyroTurnHigh(-55));
-    	addSequential(new ShiftLow());
-    	addSequential(new DriveToDistance(38)); //was 39
+    	addSequential (new GyroTurn(-60));
+    	addSequential(new DriveToDistance(39));
     	addSequential(new VisionTurn());
-    	addParallel(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(36)); //was 29
+    	addSequential(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new DriveToDistance(29));
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
-//    	addSequential(new GyroTurn(60));
-//    	addSequential(new DriveToDistance(60));
-//    	addSequential(new ShiftHigh());
-//    	addSequential(new AllOmnis());
-    	
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

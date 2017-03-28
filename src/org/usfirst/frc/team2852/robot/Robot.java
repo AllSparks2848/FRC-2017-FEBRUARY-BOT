@@ -241,7 +241,7 @@ public class Robot extends IterativeRobot {
     	Command autonCommand = new MiddleAuton();
         switch(autoNum) {
         case 0: autonCommand = new RedPosition1();
-        	break;
+        break;
         case 1: autonCommand = new MiddleAuton();
     	break;
         case 2: autonCommand = new RedPosition3();

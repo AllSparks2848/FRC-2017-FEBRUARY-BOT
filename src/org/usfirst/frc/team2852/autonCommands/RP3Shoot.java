@@ -26,42 +26,50 @@ public class RP3Shoot extends CommandGroup {
 
     public RP3Shoot() {
     	
-    	addSequential(new ShiftHigh());
-    	addSequential(new NoOmnis());
-    	addParallel(new ZeroAndVisionPos());
-    	addSequential(new testZeroGyro());
-    
-    	addSequential(new DriveToDistHigh(76.3)); //was 74.3
-    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
-    	addSequential (new GyroTurnHigh(-55));
-    	addSequential(new Wait(.1));
-    	addSequential(new ShiftLow());
-    	addSequential(new DriveToDistance(38)); //was 39
-    	addSequential(new VisionTurn());
-    	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(29));
-    	addParallel(new SpitGearBreakBeam());
-    	addSequential(new Wait(.1));
-    	addSequential(new DriveFAST(-40));
-    	addSequential(new GyroTurn(-148)); //was -156
-    	addParallel(new IntakePID(Robot.intake.tuckPos));
-    	addParallel(new ShootAuton());
-    	addSequential(new DriveFAST(80)); 
-        // Add Commands here:
-        // e.g. addSequential(new Command1());
-        //      addSequential(new Command2());
-        // these will run in order.
-
-        // To run multiple commands at the same time,
-        // use addParallel()
-        // e.g. addParallel(new Command1());
-        //      addSequential(new Command2());
-        // Command1 and Command2 will run in parallel.
-
-        // A command group will require all of the subsystems that each member
-        // would require.
-        // e.g. if Command1 requires chassis, and Command2 requires arm,
-        // a CommandGroup containing them would require both the chassis and the
-        // arm.
+    	//fast version
+    	
+//    	addSequential(new ShiftHigh());
+//    	addSequential(new NoOmnis());
+//    	addParallel(new ZeroAndVisionPos());
+//    	addSequential(new testZeroGyro());
+//    
+//    	addSequential(new DriveToDistHigh(76.3)); //was 74.3
+//    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+//    	addSequential (new GyroTurnHigh(-55));
+//    	addSequential(new Wait(.1));
+//    	addSequential(new ShiftLow());
+//    	addSequential(new DriveToDistance(38)); //was 39
+//    	addSequential(new VisionTurn());
+//    	addSequential(new IntakePID(Robot.intake.spitPos));
+//    	addSequential(new DriveToDistance(29));
+//    	addParallel(new SpitGearBreakBeam());
+//    	addSequential(new Wait(.1));
+//    	addSequential(new DriveFAST(-40));
+//    	addSequential(new GyroTurn(-148)); //was -156
+//    	addParallel(new IntakePID(Robot.intake.tuckPos));
+//    	addParallel(new ShootAuton());
+//    	addSequential(new DriveFAST(80)); 
+    	
+    	
+    			addSequential(new ShiftLow());
+    	    	addSequential(new NoOmnis());
+    	    	addSequential(new ZeroIntake());
+    	    	addSequential(new testZeroGyro());
+    	    
+    	    	addSequential(new DriveToDistance(74.3)); //was 74.3
+    	    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
+    	    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+    	    	addSequential (new GyroTurn(-60));
+    	    	addSequential(new DriveToDistance(38));
+    	    	addSequential(new VisionTurn());
+    	    	addSequential(new IntakePID(Robot.intake.spitPos));
+    	    	addSequential(new DriveToDistance(29));
+    	    	addParallel(new SpitGearBreakBeam());
+    	   	
+    	    	addSequential(new DriveFAST(-40));
+    	    	addSequential(new GyroTurn(-148));
+    	    	addParallel(new IntakePID(Robot.intake.tuckPos));
+    	    	addParallel(new ShootAutonLong());
+    	    	addSequential(new DriveFAST(80));
     }
 }
