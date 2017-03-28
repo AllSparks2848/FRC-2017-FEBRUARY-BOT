@@ -39,11 +39,11 @@ public class RedMidShot extends CommandGroup {
         addParallel(new SpitGearBreakBeam());
         addSequential(new ShiftHigh());
         addSequential(new Wait(.25));
-        addSequential(new DriveToDistHigh(-44.1));
+        addSequential(new DriveToDistHigh(-38)); //was -44.1
         addSequential(new GyroTurnHigh(102.3));
         addParallel(new IntakePID(Robot.intake.tuckPos));
     	addParallel(new ShootAutonLong());
-        addSequential(new DriveToDistHigh(114));
+        addSequential(new DriveToDistHigh(100)); //was 114
 
     }
 }

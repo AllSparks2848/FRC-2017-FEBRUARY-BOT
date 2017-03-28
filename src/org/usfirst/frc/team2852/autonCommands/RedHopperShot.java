@@ -60,7 +60,8 @@ public class RedHopperShot extends CommandGroup {
     	addSequential(new ShiftHigh());
     	addSequential(new DriveToDistHigh(-64));
     	addSequential (new GyroTurnHigh(150));
-    	addSequential(new DriveToDistHigh(60.3));
+    	addSequential(new Wait(.25));
+    	addSequential(new DriveToDistHigh(50)); //was 60.3
     	addSequential(new Wait(.5));
     	addSequential(new DriveToDistHigh(-7.5));
     	addParallel(new ShootAutonLong());
