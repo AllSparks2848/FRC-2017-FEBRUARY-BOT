@@ -6,16 +6,13 @@ import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveFAST;
-import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.GyroTurn;
-import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnHigh;
+import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnLong;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
 import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
-import org.usfirst.frc.team2852.robot.shooterCommands.ConveyAuto;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -67,7 +64,7 @@ public class RP3Shoot extends CommandGroup {
     	    	addParallel(new SpitGearBreakBeam());
     	   	
     	    	addSequential(new DriveFAST(-40));
-    	    	addSequential(new GyroTurn(-148));
+    	    	addSequential(new GyroTurnLong(-148));
     	    	addParallel(new IntakePID(Robot.intake.tuckPos));
     	    	addParallel(new ShootAutonLong());
     	    	addSequential(new DriveFAST(80));
