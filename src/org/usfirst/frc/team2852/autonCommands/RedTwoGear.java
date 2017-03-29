@@ -21,9 +21,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class TwoGearMid extends CommandGroup {
+public class RedTwoGear extends CommandGroup {
 
-    public TwoGearMid() {
+    public RedTwoGear() {
     	addSequential(new ShiftLow());
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
@@ -48,22 +48,6 @@ public class TwoGearMid extends CommandGroup {
         
         addParallel(new IntakeGear());
         addSequential(new DriveToDistHigh(75));
-        if(Robot.intake.isBeamBroken()) {
-        	
-	        addSequential(new DriveToDistHigh(-50));
-	        addParallel(new IntakePID(Robot.intake.visionPos));
-	        addSequential(new Wait(.15));
-	        addSequential(new testZeroGyro());
-	        addSequential(new Wait(.15));
-	        addSequential(new GyroTurnHigh(-90));
-	        addSequential(new DriveToDistHigh(20));
-	        addSequential(new VisionTurn());
-	        addSequential(new DriveToDistHigh(20));
-	        addSequential(new VisionTurn());
-	        addParallel(new IntakePID(Robot.intake.spitPos));
-	        addSequential(new DriveToDistHigh(30));
-	        addParallel(new SpitGearBreakBeam());
-	        addParallel(new BackAway());
-        }
+        addSequential(new RedTwoGearSecondHalf());
     }
 }

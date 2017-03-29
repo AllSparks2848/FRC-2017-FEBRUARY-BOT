@@ -20,7 +20,7 @@ import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.autonCommands.RedShootFirst;
 import org.usfirst.frc.team2852.autonCommands.ShootAuton;
-import org.usfirst.frc.team2852.autonCommands.TwoGearMid;
+import org.usfirst.frc.team2852.autonCommands.RedTwoGear;
 import org.usfirst.frc.team2852.robot.subsystems.AutonSelector;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
@@ -263,7 +263,7 @@ public class Robot extends IterativeRobot {
     	break;
 //        case 9: autonCommand = new BP1Shoot();
 //    	break;
-        case 9: autonCommand = new TwoGearMid();
+        case 9: autonCommand = new RedTwoGear();
         break;
 //        case 8: autonCommand = new RedMidShot();
 //    	break;
