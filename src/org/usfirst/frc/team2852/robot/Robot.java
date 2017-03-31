@@ -10,6 +10,7 @@ import org.usfirst.frc.team2852.autonCommands.BP1Shoot;
 import org.usfirst.frc.team2852.autonCommands.BluePosition1;
 import org.usfirst.frc.team2852.autonCommands.BluePosition3;
 import org.usfirst.frc.team2852.autonCommands.BlueShootFirst;
+import org.usfirst.frc.team2852.autonCommands.LeftTwoGear;
 import org.usfirst.frc.team2852.autonCommands.CrossBaseline;
 import org.usfirst.frc.team2852.autonCommands.DoNothing;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
@@ -20,7 +21,7 @@ import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedPosition3;
 import org.usfirst.frc.team2852.autonCommands.RedShootFirst;
 import org.usfirst.frc.team2852.autonCommands.ShootAuton;
-import org.usfirst.frc.team2852.autonCommands.RedTwoGear;
+import org.usfirst.frc.team2852.autonCommands.RightTwoGear;
 import org.usfirst.frc.team2852.robot.subsystems.AutonSelector;
 import org.usfirst.frc.team2852.robot.subsystems.Climber;
 import org.usfirst.frc.team2852.robot.subsystems.Conveyor;
@@ -247,28 +248,23 @@ public class Robot extends IterativeRobot {
         break;
         case 1: autonCommand = new MiddleAuton();
     	break;
-        case 2: autonCommand = new RedPosition3();
+        case 2: autonCommand = new RedShootFirst(); //RP3
     	break;
-        case 3: autonCommand = new BluePosition1();
+        case 3: autonCommand = new BlueShootFirst(); //BP1
     	break;
         case 4: autonCommand = new MiddleAuton();
     	break;
         case 5: autonCommand = new BluePosition3();
     	break;
-        case 6: autonCommand = new RedShootFirst();
+        case 6: autonCommand = new RP3Shoot();
     	break;
-        case 7: autonCommand = new BlueShootFirst();
+        case 7: autonCommand = new BP1Shoot();
     	break;
-        case 8: autonCommand = new RP3Shoot();
-    	break;
-//        case 9: autonCommand = new BP1Shoot();
-//    	break;
-        case 9: autonCommand = new RedTwoGear();
+        case 8: autonCommand = new RightTwoGear();
         break;
-//        case 8: autonCommand = new RedMidShot();
-//    	break;
-//        case 9: autonCommand = new RedHopperShot();
-//    	break;
+        case 9: autonCommand = new LeftTwoGear();
+    	break;
+    	//other autos: Hopper shot, mid shot, do nothing, cross baseline
         }
         autonomousCommand = autonCommand;
     }

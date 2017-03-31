@@ -10,28 +10,30 @@ import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
 import org.usfirst.frc.team2852.robot.driveCommands.testZeroGyro;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class BlueTwoGearSecondHalf extends CommandGroup {
+public class RightTwoGearSecondHalf extends CommandGroup {
 
-    public BlueTwoGearSecondHalf() {
-    	if(Robot.intake.isBeamBroken()) {
+    public RightTwoGearSecondHalf() {
+//    	if(Robot.intake.isBeamBroken()) {
         	
 	        addSequential(new DriveToDistHigh(-50));
 	        addParallel(new IntakePID(Robot.intake.visionPos));
-	        addSequential(new Wait(.15));
+	        addSequential(new Wait(.1));
 	        addSequential(new testZeroGyro());
-	        addSequential(new GyroTurnHigh(90));
+	        addSequential(new GyroTurnHigh(-90));
 	        addSequential(new DriveToDistHigh(20));
 	        addSequential(new VisionTurn());
 	        addSequential(new DriveToDistHigh(20));
 	        addSequential(new VisionTurn());
 	        addParallel(new IntakePID(Robot.intake.spitPos));
-	        addSequential(new DriveToDistHigh(30));
+	        addSequential(new DriveToDistHigh(34));
 	        addParallel(new SpitGearBreakBeam());
 	        addParallel(new BackAway());
-        }
+//        }
+//    	else stop intake 
     }
 }
