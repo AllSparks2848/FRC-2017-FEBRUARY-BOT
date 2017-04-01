@@ -35,7 +35,7 @@ public class BlueShootFirst extends CommandGroup {
 	addParallel(new IntakePID(Robot.intake.visionPos));
 	addSequential(new GyroTurnHigh(105)); //was -112.6
 	addSequential(new Wait(.05));
-	addSequential(new DriveToDistHigh(76)); //was 74
+	addSequential(new DriveToDistHigh(68)); //was 76, 69
 	addSequential(new testZeroGyro());
 	addSequential(new GyroTurnHigh(60));
 	addSequential(new ShiftLow());

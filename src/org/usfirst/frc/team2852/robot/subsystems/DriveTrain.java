@@ -103,21 +103,21 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void noOmnis() {
-    	frontButterfly.set(DoubleSolenoid.Value.kForward); //COMP = fwd
+    	frontButterfly.set(DoubleSolenoid.Value.kForward); //COMP = rev
     	backButterfly.set(DoubleSolenoid.Value.kForward);
     }
     
     public void AllOmnis() {
-    	backButterfly.set(DoubleSolenoid.Value.kReverse); // COMP = rev
+    	backButterfly.set(DoubleSolenoid.Value.kReverse); // COMP = fwd
     	frontButterfly.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void shiftHigh() {
-    	driveShifter.set(DoubleSolenoid.Value.kReverse); 
+    	driveShifter.set(DoubleSolenoid.Value.kForward); 
     }
     
     public void shiftLow() {
-    	driveShifter.set(DoubleSolenoid.Value.kForward); 
+    	driveShifter.set(DoubleSolenoid.Value.kReverse); 
     }
     
     public double getLowPressure() {
