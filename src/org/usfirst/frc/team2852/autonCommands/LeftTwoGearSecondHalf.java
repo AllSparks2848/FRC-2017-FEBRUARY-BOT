@@ -17,19 +17,20 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftTwoGearSecondHalf extends CommandGroup {
 
     public LeftTwoGearSecondHalf() {
-    	if(Robot.intake.isBeamBroken()) {
+    	if(Robot.isGear) {
         	
-	        addSequential(new DriveToDistHigh(-50));
+	        addSequential(new DriveToDistHigh(-55)); //was 50
 	        addParallel(new IntakePID(Robot.intake.visionPos));
 	        addSequential(new Wait(.1));
 	        addSequential(new testZeroGyro());
 	        addSequential(new GyroTurnHigh(90));
+	        addSequential(new Wait(.1));
 	        addSequential(new DriveToDistHigh(20));
 	        addSequential(new VisionTurn());
 	        addSequential(new DriveToDistHigh(20));
 	        addSequential(new VisionTurn());
 	        addParallel(new IntakePID(Robot.intake.spitPos));
-	        addSequential(new DriveToDistHigh(34));
+	        addSequential(new DriveToDistHigh(30));
 	        addParallel(new SpitGearBreakBeam());
 	        addParallel(new BackAway());
         }

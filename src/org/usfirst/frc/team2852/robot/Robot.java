@@ -74,6 +74,8 @@ public class Robot extends IterativeRobot {
     
     public PowerDistributionPanel pdp = new PowerDistributionPanel();
 	public boolean isLowVoltage = false;
+	
+	public static boolean isGear = false;
     
 	//public static Preferences prefs;
 	/**
@@ -130,6 +132,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		isGear = Robot.intake.isBeamBroken();
 	}
 
 	@Override
@@ -155,8 +158,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
 		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
 		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
-		SmartDashboard.putNumber("Robot.x", Robot.x);
-//		
+		
 		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
 		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
 		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());

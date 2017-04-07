@@ -61,5 +61,8 @@ public class RedPosition1 extends CommandGroup {
 //    	addSequential(new ShiftHigh());
 //    	addSequential(new AllOmnis());
     	
+//    	addSequential(new testZeroGyro());
+//    	addSequential(new GyroTurnHigh(60));
+//    	addSequential(new DriveToDistHigh(100));    	
     }
 }

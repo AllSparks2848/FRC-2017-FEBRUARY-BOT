@@ -35,10 +35,11 @@ public class LeftTwoGear extends CommandGroup {
        
         //addSequential(new IntakePID(Robot.intake.spitPos));
         addSequential(new IntakePID(Robot.intake.spitPos));
-        addSequential(new DriveToDistance(30));
+        addSequential(new DriveToDistance(32));
         
         addParallel(new SpitGearBreakBeam());
-        addSequential(new DriveToDistance(-55)); //was 70
+        addSequential(new Wait(.25));
+        addSequential(new DriveToDistance(-66)); //was 74
         addSequential(new testZeroGyro());
         addParallel(new IntakePID(Robot.intake.intakePos));
         addSequential(new GyroTurn(-90));
@@ -46,7 +47,7 @@ public class LeftTwoGear extends CommandGroup {
 //        addSequential(new Wait(.15));
         
         addParallel(new IntakeGear());
-        addSequential(new DriveToDistHigh(75));
+        addSequential(new DriveToDistHigh(75)); //was 75
         addSequential(new LeftTwoGearSecondHalf());
     }
 }

@@ -41,7 +41,7 @@ public class MiddleAuton extends CommandGroup {
         //addSequential(new IntakePID(Robot.intake.spitPos));
         System.out.println(Robot.distance);
         addSequential(new IntakePID(Robot.intake.spitPos));
-         addSequential(new DriveToDistance(30)); //was 28
+         addSequential(new DriveToDistance(32)); //was 28
          
         addParallel(new SpitGearBreakBeam());
         addSequential(new Wait(.25));

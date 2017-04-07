@@ -38,5 +38,9 @@ public class BluePosition3 extends CommandGroup {
     	addSequential(new BackAway());
 //    	addSequential(new ShiftHigh());
 //    	addSequential(new AllOmnis());
+    	
+//    	addSequential(new testZeroGyro());
+//    	addSequential(new GyroTurnHigh(60));
+//    	addSequential(new DriveToDistHigh(100));
     }
 }

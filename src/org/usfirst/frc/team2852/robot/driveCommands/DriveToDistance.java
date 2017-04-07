@@ -16,6 +16,8 @@ public class DriveToDistance extends Command {
 		if(setpoint > 40) {
 			time = 2.5;
 		}
+		else if(setpoint >70)
+			time = 3;
 		else {
 			time = 1;
 		}
