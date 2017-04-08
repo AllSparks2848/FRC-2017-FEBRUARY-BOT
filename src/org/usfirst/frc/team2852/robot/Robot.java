@@ -165,7 +165,7 @@ public class Robot extends IterativeRobot {
 		
 		SmartDashboard.putNumber("Encoder Left", Robot.drivetrain.leftEncoder.getDistance());
 		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
-//		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
+		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
 		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
 		
 		if(pdp.getVoltage()<7.5)

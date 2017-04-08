@@ -29,7 +29,7 @@ public class IntakePIDNonStop extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	Robot.intake.setIsIntakePos();
-    	Intake.out2.set(!Robot.intake.isIntakePos);
+//    	Intake.out2.set(!Robot.intake.isIntakePos);
         return false;
     }
 

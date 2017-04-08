@@ -33,7 +33,7 @@ public class Intake extends PIDSubsystem {
 			EncodingType.k4X);
 	
 	public static DigitalOutput out1 = new DigitalOutput(RobotMap.p_out1);
-	public static DigitalOutput out2 = new DigitalOutput(RobotMap.p_out2);
+//	public static DigitalOutput out2 = new DigitalOutput(RobotMap.p_out2);
 	
 	DigitalInput photogate = new DigitalInput(RobotMap.p_photogate);
 

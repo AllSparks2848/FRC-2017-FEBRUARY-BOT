@@ -18,24 +18,21 @@ public class BangBangShoot extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-//    	Shooter.shooterFront.set(-1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM) {
-//    		Shooter.shooterBack.set(.8);
-//    	}
-//    	else {
-//    		Shooter.shooterBack.set(0);
-//    	}
+    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM) {
+    		Shooter.shooterBack.set(.85);
+    	}
+    	else {
+    		Shooter.shooterBack.set(0);
+    	}
     	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM) { //was *1.2
-    		Shooter.shooterFront.set(-.8);
-    		Shooter.shooterBack.set(.8);
+    		Shooter.shooterFront.set(-.35);
     	}
     	else {
     		Shooter.shooterFront.set(0);
-    		Shooter.shooterBack.set(0);
     	}
     	
     }

@@ -18,6 +18,7 @@ import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
 import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
+import org.usfirst.frc.team2852.robot.shooterCommands.ConveyBurst;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.ShootAndConvey;
 import org.usfirst.frc.team2852.robot.util.XboxTrigger;
@@ -154,7 +155,7 @@ public class OI {
 		bbL7.whenPressed(new ZeroIntake());
 		bbL8.whileHeld(new Climb(1));
 		bbL9.whileHeld(new BangBangShoot());
-		bbL10.whileHeld(new Convey(.6));
+		bbL10.whileHeld(new Convey(.5)); //was .6
 		bbL11.whileHeld(new ShootAndConvey());
 		bbL12.whenPressed(new IntakeGear());
 		bbL13.whileHeld(new SpitGear());
@@ -162,7 +163,7 @@ public class OI {
 		
 		
 //		b2.whenPressed(new GyroTurnHigh(60));
-		a2.whenPressed(new VisionTurn());
+		a2.whileHeld(new ConveyBurst(.8));
 //		lBump2.whenPressed(new RedPosition3());
 //		x2.whenPressed(new RedPosition1());
 //		rBump2.whenPressed(new MiddleAuton());

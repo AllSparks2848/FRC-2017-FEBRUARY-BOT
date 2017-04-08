@@ -42,7 +42,7 @@ public class IntakePID extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Intake.out1.set(!Robot.intake.isBeamBroken());
-    	Intake.out2.set(!Robot.intake.isIntakePos);
+//    	Intake.out2.set(!Robot.intake.isIntakePos);
     }
 
     // Make this return true when this Command no longer needs to run execute()
