@@ -1,8 +1,7 @@
 package org.usfirst.frc.team2852.autonCommands;
 
-import org.usfirst.frc.team2852.intakeCommands.IntakePID;
 import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
-import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
+import org.usfirst.frc.team2852.intakecommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

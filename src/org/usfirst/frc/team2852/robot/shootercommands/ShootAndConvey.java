@@ -1,4 +1,7 @@
-package org.usfirst.frc.team2852.robot.shooterCommands;
+package org.usfirst.frc.team2852.robot.shootercommands;
+
+import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
+import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

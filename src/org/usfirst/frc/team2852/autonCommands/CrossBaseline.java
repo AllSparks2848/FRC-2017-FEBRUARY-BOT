@@ -1,6 +1,6 @@
 package org.usfirst.frc.team2852.autonCommands;
 
-import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
+import org.usfirst.frc.team2852.intakecommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
