@@ -152,7 +152,7 @@ public class OI {
 		bbL7.whenPressed(new ZeroIntake());
 		bbL8.whileHeld(new Climb(1));
 		bbL9.whileHeld(new BangBangShoot());
-		bbL10.whileHeld(new Convey(.5)); //was .6
+		bbL10.whileHeld(new Convey(1)); //was .6
 		bbL11.whileHeld(new ShootAndConvey());
 		bbL12.whenPressed(new IntakeGear());
 		bbL13.whileHeld(new SpitGear());
