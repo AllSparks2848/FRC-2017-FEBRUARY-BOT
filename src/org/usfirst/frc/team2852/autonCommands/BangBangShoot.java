@@ -4,6 +4,7 @@ import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.subsystems.Shooter;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -22,18 +23,24 @@ public class BangBangShoot extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Shooter.shooterBackEnc.getRate()<Shooter.targetRPM) {
+    	if(Math.abs(Shooter.shooterFrontEnc.getRate())<Shooter.targetRPM) {
     		Shooter.shooterBack.set(.85);
     	}
     	else {
     		Shooter.shooterBack.set(0);
     	}
-    	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM) { //was *1.2
-    		Shooter.shooterFront.set(-.35);
+    	if(Math.abs(Shooter.shooterFrontEnc.getRate())<Shooter.targetRPM) { //was *1.2
+    		Shooter.shooterFront.set(-.85);
+    		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
     	}
     	else {
     		Shooter.shooterFront.set(0);
     	}
+    	
+//    	if(Math.abs(Math.abs(Shooter.shooterFrontEnc.getRate())-Shooter.targetRPM) < 20)
+//    		Robot.conveyor.elevator(.6);
+//    	else
+//    		Robot.conveyor.elevator(0);
     	
     }
 
@@ -47,6 +54,7 @@ public class BangBangShoot extends Command {
     protected void end() {
     	Shooter.shooterBack.set(0);
     	Shooter.shooterFront.set(0);
+//    	Robot.conveyor.elevator(0);
     }
 
     // Called when another command which requires one or more of the same
