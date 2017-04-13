@@ -12,6 +12,7 @@ import org.usfirst.frc.team2852.autonCommands.BluePosition3;
 import org.usfirst.frc.team2852.autonCommands.BlueShootFirst;
 import org.usfirst.frc.team2852.autonCommands.LeftTwoGear;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
+import org.usfirst.frc.team2852.autonCommands.MiddleFast;
 import org.usfirst.frc.team2852.autonCommands.RP3Shoot;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedShootFirst;
@@ -265,7 +266,7 @@ public class Robot extends IterativeRobot {
         switch(autoNum) {
         case 0: autonCommand = new RedPosition1();
         break;
-        case 1: autonCommand = new MiddleAuton();
+        case 1: autonCommand = new MiddleFast();
     	break;
         case 2: autonCommand = new RedShootFirst(); //RP3
     	break;

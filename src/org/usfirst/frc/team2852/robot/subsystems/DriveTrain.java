@@ -62,7 +62,8 @@ public class DriveTrain extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return ((rightEncoder.getDistance()+leftEncoder.getDistance())/2);
+//        return ((rightEncoder.getDistance()+leftEncoder.getDistance())/2); //COMP
+    	return leftEncoder.getDistance();
     }
 
     protected void usePIDOutput(double output) {
@@ -92,32 +93,32 @@ public class DriveTrain extends PIDSubsystem {
     	drive2.setLeftRightMotorOutputs(0, 0);
     }
     
-    public void frontOmnis() {
-    	frontButterfly.set(DoubleSolenoid.Value.kForward);
-    	backButterfly.set(DoubleSolenoid.Value.kReverse);
+    public void frontOmnis() { 
+    	frontButterfly.set(DoubleSolenoid.Value.kForward); 
+    	backButterfly.set(DoubleSolenoid.Value.kReverse); 
     }
     
     public void backOmnis() {
-    	backButterfly.set(DoubleSolenoid.Value.kForward); 
-    	frontButterfly.set(DoubleSolenoid.Value.kReverse);
+    	backButterfly.set(DoubleSolenoid.Value.kForward);  
+    	frontButterfly.set(DoubleSolenoid.Value.kReverse); 
     }
     
     public void noOmnis() {
-    	frontButterfly.set(DoubleSolenoid.Value.kForward); //COMP = rev
-    	backButterfly.set(DoubleSolenoid.Value.kForward);
+    	frontButterfly.set(DoubleSolenoid.Value.kReverse); //fwd
+    	backButterfly.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void AllOmnis() {
-    	backButterfly.set(DoubleSolenoid.Value.kReverse); // COMP = fwd
-    	frontButterfly.set(DoubleSolenoid.Value.kReverse);
+    	backButterfly.set(DoubleSolenoid.Value.kForward); //rev
+    	frontButterfly.set(DoubleSolenoid.Value.kForward);
     }
     
     public void shiftHigh() {
-    	driveShifter.set(DoubleSolenoid.Value.kForward); 
+    	driveShifter.set(DoubleSolenoid.Value.kReverse); //fwd
     }
     
     public void shiftLow() {
-    	driveShifter.set(DoubleSolenoid.Value.kReverse); 
+    	driveShifter.set(DoubleSolenoid.Value.kForward); //rev
     }
     
     public double getLowPressure() {
