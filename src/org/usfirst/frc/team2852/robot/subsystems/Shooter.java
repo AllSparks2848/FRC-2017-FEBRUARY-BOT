@@ -16,7 +16,7 @@ public class Shooter extends PIDSubsystem {
 	public static double i = 0.0; //Robot.prefs.getDouble("kIShoot", 0.0);
 	public static double d = 0.0; //Robot.prefs.getDouble("kDShoot", 0.0);
 	
-	public static double targetRPM = 545; //Robot.prefs.getDouble("targetRPM", 500); //COMP 510
+	public static double targetRPM = 510; //Robot.prefs.getDouble("targetRPM", 500); //COMP 510
 	
     public static Spark shooterBack = new Spark(RobotMap.p_shooterBack);
     public static Spark shooterFront = new Spark(RobotMap.p_shooterFront);

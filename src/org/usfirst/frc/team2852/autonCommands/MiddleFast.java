@@ -5,10 +5,9 @@ import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
 import org.usfirst.frc.team2852.robot.driveCommands.BackAway;
-import org.usfirst.frc.team2852.robot.driveCommands.DriveToDistance;
+import org.usfirst.frc.team2852.robot.driveCommands.DriveStraight;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
-import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -24,10 +23,9 @@ public class MiddleFast extends CommandGroup {
     	addParallel(new IntakePID(Robot.intake.spitPos));
        
        
-         addSequential(new DriveToDistance(72)); //was 28
+         addSequential(new DriveStraight(72)); 
          
         addParallel(new SpitGearBreakBeam());
-        addSequential(new Wait(.25));
    		addSequential(new BackAway());
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -9,17 +9,14 @@ import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.IntakeUp;
 import org.usfirst.frc.team2852.intakeCommands.SetBottomPos;
 import org.usfirst.frc.team2852.intakeCommands.SpitGear;
-import org.usfirst.frc.team2852.intakeCommands.TeleOpGearAlign;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.driveCommands.AllOmnis;
-import org.usfirst.frc.team2852.robot.driveCommands.GyroTurnHigh;
+import org.usfirst.frc.team2852.robot.driveCommands.DriveStraight;
 import org.usfirst.frc.team2852.robot.driveCommands.NoOmnis;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftHigh;
 import org.usfirst.frc.team2852.robot.driveCommands.ShiftLow;
-import org.usfirst.frc.team2852.robot.driveCommands.VisionTurn;
-import org.usfirst.frc.team2852.robot.driveCommands.gearTurn;
+import org.usfirst.frc.team2852.robot.driveCommands.GearTurn;
 import org.usfirst.frc.team2852.robot.shooterCommands.Convey;
-import org.usfirst.frc.team2852.robot.shooterCommands.ConveyBurst;
 import org.usfirst.frc.team2852.robot.shooterCommands.ManualShoot;
 import org.usfirst.frc.team2852.robot.shooterCommands.ShootAndConvey;
 import org.usfirst.frc.team2852.robot.util.XboxTrigger;
@@ -50,9 +47,9 @@ public class OI {
 	
 //	Controller 2
 	Button a2 = new JoystickButton(xbox2, 1);
-//	Button b2 = new JoystickButton(xbox2, 2);
-//	Button x2 = new JoystickButton(xbox2, 3);
-//	Button y2 = new JoystickButton(xbox2, 4);
+	Button b2 = new JoystickButton(xbox2, 2);
+	Button x2 = new JoystickButton(xbox2, 3);
+	Button y2 = new JoystickButton(xbox2, 4);
 //	
 //	Button start = new JoystickButton(xbox2, 8);
 //	
@@ -163,10 +160,11 @@ public class OI {
 		
 		
 		
-//		b2.whenPressed(new GyroTurnHigh(60));
-		a2.whenPressed(new gearTurn());
+		b2.whenPressed(new DriveStraight(40));
+		a2.whenPressed(new DriveStraight(20));
 //		lBump2.whenPressed(new RedPosition3());
-//		x2.whenPressed(new RedPosition1());
+		x2.whenPressed(new DriveStraight(60));
+		y2.whenPressed(new DriveStraight(70));
 //		rBump2.whenPressed(new MiddleAuton());
 		
 		

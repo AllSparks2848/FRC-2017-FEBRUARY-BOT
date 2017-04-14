@@ -28,7 +28,7 @@ public class BlueShootFirst extends CommandGroup {
 	addParallel(new ZeroIntake());
 	addSequential(new testZeroGyro());
 	
-	addSequential(new ShootAuton());
+	addSequential(new ShootAuton(510));
 	addSequential(new DriveToDistance(-25)); //was -43.3
 	addSequential(new Wait(.1));
 	addSequential(new ShiftHigh());

@@ -41,7 +41,7 @@ public class BP1Shoot extends CommandGroup {
     	addSequential(new testZeroGyro());
     	addSequential(new GyroTurnLong(160)); //WAS 156
     	addParallel(new IntakePID(Robot.intake.tuckPos));
-    	addParallel(new ShootAuton());
+    	addParallel(new ShootAuton(510));
     	addSequential(new DriveFAST(78));
     	
     	

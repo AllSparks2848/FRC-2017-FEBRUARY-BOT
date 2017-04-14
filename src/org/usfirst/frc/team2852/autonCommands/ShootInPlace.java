@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ShootInPlace extends Command {
 	Timer timer = new Timer();
-    public ShootInPlace() {
+	private int targetRPM = 0;
+    public ShootInPlace(int targetRPM) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.shooter);
+    	this.targetRPM = targetRPM;
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +26,7 @@ public class ShootInPlace extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM) { //was *1.2
+    	if(-Shooter.shooterFrontEnc.getRate()<targetRPM) { //was *1.2
     		Shooter.shooterFront.set(-.8);
     		Shooter.shooterBack.set(.8);
     	}

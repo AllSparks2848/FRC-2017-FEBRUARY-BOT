@@ -9,8 +9,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ShootAuton extends CommandGroup {
 
-    public ShootAuton() {
-    	addParallel(new ShootInPlace());
+    public ShootAuton(int targetRPM) {
+    	addParallel(new ShootInPlace(targetRPM));
     	addSequential(new Wait(.2));
     	addSequential(new ConveyAuto());
         // Add Commands here:

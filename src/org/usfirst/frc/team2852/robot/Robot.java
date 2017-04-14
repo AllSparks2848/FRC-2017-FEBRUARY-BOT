@@ -102,7 +102,7 @@ public class Robot extends IterativeRobot {
     	
     	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(640, 480);
-        camera.setExposureManual(20);
+        camera.setExposureManual(50); //20
         VisionThread visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
@@ -162,9 +162,9 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopPeriodic() {
+		isGear = Robot.intake.isBeamBroken();
 		
-		
-		System.out.println(shooter.shooterFrontEnc.getRate());
+		System.out.println(isGear);
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		

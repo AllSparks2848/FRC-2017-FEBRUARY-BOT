@@ -23,7 +23,14 @@ public class DriveStraight extends Command {
     public DriveStraight(double setpoint) {
     	requires(Robot.drivetrain);
 		this.setpoint = setpoint;
-		time = 10; //2.5
+		if(Math.abs(setpoint)<20)
+			time = .4;
+		else if(Math.abs(setpoint)<40)
+			time = .7; //2.5
+		else if(Math.abs(setpoint)<60)
+			time = 1.15;
+		else
+			time = 1.75;
     }
 
     // Called just before this Command runs the first time
@@ -34,7 +41,7 @@ public class DriveStraight extends Command {
     	Robot.drivetrain.leftEncoder.setDistancePerPulse(.0493);
     	Robot.drivetrain.rightEncoder.setDistancePerPulse(.0488);
     	
-    	Robot.drivetrain.gyro.reset();
+    	Robot.drivetrain.gyro.reset(); 
     	timer.start();
     }
 
