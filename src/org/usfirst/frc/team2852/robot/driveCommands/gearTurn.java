@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class gearTurn extends Command {
+public class GearTurn extends Command {
 	double turn = 0;
-    public gearTurn() {
+    public GearTurn() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.drivetrain);
@@ -22,22 +22,22 @@ public class gearTurn extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	turn = Robot.gearX - 160; //centered is 160
-    	turn*=.0175;
-    	if(Math.abs(turn)>.7 && turn <0)
-    		turn = -.7;
-    	if(Math.abs(turn)>.7 && turn >0)
-    		turn = .7;
-    	if(Math.abs(turn)<.2 && turn >0)
-    		turn = .2;
-    	if(Math.abs(turn)<.2 && turn <0)
-    		turn = -.2;
+    	turn = Robot.gearX - 173; //centered is 160
+    	turn*=.03;
+    	if(Math.abs(turn)>.6 && turn <0)
+    		turn = -.6;
+    	if(Math.abs(turn)>.6 && turn >0)
+    		turn = .6;
+    	if(Math.abs(turn)<.45 && turn >0)
+    		turn = .45;
+    	if(Math.abs(turn)<.45 && turn <0)
+    		turn = -.45;
     	Robot.drivetrain.tankDrive(turn, -turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Math.abs(Robot.gearX) <2);
+        return (Math.abs(173 - Robot.gearX) <5);
     }
 
     // Called once after isFinished returns true
