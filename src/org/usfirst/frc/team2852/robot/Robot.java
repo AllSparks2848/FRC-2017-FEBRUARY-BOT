@@ -77,6 +77,8 @@ public class Robot extends IterativeRobot {
     
 	public static double gearX = 0.0;
 	public final Object imgLock = new Object();
+	
+	public static double twoGearAngle = 0.0;
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -102,7 +104,7 @@ public class Robot extends IterativeRobot {
     	
     	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(640, 480);
-        camera.setExposureManual(50); //20
+        camera.setExposureManual(70); //20
         VisionThread visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));

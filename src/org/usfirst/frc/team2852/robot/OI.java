@@ -161,7 +161,7 @@ public class OI {
 		
 		
 		b2.whenPressed(new DriveStraight(40));
-		a2.whenPressed(new DriveStraight(20));
+		a2.whenPressed(new GearTurn());
 //		lBump2.whenPressed(new RedPosition3());
 		x2.whenPressed(new DriveStraight(60));
 		y2.whenPressed(new DriveStraight(70));
