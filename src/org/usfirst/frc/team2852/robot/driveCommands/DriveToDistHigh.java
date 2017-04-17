@@ -17,12 +17,17 @@ public class DriveToDistHigh extends Command {
 	public DriveToDistHigh(double setpoint) {
 		requires(Robot.drivetrain);
 		this.setpoint = setpoint;
-		if(setpoint > 40) {
+		if(setpoint > 200) {
+			time = 5;
+		}
+		else if(setpoint > 70) {
+			time = 1.75;
+		}
+		else if(setpoint > 40){
 			time = 1.35;
 		}
-		else {
+		else
 			time = .8;
-		}
 	}
 
     protected void initialize() {

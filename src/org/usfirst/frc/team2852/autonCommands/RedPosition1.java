@@ -58,11 +58,11 @@ public class RedPosition1 extends CommandGroup {
     	addSequential(new DriveToDistance(34)); //was 34
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
-//    	addSequential(new ShiftHigh());
-//    	addSequential(new AllOmnis());
-    	
-//    	addSequential(new testZeroGyro());
-//    	addSequential(new GyroTurnHigh(60));
-//    	addSequential(new DriveToDistHigh(100));    	
+
+    	addSequential(new testZeroGyro());
+    	addSequential(new GyroTurn(-60));
+    	addSequential(new ShiftHigh());
+    	addSequential(new AllOmnis());
+    	addSequential(new DriveToDistHigh(125));    	
     }
 }

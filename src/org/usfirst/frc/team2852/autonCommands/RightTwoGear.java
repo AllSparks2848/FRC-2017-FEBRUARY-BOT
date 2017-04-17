@@ -46,30 +46,7 @@ public class RightTwoGear extends CommandGroup {
         addParallel(new IntakeGear());
 //        addParallel(new ShootAuton(660));
         addSequential(new DriveToDistance(60)); 
-        if(Robot.twoGearAngle<0) {
         addSequential(new GyroTurn(0));
-        
-        addSequential(new DriveStraight(-80));
-        addParallel(new IntakePID(Robot.intake.visionPos));
-        addSequential(new GyroTurn(-90));
-        addSequential(new DriveToDistance(35-60*Math.sin(Robot.twoGearAngle)));
-        addSequential(new VisionTurn());
-        addParallel(new IntakePID(Robot.intake.spitPos));
-        addSequential(new DriveToDistance(32));
-        addParallel(new SpitGearBreakBeam());
-        addParallel(new BackAway());
-        }
-        else {
-        	addSequential(new DriveStraight(-80));
-            addParallel(new IntakePID(Robot.intake.visionPos));
-            addSequential(new GyroTurn(-90));
-            addSequential(new DriveToDistance(35));
-            addSequential(new VisionTurn());
-            addParallel(new IntakePID(Robot.intake.spitPos));
-            addSequential(new DriveToDistance(32));
-            addParallel(new SpitGearBreakBeam());
-            addParallel(new BackAway());	
-        }
-        
+        addSequential(new RightTwoGearSecondHalf());
     }
 }
