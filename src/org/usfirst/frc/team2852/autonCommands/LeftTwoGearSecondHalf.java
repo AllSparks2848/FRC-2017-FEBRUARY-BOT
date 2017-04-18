@@ -21,6 +21,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LeftTwoGearSecondHalf extends CommandGroup {
 
     public LeftTwoGearSecondHalf() {
+    	//if(Robot.isGear) {
     	addSequential(new ShiftHigh());
 		
         addSequential(new DriveToDistHigh(-86));
@@ -34,5 +35,6 @@ public class LeftTwoGearSecondHalf extends CommandGroup {
         addSequential(new DriveToDistance(40));
         addParallel(new SpitGearBreakBeam());
         addParallel(new BackAway());
+    	//}
     }
 }

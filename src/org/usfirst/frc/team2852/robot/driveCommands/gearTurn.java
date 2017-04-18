@@ -24,7 +24,7 @@ public class GearTurn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.logger.log("Gear Detected?", (int)Robot.gearX);
     	turn = Robot.gearX - 173; //centered is 160
     	turn*= .0215; //.05
     	if(Math.abs(turn)>.6 && turn <0)
@@ -41,6 +41,8 @@ public class GearTurn extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(timer.get()>.5)
+    		return true;
+    	if(Robot.gearX==0)
     		return true;
         return (Math.abs(173 - Robot.gearX) <= 5);
     }
