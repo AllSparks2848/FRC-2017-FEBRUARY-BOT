@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class OI {
 	Joystick xbox1 = new Joystick(RobotMap.p_xbox1);
-	//Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
+//	Joystick xbox2 = new Joystick(RobotMap.p_xbox2);
 //	Joystick buttonBox = new Joystick(RobotMap.p_buttonBox);
 //	Joystick buttonBox2 = new Joystick(RobotMap.p_buttonBox2);
 	Joystick buttonBoxL = new Joystick(RobotMap.p_buttonBoxL);

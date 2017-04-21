@@ -24,8 +24,8 @@ public class BangBangShoot extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(-Shooter.shooterFrontEnc.getRate()<Shooter.targetRPM) { //was *1.2
-    		Shooter.shooterFront.set(-.8);
-    		Shooter.shooterBack.set(.8);
+    		Shooter.shooterFront.set(-.63);
+    		Shooter.shooterBack.set(.63);
     	}
     	else {
     		Shooter.shooterFront.set(0);

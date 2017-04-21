@@ -34,7 +34,7 @@ public class BP1Shoot extends CommandGroup {
     	addSequential(new DriveToDistance(39));
     	addSequential(new VisionTurn());
     	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(29)); 
+    	addSequential(new DriveToDistance(32)); 
     	addParallel(new SpitGearBreakBeam());
     	
     	addSequential(new DriveFAST(-40));
@@ -42,7 +42,7 @@ public class BP1Shoot extends CommandGroup {
     	addSequential(new GyroTurnLong(160)); //WAS 156
     	addParallel(new IntakePID(Robot.intake.tuckPos));
     	addParallel(new ShootAuton(510));
-    	addSequential(new DriveFAST(78));
+    	addSequential(new DriveFAST(82));
     	
     	
     }

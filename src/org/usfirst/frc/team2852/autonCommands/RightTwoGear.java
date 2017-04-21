@@ -1,4 +1,4 @@
-package org.usfirst.frc.team2852.autonCommands;
+ package org.usfirst.frc.team2852.autonCommands;
 
 import org.usfirst.frc.team2852.intakeCommands.IntakeGear;
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
@@ -27,10 +27,10 @@ public class RightTwoGear extends CommandGroup {
     	addSequential(new NoOmnis());
     	addSequential(new ZeroIntake());
     	addParallel(new IntakePID(Robot.intake.spitPos));
+    	addSequential(new Wait(.2));
        
-       
-        addSequential(new DriveStraight(74)); 
-        addSequential(new Wait(.2));
+        addSequential(new DriveStraight(71)); 
+//        addSequential(new Wait(.2));
         addParallel(new SpitGearBreakBeam());
         
         addSequential(new DriveStraight(-51)); 

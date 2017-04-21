@@ -27,20 +27,20 @@ public class GearTurn extends Command {
     	Robot.logger.log("Gear Detected?", (int)Robot.gearX);
     	turn = Robot.gearX - 173; //centered is 160
     	turn*= .0215; //.05
-    	if(Math.abs(turn)>.6 && turn <0)
+    	if(Math.abs(turn)>.6 && turn <0) //.51 omni
     		turn = -.6; //.61
     	if(Math.abs(turn)>.6 && turn >0)
     		turn = .6;
-    	if(Math.abs(turn)<.525 && turn >0)
-    		turn = .525; //.55
-    	if(Math.abs(turn)<.525 && turn <0)
-    		turn = -.525;
+    	if(Math.abs(turn)<.575 && turn >0) //.5 traction
+    		turn = .575; //.55
+    	if(Math.abs(turn)<.575 && turn <0)
+    		turn = -.575;
     	Robot.drivetrain.tankDrive(turn, -turn);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(timer.get()>.5)
+    	if(timer.get()>.7)
     		return true;
     	if(Robot.gearX==0)
     		return true;

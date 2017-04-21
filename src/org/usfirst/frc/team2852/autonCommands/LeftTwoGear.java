@@ -31,8 +31,8 @@ public class LeftTwoGear extends CommandGroup {
     	addParallel(new IntakePID(Robot.intake.spitPos));
        
        
-        addSequential(new DriveStraight(74)); 
-        addSequential(new Wait(.2));
+        addSequential(new DriveStraight(71)); 
+//        addSequential(new Wait(.2));
         addParallel(new SpitGearBreakBeam());
         
         addSequential(new DriveStraight(-51)); 
@@ -49,6 +49,6 @@ public class LeftTwoGear extends CommandGroup {
 //        addParallel(new ShootAuton(660));
         addSequential(new DriveToDistance(60)); 
         addSequential(new GyroTurn(0));
-        addSequential(new RightTwoGearSecondHalf());
+        addSequential(new LeftTwoGearSecondHalf());
     }
 }

@@ -32,8 +32,8 @@ public class DriveTrain extends PIDSubsystem {
 	DoubleSolenoid backButterfly = new DoubleSolenoid(RobotMap.p_backButterfly1, RobotMap.p_backButterfly2);
 	DoubleSolenoid driveShifter = new DoubleSolenoid(RobotMap.p_driveshifter1, RobotMap.p_driveshifter2);
 	
-	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, false, EncodingType.k4X); //COMP=true
-	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, false, EncodingType.k4X); //COMP=true
+	public Encoder leftEncoder = new Encoder(RobotMap.p_leftEncoderA, RobotMap.p_leftEncoderB, true, EncodingType.k4X); //COMP=true
+	public Encoder rightEncoder = new Encoder(RobotMap.p_rightEncoderA, RobotMap.p_rightEncoderB, true, EncodingType.k4X); //COMP=true
 	
 	public AnalogInput lowPressureSensor = new AnalogInput(RobotMap.p_lowPressureSensor);
 	public AnalogInput highPressureSensor = new AnalogInput(RobotMap.p_highPressureSensor);
@@ -104,21 +104,21 @@ public class DriveTrain extends PIDSubsystem {
     }
     
     public void noOmnis() {
-    	frontButterfly.set(DoubleSolenoid.Value.kReverse); //fwd
-    	backButterfly.set(DoubleSolenoid.Value.kReverse);
+    	frontButterfly.set(DoubleSolenoid.Value.kForward); //fwd
+    	backButterfly.set(DoubleSolenoid.Value.kForward);
     }
     
     public void AllOmnis() {
-    	backButterfly.set(DoubleSolenoid.Value.kForward); //rev
-    	frontButterfly.set(DoubleSolenoid.Value.kForward);
+    	backButterfly.set(DoubleSolenoid.Value.kReverse); //rev
+    	frontButterfly.set(DoubleSolenoid.Value.kReverse);
     }
     
     public void shiftHigh() {
-    	driveShifter.set(DoubleSolenoid.Value.kReverse); //fwd
+    	driveShifter.set(DoubleSolenoid.Value.kForward); //fwd
     }
     
     public void shiftLow() {
-    	driveShifter.set(DoubleSolenoid.Value.kForward); //rev
+    	driveShifter.set(DoubleSolenoid.Value.kReverse); //rev
     }
     
     public double getLowPressure() {
