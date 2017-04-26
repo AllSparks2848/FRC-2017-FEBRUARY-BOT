@@ -31,8 +31,8 @@ public class RightTwoGearSecondHalf extends CommandGroup {
 	        addSequential(new VisionTurn());
 	        addParallel(new IntakePID(Robot.intake.spitPos));
 	        addSequential(new DriveToDistance(40));
-	        addParallel(new SpitGearBreakBeam());
-	        addParallel(new BackAway());
+//	        addParallel(new SpitGearBreakBeam());
+//	        addParallel(new BackAway());
 //        }
 //    	else stop intake 
     }

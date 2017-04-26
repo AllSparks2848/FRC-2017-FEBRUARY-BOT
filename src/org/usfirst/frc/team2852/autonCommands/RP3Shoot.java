@@ -57,10 +57,10 @@ public class RP3Shoot extends CommandGroup {
     	    	addParallel(new IntakePIDNonStop(Robot.intake.visionPos));
     	    	//addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
     	    	addSequential (new GyroTurn(-60));
-    	    	addSequential(new DriveToDistance(38));
+    	    	addSequential(new DriveToDistance(39));
     	    	addSequential(new VisionTurn());
     	    	addSequential(new IntakePID(Robot.intake.spitPos));
-    	    	addSequential(new DriveToDistance(32));
+    	    	addSequential(new DriveToDistance(29));
     	    	addParallel(new SpitGearBreakBeam());
     	   	
     	    	addSequential(new DriveFAST(-40));

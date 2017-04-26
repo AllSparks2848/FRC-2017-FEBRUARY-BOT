@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2852.autonCommands;
 
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
+import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
@@ -33,18 +34,19 @@ public class BlueShootFirst extends CommandGroup {
 	addSequential(new ShootAuton(510));
 	addSequential(new DriveToDistance(-25)); //was -43.3
 	addSequential(new Wait(.1));
+	
 	addSequential(new ShiftHigh());
 	addParallel(new IntakePID(Robot.intake.visionPos));
 	addSequential(new GyroTurnHigh(105)); //was -112.6
 	addSequential(new Wait(.05));
-	addSequential(new DriveToDistHigh(62)); //was 76, 69, 68, 65 - encoders?
+	addSequential(new DriveToDistHigh(68)); //was 62
 	addSequential(new testZeroGyro());
 	addSequential(new GyroTurnHigh(60));
 	addSequential(new ShiftLow());
 	addSequential(new DriveToDistance(20));
 	addSequential(new VisionTurn());
-	addSequential(new IntakePID(Robot.intake.spitPos));
-	addSequential(new DriveToDistance(32)); //was 30
+	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+	addSequential(new DriveToDistance(36)); //was 30
 	addParallel(new SpitGearBreakBeam());
 	addSequential(new BackAway());
 	

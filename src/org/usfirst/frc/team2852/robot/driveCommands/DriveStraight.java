@@ -28,7 +28,7 @@ public class DriveStraight extends Command {
 		else if(Math.abs(setpoint)<40)
 			time = .7; //2.5
 		else if(Math.abs(setpoint)<60)
-			time = 1.15;
+			time = 1.25;
 		else
 			time = 1.75;
     }

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team2852.autonCommands;
 
 import org.usfirst.frc.team2852.intakeCommands.IntakePID;
+import org.usfirst.frc.team2852.intakeCommands.IntakePIDNonStop;
 import org.usfirst.frc.team2852.intakeCommands.SpitGearBreakBeam;
 import org.usfirst.frc.team2852.intakeCommands.ZeroIntake;
 import org.usfirst.frc.team2852.robot.Robot;
@@ -44,8 +45,8 @@ public class RedShootFirst extends CommandGroup {
     	addSequential(new ShiftLow());
     	addSequential(new DriveToDistance(20));
     	addSequential(new VisionTurn());
-    	addSequential(new IntakePID(Robot.intake.spitPos));
-    	addSequential(new DriveToDistance(32)); //was 30
+    	addParallel(new IntakePIDNonStop(Robot.intake.spitPos));
+    	addSequential(new DriveToDistance(36)); //was 30
     	addParallel(new SpitGearBreakBeam());
     	addSequential(new BackAway());
     	

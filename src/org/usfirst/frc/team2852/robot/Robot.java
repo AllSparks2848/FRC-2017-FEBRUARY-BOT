@@ -1,18 +1,15 @@
 package org.usfirst.frc.team2852.robot;
 
-
-
-
-
-
+import edu.wpi.first.wpilibj.vision.VisionThread;
+import edu.wpi.first.wpilibj.vision.VisionRunner;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
+
 import org.usfirst.frc.team2852.autonCommands.BP1Shoot;
 import org.usfirst.frc.team2852.autonCommands.BluePosition3;
 import org.usfirst.frc.team2852.autonCommands.BlueShootFirst;
 import org.usfirst.frc.team2852.autonCommands.LeftTwoGear;
 import org.usfirst.frc.team2852.autonCommands.MiddleAuton;
-import org.usfirst.frc.team2852.autonCommands.MiddleFast;
 import org.usfirst.frc.team2852.autonCommands.RP3Shoot;
 import org.usfirst.frc.team2852.autonCommands.RedPosition1;
 import org.usfirst.frc.team2852.autonCommands.RedShootFirst;
@@ -36,7 +33,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.vision.VisionThread;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -76,11 +74,12 @@ public class Robot extends IterativeRobot {
 	public static boolean isGear = false;
     
 	public static double gearX = 0.0;
-	public final Object imgLock = new Object();
-	
+	private final Object imgLock = new Object();
+	private VisionThread visionThread;
 	public static double twoGearAngle = 0.0;
 	
 	public static double voltage = 13.0;
+	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -107,7 +106,7 @@ public class Robot extends IterativeRobot {
     	UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(640, 480);
         camera.setExposureManual(60); //20
-        VisionThread visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
+        visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
                 synchronized (imgLock) {
@@ -175,26 +174,26 @@ public class Robot extends IterativeRobot {
 			SmartDashboard.putBoolean("Brownout", false);
 			
 		
-		System.out.println(isGear);
+//		System.out.println(isGear);
 		if(Math.abs(oi.getLeftJoystick())>.05 || Math.abs(oi.getRightJoystick())>.05)
 			drivetrain.arcadeDrive(oi.getLeftJoystick(), oi.getRightJoystick());
 		
 		Robot.intake.setIsIntakePos();
 		
-		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
-		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
-		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
-		
-		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
-		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
-		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
-		
-		SmartDashboard.putNumber("Encoder Left", Robot.drivetrain.leftEncoder.getDistance());
-		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
-		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
-		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
-		
-		SmartDashboard.putNumber("gearX", Robot.gearX);
+//		SmartDashboard.putBoolean("Photogate", intake.isPhotoGateBroken());
+//		SmartDashboard.putBoolean("Beam Broken", intake.isBeamBroken());
+//		SmartDashboard.putNumber("Current Enc val", Intake.intakeEnc.get());
+//		
+//		SmartDashboard.putNumber("Gyro Angle", Robot.drivetrain.gyro.getYaw());
+//		SmartDashboard.putNumber("Low Pressure Value", drivetrain.getLowPressure());
+//		SmartDashboard.putNumber("High Pressure Value", drivetrain.getHighPressure());
+//		
+//		SmartDashboard.putNumber("Encoder Left", Robot.drivetrain.leftEncoder.getDistance());
+//		SmartDashboard.putNumber("Encoder Right", Robot.drivetrain.rightEncoder.getDistance());
+//		SmartDashboard.putNumber("Back RPM", Shooter.shooterBackEnc.getRate());
+//		SmartDashboard.putNumber("Front RPM", Shooter.shooterFrontEnc.getRate());
+//		
+//		SmartDashboard.putNumber("gearX", Robot.gearX);
 		
 		if(pdp.getVoltage()<7.5)
 			isLowVoltage = true;
